@@ -10,17 +10,21 @@
         android:id="@+id/tvEsatdo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Mis Actividades"
         android:textAlignment="center"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvActividadesEnCurso"
         android:layout_width="410dp"
-        android:layout_height="668dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="62dp" />
+        android:layout_height="676dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEsatdo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

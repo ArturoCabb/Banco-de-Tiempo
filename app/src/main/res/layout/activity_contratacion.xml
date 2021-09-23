@@ -6,28 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".ContratacionActivity">
 
-    <Button
+    <ImageButton
         android:id="@+id/btnClose"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:drawableTop="@android:drawable/ic_menu_close_clear_cancel"
-        tools:layout_editor_absoluteX="344dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
     <ImageView
         android:id="@+id/imExito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="111dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvExito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="Exito al Solicitar Servicio"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="75dp"
-        tools:layout_editor_absoluteY="268dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imExito" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

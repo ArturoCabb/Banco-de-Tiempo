@@ -6,77 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".EjecucionTrabajoActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="51dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
     <TextView
         android:id="@+id/tvActividadEjecucion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
         android:text="Tarea en ejecucion"
         android:textAlignment="center"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <Button
-        android:id="@+id/btnAtrasEje"
-        android:layout_width="74dp"
-        android:layout_height="45dp"
-        android:drawableTop="?attr/actionModeCloseDrawable"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imTrabajo"
         android:layout_width="127dp"
         android:layout_height="120dp"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="79dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvNombrepersona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
         android:text="Nombre de persona"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintStart_toStartOf="@+id/imTrabajo"
+        app:layout_constraintTop_toBottomOf="@+id/imTrabajo" />
 
     <TextView
         android:id="@+id/tvHoraInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HORA INICIO DE TRABAJO: "
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="244dp" />
+        android:layout_width="168dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        android:text="HORA INICIO"
+        app:layout_constraintStart_toStartOf="@+id/tvNombrepersona"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombrepersona" />
 
     <TextView
         android:id="@+id/tvHoraFin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="168dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="12dp"
         android:text="HORA FIN: "
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="281dp" />
+        app:layout_constraintStart_toStartOf="@+id/tvHoraInicio"
+        app:layout_constraintTop_toBottomOf="@+id/tvHoraInicio" />
 
     <Button
         android:id="@+id/btnReportartarea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:text="Reportar"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHoraFin" />
 
     <Button
         android:id="@+id/btMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:text="Mensaje"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="314dp" />
+        app:layout_constraintStart_toEndOf="@+id/btnReportartarea"
+        app:layout_constraintTop_toTopOf="@+id/btnReportartarea" />
 
     <Button
         android:id="@+id/btTerminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Terminar"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btMessage"
+        app:layout_constraintTop_toTopOf="@+id/btMessage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
