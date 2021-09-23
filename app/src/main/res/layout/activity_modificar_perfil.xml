@@ -4,85 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModificarPerfil">
+    tools:context=".ModificarPerfilActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="127dp"
-        android:layout_height="34dp"
-        android:text="Nombre"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="162dp" />
-
-    <TextView
-        android:id="@+id/textView3"
+    <ImageView
+        android:id="@+id/imPerfilModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edad"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="162dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estudios"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="313dp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CAlificacion"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="161dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Trabajos:"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="309dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ubicación"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="224dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="128dp"
-        android:layout_height="17dp"
-        android:text="Correo"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="196dp" />
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.424"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="92dp"
-        android:layout_height="39dp"
-        android:text="verificar"
-        tools:layout_editor_absoluteX="303dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:id="@+id/btModificarImagenPerfil"
+        android:layout_width="115dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="76dp"
+        android:text="Cambiar imagen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toEndOf="@+id/imPerfilModificar"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="179dp"
-        android:layout_height="144dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    <EditText
+        android:id="@+id/edModificarNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Ingrese su nombre"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imPerfilModificar" />
 
-    <ImageView
-        android:id="@+id/iconoverificacion"
-        android:layout_width="24dp"
-        android:layout_height="15dp"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    <EditText
+        android:id="@+id/edtModificarUbicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Ingrese su ubicacion"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/edModificarNombre"
+        app:layout_constraintStart_toStartOf="@+id/edModificarNombre"
+        app:layout_constraintTop_toBottomOf="@+id/edModificarNombre" />
+
+    <EditText
+        android:id="@+id/edtModificarCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Ingrese su correo"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtModificarUbicacion"
+        app:layout_constraintStart_toStartOf="@+id/edtModificarUbicacion"
+        app:layout_constraintTop_toBottomOf="@+id/edtModificarUbicacion" />
+
+    <EditText
+        android:id="@+id/edtModificarLocalizacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Ubicacion del negocio"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtModificarTelefono"
+        app:layout_constraintStart_toStartOf="@+id/edtModificarTelefono"
+        app:layout_constraintTop_toBottomOf="@+id/edtModificarTelefono" />
+
+    <EditText
+        android:id="@+id/edtModificarHoraInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Ingrese hora de entrada"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtModificarLocalizacion"
+        app:layout_constraintStart_toStartOf="@+id/edtModificarLocalizacion"
+        app:layout_constraintTop_toBottomOf="@+id/edtModificarLocalizacion" />
+
+    <EditText
+        android:id="@+id/edtModificarHoraFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Ingrese hora de salida"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtModificarHoraInicio"
+        app:layout_constraintStart_toStartOf="@+id/edtModificarHoraInicio"
+        app:layout_constraintTop_toBottomOf="@+id/edtModificarHoraInicio" />
+
+    <EditText
+        android:id="@+id/edtModificarTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Ingrese su telefono"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtModificarCorreo"
+        app:layout_constraintStart_toStartOf="@+id/edtModificarCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/edtModificarCorreo" />
+
+    <Button
+        android:id="@+id/btGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Guardar Cambios"
+        app:layout_constraintEnd_toEndOf="@+id/edtModificarHoraFin"
+        app:layout_constraintStart_toStartOf="@+id/edtModificarHoraFin"
+        app:layout_constraintTop_toBottomOf="@+id/edtModificarHoraFin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

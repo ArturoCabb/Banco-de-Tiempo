@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navegacion_inicio"
+        android:icon="?attr/homeAsUpIndicator"
+        android:title="Trabajos" />
+
+    <item
+        android:id="@+id/navegacion_chat"
+        android:icon="@android:drawable/sym_action_chat"
+        android:title="Mis Actividades" />
+
+    <item
+        android:id="@+id/navegacion_actividades"
+        android:icon="@android:drawable/sym_action_chat"
+        android:title="Mensajes" />
+
+    <item
+        android:id="@+id/navegacion_perfil"
+        android:icon="@android:drawable/presence_audio_online"
+        android:title="Perfil" />
+</menu>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".BlankFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imMyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/btVerificar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Verificar Perfil"
+            app:layout_constraintEnd_toEndOf="@+id/imMyProfile"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="@+id/imMyProfile"
+            app:layout_constraintTop_toBottomOf="@+id/imMyProfile" />
+
+        <TextView
+            android:id="@+id/tvNombreProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Nombre de Perfil"
+            app:layout_constraintEnd_toEndOf="@+id/btVerificar"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="@+id/btVerificar"
+            app:layout_constraintTop_toBottomOf="@+id/btVerificar" />
+
+        <TextView
+            android:id="@+id/tvMyLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Localizacion"
+            app:layout_constraintEnd_toEndOf="@+id/tvNombreProfile"
+            app:layout_constraintStart_toStartOf="@+id/tvNombreProfile"
+            app:layout_constraintTop_toBottomOf="@+id/tvNombreProfile" />
+
+        <TextView
+            android:id="@+id/tvMyEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Correo electronico"
+            app:layout_constraintEnd_toEndOf="@+id/tvMyLocation"
+            app:layout_constraintStart_toStartOf="@+id/tvMyLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tvMyLocation" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Ubicacion del local"
+            app:layout_constraintEnd_toEndOf="@+id/tvMyEmail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvMyEmail"
+            app:layout_constraintTop_toBottomOf="@+id/tvMyEmail" />
+
+        <TextView
+            android:id="@+id/tvHorasTrabajadas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Horas trabajadas"
+            app:layout_constraintEnd_toEndOf="@+id/tvLocation"
+            app:layout_constraintStart_toStartOf="@+id/tvLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+
+        <TextView
+            android:id="@+id/tvTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="# de Telefono"
+            app:layout_constraintEnd_toEndOf="@+id/tvHorasTrabajadas"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="@+id/tvHorasTrabajadas"
+            app:layout_constraintTop_toBottomOf="@+id/tvHorasTrabajadas" />
+
+        <TextView
+            android:id="@+id/tvDisponibilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Horario de trabajo"
+            app:layout_constraintEnd_toEndOf="@+id/tvTelefono"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="@+id/tvTelefono"
+            app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
+
+        <Button
+            android:id="@+id/btCartaVida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Carta de vida"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDisponibilidad" />
+
+        <Button
+            android:id="@+id/btModificarPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Modificar Perfil"
+            app:layout_constraintEnd_toEndOf="@+id/btCartaVida"
+            app:layout_constraintStart_toStartOf="@+id/btCartaVida"
+            app:layout_constraintTop_toBottomOf="@+id/btCartaVida" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

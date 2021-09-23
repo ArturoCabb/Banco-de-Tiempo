@@ -10,7 +10,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto">
         <activity
-            android:name=".MostrarTrabajosActivity"
+            android:name=".CursoFragment"
+            android:exported="true" />
+        <activity
+            android:name=".EstatusActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true"
+            android:label="@string/title_activity_chat"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
+        <activity
+            android:name=".CartaVidaActivity"
+            android:exported="true"
+            android:label="@string/title_activity_carta_vida"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
+        <activity
+            android:name=".ProfileFragment"
+            android:exported="true" />
+        <activity
+            android:name=".CalificarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReportarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EjecucionTrabajoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RechazadoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ContratacionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MostrarTrabajosFragment"
             android:exported="true" />
         <activity
             android:name=".ContratarActivity"
@@ -19,7 +53,7 @@
             android:name=".CommentActivity"
             android:exported="true" />
         <activity
-            android:name=".MessagesActivity"
+            android:name=".MessageFragment"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"
@@ -28,7 +62,7 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".ModificarPerfil"
+            android:name=".ModificarPerfilActivity"
             android:exported="true" />
         <activity
             android:name=".ui.login.LoginActivity"

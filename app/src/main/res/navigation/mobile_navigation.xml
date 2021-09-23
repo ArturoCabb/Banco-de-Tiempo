@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mostrarTrabajosFragment">
+    <activity
+        android:id="@+id/mostrarTrabajosFragment"
+        android:name="com.example.proyecto.MostrarTrabajosFragment"
+        android:label="fragment_mostrar_trabajos"
+        tools:layout="@layout/fragment_mostrar_trabajos" />
+    <activity
+        android:id="@+id/cursoFragment2"
+        android:name="com.example.proyecto.CursoFragment"
+        android:label="fragment_curso"
+        tools:layout="@layout/fragment_curso" />
+    <activity
+        android:id="@+id/profileFragment"
+        android:name="com.example.proyecto.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/messageFragment"
+        android:name="com.example.proyecto.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" />
+</navigation>

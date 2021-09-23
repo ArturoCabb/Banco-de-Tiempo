@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MostrarTrabajosActivity extends AppCompatActivity {
+public class ContratacionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mostrar_trabajos);
+        setContentView(R.layout.activity_contratacion);
     }
 }
