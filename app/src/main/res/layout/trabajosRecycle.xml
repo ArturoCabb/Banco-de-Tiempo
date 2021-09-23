@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgActividad"
+        android:layout_width="106dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvNameActividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Trabajo"
+        app:layout_constraintStart_toEndOf="@+id/imgActividad"
+        app:layout_constraintTop_toTopOf="@+id/imgActividad" />
+
+    <TextView
+        android:id="@+id/tvNombreTrabajador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:text="Realiza"
+        app:layout_constraintStart_toEndOf="@+id/imgActividad"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameActividad" />
+
+    <TextView
+        android:id="@+id/tvLugarDeTrabajo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="28dp"
+        android:text="Lugar"
+        app:layout_constraintBottom_toBottomOf="@+id/imgActividad"
+        app:layout_constraintStart_toEndOf="@+id/imgActividad"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajador"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvDescripcionTrabajo"
+        android:layout_width="376dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="20dp"
+        android:text="Descripcion de trabajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgActividad" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

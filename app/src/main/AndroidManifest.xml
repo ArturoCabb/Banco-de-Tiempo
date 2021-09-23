@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto">
         <activity
+            android:name=".MostrarTrabajosActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ContratarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CommentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MessagesActivity"
+            android:exported="true" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="true" />
         <activity
