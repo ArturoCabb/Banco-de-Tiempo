@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EjecucionTrabajoActivity">
+
+    <TextView
+        android:id="@+id/tvActividadEjecucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tarea en ejecucion"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/btnAtrasEje"
+        android:layout_width="74dp"
+        android:layout_height="45dp"
+        android:drawableTop="?attr/actionModeCloseDrawable"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/imTrabajo"
+        android:layout_width="127dp"
+        android:layout_height="120dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="79dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvNombrepersona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de persona"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="208dp" />
+
+    <TextView
+        android:id="@+id/tvHoraInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HORA INICIO DE TRABAJO: "
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="244dp" />
+
+    <TextView
+        android:id="@+id/tvHoraFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HORA FIN: "
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="281dp" />
+
+    <Button
+        android:id="@+id/btnReportartarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reportar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="315dp" />
+
+    <Button
+        android:id="@+id/btMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensaje"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="314dp" />
+
+    <Button
+        android:id="@+id/btTerminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terminar"
+        tools:layout_editor_absoluteX="274dp"
+        tools:layout_editor_absoluteY="315dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
