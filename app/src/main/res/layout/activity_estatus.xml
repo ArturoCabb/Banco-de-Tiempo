@@ -4,20 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MessagesActivity">
+    tools:context=".EstatusActivity">
 
     <TextView
-        android:id="@+id/tvChat"
+        android:id="@+id/tvEsatdo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mensajes"
+        android:text="Mis Actividades"
+        android:textAlignment="center"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteX="120dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="411dp"
-        android:layout_height="663dp"
+        android:id="@+id/rvActividadesEnCurso"
+        android:layout_width="410dp"
+        android:layout_height="668dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="67dp" />
+        tools:layout_editor_absoluteY="62dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

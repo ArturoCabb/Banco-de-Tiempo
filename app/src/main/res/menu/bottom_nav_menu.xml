@@ -12,6 +12,11 @@
         android:title="chat" />
 
     <item
+        android:id="@+id/navegacion_actividades"
+        android:icon="@android:drawable/sym_action_chat"
+        android:title="Actividades" />
+
+    <item
         android:id="@+id/navegacion_perfil"
         android:icon="@android:drawable/presence_audio_online"
         android:title="perfil" />

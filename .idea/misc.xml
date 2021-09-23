@@ -5,11 +5,15 @@
       <map>
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.12265625" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout-w936dp/activity_login.xml" value="0.190625" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/actividades_curso.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_calificar.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_carta_vida.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_chat.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_comment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_contratacion.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_contratar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_ejecucion_trabajo.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_estatus.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_messages.xml" value="0.25416666666666665" />
@@ -20,6 +24,12 @@
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_reportar.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/comentarios.xml" value="0.264" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/content_chat.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/conversacion.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/fragment_first.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/fragment_second.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/lista_trabajos.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/mensajes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/reportar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/trabajos.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/trabajosRecycle.xml" value="0.25416666666666665" />
