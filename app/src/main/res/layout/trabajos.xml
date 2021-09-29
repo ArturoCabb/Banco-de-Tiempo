@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imgActividad"
-        android:layout_width="106dp"
-        android:layout_height="106dp"
-        android:layout_marginStart="16dp"
+        android:id="@+id/imgTrabajador"
+        android:layout_width="100dp"
+        android:layout_height="103dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="false"
         android:scaleType="fitCenter"
@@ -19,45 +18,35 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvNameActividad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Trabajo"
-        app:layout_constraintStart_toEndOf="@+id/imgActividad"
-        app:layout_constraintTop_toTopOf="@+id/imgActividad" />
+        android:id="@+id/tvDescripcionTrabajo"
+        android:layout_width="302dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:text="Descripcion de trabajo"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTrabajador"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgTrabajador"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajador"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvNombreTrabajador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:text="Realiza"
-        app:layout_constraintStart_toEndOf="@+id/imgActividad"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameActividad" />
+        app:layout_constraintStart_toEndOf="@+id/imgTrabajador"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajo" />
 
     <TextView
-        android:id="@+id/tvLugarDeTrabajo"
+        android:id="@+id/tvNombreTrabajo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="28dp"
-        android:text="Lugar"
-        app:layout_constraintBottom_toBottomOf="@+id/imgActividad"
-        app:layout_constraintStart_toEndOf="@+id/imgActividad"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajador"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/tvDescripcionTrabajo"
-        android:layout_width="376dp"
-        android:layout_height="136dp"
-        android:layout_marginTop="20dp"
-        android:text="Descripcion de trabajo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgActividad" />
+        android:layout_marginStart="8dp"
+        android:text="Trabajo"
+        app:layout_constraintStart_toEndOf="@+id/imgTrabajador"
+        app:layout_constraintTop_toTopOf="@+id/imgTrabajador" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

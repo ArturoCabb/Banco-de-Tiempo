@@ -7,12 +7,12 @@
         android:title="Trabajos" />
 
     <item
-        android:id="@+id/navegacion_chat"
+        android:id="@+id/navegacion_actividades"
         android:icon="@android:drawable/sym_action_chat"
         android:title="Mis Actividades" />
 
     <item
-        android:id="@+id/navegacion_actividades"
+        android:id="@+id/navegacion_chat"
         android:icon="@android:drawable/sym_action_chat"
         android:title="Mensajes" />
 

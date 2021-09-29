@@ -7,7 +7,7 @@
     tools:context=".CommentActivity">
 
     <ImageView
-        android:id="@+id/imgTrabajo"
+        android:id="@+id/imgComment"
         android:layout_width="374dp"
         android:layout_height="101dp"
         android:layout_marginTop="12dp"
@@ -18,7 +18,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvTrabajo"
+        android:id="@+id/tvTrabajoComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgTrabajo" />
+        app:layout_constraintTop_toBottomOf="@+id/imgComment" />
 
     <TextView
         android:id="@+id/tvEscribeComentario"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toStartOf="@+id/tvCalificacion"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTrabajo" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTrabajoComment" />
 
     <TextView
         android:id="@+id/tvCalificacion"
@@ -47,7 +47,7 @@
         android:layout_marginEnd="168dp"
         android:text="Calificacion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTrabajo" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTrabajoComment" />
 
     <EditText
         android:id="@+id/etComentario"
@@ -63,18 +63,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEscribeComentario" />
 
     <Button
-        android:id="@+id/btnReportar"
+        android:id="@+id/btnReportarComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Reportar"
-        app:layout_constraintEnd_toStartOf="@+id/btnEnviar"
+        app:layout_constraintEnd_toStartOf="@+id/btnEnviarComment"
         app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etComentario" />
 
     <Button
-        android:id="@+id/btnEnviar"
+        android:id="@+id/btnEnviarComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

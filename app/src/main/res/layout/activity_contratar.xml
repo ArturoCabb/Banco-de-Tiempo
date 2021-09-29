@@ -2,55 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clContratar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ContratarActivity">
 
-    <TextView
-        android:id="@+id/tvNombreTrabajador"
-        android:layout_width="52dp"
-        android:layout_height="14dp"
-        android:layout_marginTop="8dp"
-        android:text="Realiza"
-        app:layout_constraintStart_toStartOf="@+id/tvNameActividad"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameActividad" />
-
-    <TextView
-        android:id="@+id/tvNameActividad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:text="Trabajo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgActividad" />
-
-    <TextView
-        android:id="@+id/tvDescripcionTrabajo"
-        android:layout_width="376dp"
-        android:layout_height="136dp"
-        android:layout_marginTop="272dp"
-        android:text="Descripcion de trabajo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvLugarDeTrabajo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Lugar"
-        app:layout_constraintStart_toStartOf="@+id/tvNombreTrabajador"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajador" />
-
     <ImageView
-        android:id="@+id/imgActividad"
+        android:id="@+id/imgTrabajador"
         android:layout_width="366dp"
         android:layout_height="150dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -59,9 +21,65 @@
         android:id="@+id/btnContratar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Contratar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNombreTrabajo"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Trabajo"
+        app:layout_constraintEnd_toEndOf="@+id/imgTrabajador"
+        app:layout_constraintStart_toStartOf="@+id/imgTrabajador"
+        app:layout_constraintTop_toBottomOf="@+id/imgTrabajador" />
+
+    <TextView
+        android:id="@+id/tvNombreTrabajador"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:text="Realiza"
+        app:layout_constraintEnd_toEndOf="@+id/tvNombreTrabajo"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="@+id/tvNombreTrabajo"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajo" />
+
+    <TextView
+        android:id="@+id/tvDescripcionTrabajo"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="328dp"
+        android:text="Descripcion de trabajo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescripcionTrabajo" />
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLugarDeTrabajo"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:text="Lugar"
+        app:layout_constraintEnd_toEndOf="@+id/tvNombreTrabajador"
+        app:layout_constraintStart_toStartOf="@+id/tvNombreTrabajador"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajador" />
+
+    <ImageButton
+        android:id="@+id/btnCerrarContratar"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
