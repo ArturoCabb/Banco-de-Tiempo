@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.proyecto">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-feature android:name="android.hardware.camera"/>
 
     <application
         android:allowBackup="true"
@@ -10,13 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto">
         <activity
-            android:name=".CursoFragment"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
+            android:name=".Verificar"
             android:exported="true" />
         <activity
+            android:name=".CursoFragment"
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
+        <activity
             android:name=".EstatusActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ChatActivity"
             android:exported="true"
@@ -29,61 +38,61 @@
             android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ProfileFragment"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".CalificarActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ReportarActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".EjecucionTrabajoActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".RechazadoActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ContratacionActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".MostrarTrabajosFragment"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ContratarActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".CommentActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".MessageFragment"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".SignUpActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ModificarPerfilActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
