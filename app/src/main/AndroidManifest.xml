@@ -72,7 +72,7 @@
             android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
@@ -80,12 +80,7 @@
             android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:theme="@style/Theme.Proyecto.NoActionBar"
-            android:exported="true"
-            android:label="@string/title_activity_login" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

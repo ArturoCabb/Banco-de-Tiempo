@@ -78,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Crear Cuenta"
+        android:onClick="aute"
         app:layout_constraintEnd_toEndOf="@+id/etConfirmaContrasena"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="@+id/etConfirmaContrasena"
