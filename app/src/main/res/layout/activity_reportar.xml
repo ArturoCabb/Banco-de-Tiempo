@@ -10,23 +10,12 @@
         android:id="@+id/tvReportarActividad"
         android:layout_width="217dp"
         android:layout_height="43dp"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:text="Reportar Actividad"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/btregresar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btregresar"
-        android:layout_width="76dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:drawableTop="?attr/actionModeCloseDrawable"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="128dp" />
 
     <EditText
         android:id="@+id/edtReporte"
@@ -45,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="340dp"
+        android:onClick="enviar"
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,5 +42,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtReporte"
         app:layout_constraintVertical_bias="0.944" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cerrar"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="18dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

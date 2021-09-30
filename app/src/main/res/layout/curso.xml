@@ -15,6 +15,38 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <TextView
+        android:id="@+id/tvNombreCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Nombre de la actividad"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/imActividad"
+        app:layout_constraintTop_toTopOf="@+id/imActividad" />
+
+    <TextView
+        android:id="@+id/tvEsatdoCurso"
+        android:layout_width="122dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Esatdo de la actividad"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imActividad"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreCurso" />
+
+    <TextView
+        android:id="@+id/tvTiempoCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="falta. horas"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/imActividad"
+        app:layout_constraintTop_toBottomOf="@+id/tvEsatdoCurso" />
+
     <Button
         android:id="@+id/btAceptarActividad"
         android:layout_width="wrap_content"
@@ -28,35 +60,4 @@
         app:layout_constraintTop_toTopOf="@+id/imActividad"
         app:layout_constraintVertical_bias="0.607" />
 
-    <TextView
-        android:id="@+id/tvTiempo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="falta. horas"
-        android:visibility="visible"
-        app:layout_constraintStart_toEndOf="@+id/imActividad"
-        app:layout_constraintTop_toBottomOf="@+id/tvEsatdoActividad" />
-
-    <TextView
-        android:id="@+id/tvEsatdoActividad"
-        android:layout_width="122dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Esatdo de la actividad"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/imActividad"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreactividad" />
-
-    <TextView
-        android:id="@+id/tvNombreactividad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Nombre de la actividad"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/imActividad"
-        app:layout_constraintTop_toTopOf="@+id/imActividad" />
 </androidx.constraintlayout.widget.ConstraintLayout>

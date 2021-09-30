@@ -7,14 +7,16 @@
     tools:context=".EjecucionTrabajoActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnCerrarEjecucion"
         android:layout_width="51dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="cerrar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvActividadEjecucion"
@@ -25,11 +27,11 @@
         android:text="Tarea en ejecucion"
         android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/btnCerrarEjecucion"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imTrabajo"
+        android:id="@+id/imgTrabajoEjecucion"
         android:layout_width="127dp"
         android:layout_height="120dp"
         android:layout_marginStart="12dp"
@@ -39,59 +41,62 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvNombrepersona"
+        android:id="@+id/tvNombrePersonaEjecucion"
         android:layout_width="250dp"
         android:layout_height="22dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="Nombre de persona"
-        app:layout_constraintStart_toStartOf="@+id/imTrabajo"
-        app:layout_constraintTop_toBottomOf="@+id/imTrabajo" />
+        app:layout_constraintStart_toStartOf="@+id/imgTrabajoEjecucion"
+        app:layout_constraintTop_toBottomOf="@+id/imgTrabajoEjecucion" />
 
     <TextView
-        android:id="@+id/tvHoraInicio"
+        android:id="@+id/tvHoraInicioEjecucion"
         android:layout_width="168dp"
         android:layout_height="22dp"
         android:layout_marginTop="16dp"
         android:text="HORA INICIO"
-        app:layout_constraintStart_toStartOf="@+id/tvNombrepersona"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombrepersona" />
+        app:layout_constraintStart_toStartOf="@+id/tvNombrePersonaEjecucion"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombrePersonaEjecucion" />
 
     <TextView
-        android:id="@+id/tvHoraFin"
+        android:id="@+id/tvHoraFinEjecucion"
         android:layout_width="168dp"
         android:layout_height="22dp"
         android:layout_marginTop="12dp"
         android:text="HORA FIN: "
-        app:layout_constraintStart_toStartOf="@+id/tvHoraInicio"
-        app:layout_constraintTop_toBottomOf="@+id/tvHoraInicio" />
+        app:layout_constraintStart_toStartOf="@+id/tvHoraInicioEjecucion"
+        app:layout_constraintTop_toBottomOf="@+id/tvHoraInicioEjecucion" />
 
     <Button
-        android:id="@+id/btnReportartarea"
+        android:id="@+id/btnReportarTareaEjecucion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        android:onClick="reportar"
         android:text="Reportar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHoraFin" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHoraFinEjecucion" />
 
     <Button
-        android:id="@+id/btMessage"
+        android:id="@+id/btMessageEjecucion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:onClick="mensaje"
         android:text="Mensaje"
-        app:layout_constraintStart_toEndOf="@+id/btnReportartarea"
-        app:layout_constraintTop_toTopOf="@+id/btnReportartarea" />
+        app:layout_constraintStart_toEndOf="@+id/btnReportarTareaEjecucion"
+        app:layout_constraintTop_toTopOf="@+id/btnReportarTareaEjecucion" />
 
     <Button
-        android:id="@+id/btTerminar"
+        android:id="@+id/btTerminarEjecucion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="terminar"
         android:text="Terminar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btMessage"
-        app:layout_constraintTop_toTopOf="@+id/btMessage" />
+        app:layout_constraintStart_toEndOf="@+id/btMessageEjecucion"
+        app:layout_constraintTop_toTopOf="@+id/btMessageEjecucion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

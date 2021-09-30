@@ -11,9 +11,11 @@
         android:theme="@style/Theme.Proyecto">
         <activity
             android:name=".CursoFragment"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".EstatusActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".ChatActivity"
@@ -27,24 +29,31 @@
             android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".ProfileFragment"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".CalificarActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".ReportarActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".EjecucionTrabajoActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".RechazadoActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".ContratacionActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".MostrarTrabajosFragment"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".ContratarActivity"
@@ -52,21 +61,27 @@
             android:exported="true" />
         <activity
             android:name=".CommentActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".MessageFragment"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".ModificarPerfilActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".ui.login.LoginActivity"
+            android:theme="@style/Theme.Proyecto.NoActionBar"
             android:exported="true"
             android:label="@string/title_activity_login" />
         <activity

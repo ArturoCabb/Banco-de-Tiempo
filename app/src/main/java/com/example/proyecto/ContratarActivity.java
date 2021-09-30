@@ -2,7 +2,9 @@ package com.example.proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,5 +37,15 @@ public class ContratarActivity extends AppCompatActivity {
         trabajador.setText(nombreTrabajador);
         descripcion.setText(descripcionTrabajo);
         foto.setImageResource(imagenTrabajador);
+    }
+
+    public void cerrar(View view) {
+        finish();
+    }
+
+    public void contratar(View view) {
+        Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
