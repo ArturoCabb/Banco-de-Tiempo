@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,23 +22,75 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity {
 
-    private FirebaseDatabase Database;
+    private FirebaseDatabase database;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
-    private final String TAG = "MainActivity";
+    private static final String TAG = "SignUpActivity";
+    private static final String USER = "user";
+    private Usuario usuario;
 
-    public void aute(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        View usernmView = findViewById(R.id.etCreaUsuario);
-        String usernm = usernmView.toString();
-        View emailView = findViewById(R.id.editTextTextEmailAddress);
-        String email = emailView.toString();
-        View passwordView = findViewById(R.id.etCreaContrasena);
-        String password = passwordView.toString();
-        mAuth.createUserWithEmailAndPassword(email, password)
+    private ImageView imagenPerfil;
+    private EditText x_usuario, x_email, x_pass, x_pass2;
+    private Button btnRegistro;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_up);
+        mAuth = FirebaseAuth.getInstance();
+
+        imagenPerfil = findViewById(R.id.imgIcono4);
+        x_usuario = findViewById(R.id.etCreaUsuario);
+        x_email = findViewById(R.id.editTextTextEmailAddress);
+        x_pass = findViewById(R.id.etCreaContrasena);
+        x_pass2 = findViewById(R.id.etConfirmaContrasena);
+        btnRegistro = findViewById(R.id.btnSignUp);
+
+        database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference(USER);
+        mAuth = FirebaseAuth.getInstance();
+
+
+
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = x_email.getText().toString();
+                String pass = x_pass.getText().toString();
+                String pass2 = x_pass2.getText().toString();
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)){
+                    Toast.makeText(getApplicationContext(), "Escriba su Email y Contraseña", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (pass.length() < 6){
+                    Toast.makeText(getApplicationContext(), "Contraseña muy corta", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if  (!TextUtils.equals(pass, pass2)){
+                    Toast.makeText(getApplicationContext(), "Las Contraseñas no coinciden", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                String nombre = x_usuario.getText().toString();
+                if (TextUtils.isEmpty(nombre)){
+                    Toast.makeText(getApplicationContext(), "Escriba su Nombre", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                usuario = new Usuario(email,pass, nombre);
+
+                registerUser(email, pass);
+
+
+            }
+        });
+
+    }
+
+    public void registerUser(String email, String pass){
+        mAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -44,46 +99,24 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            mAuth = FirebaseAuth.getInstance();
-                            mDatabase.child("users").child("test").child("username").setValue(email);
-                            User user1 = new User(usernm, email);
-
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(SignUpActivity.this, "registrado", Toast.LENGTH_LONG).show();
-                                    }else{
-                                        Toast.makeText(SignUpActivity.this, "Fail", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-
                         } else {
-                            //If sign in fails, display a message to the user.
-                            Toast.makeText(SignUpActivity.this, "Fail", Toast.LENGTH_LONG).show();
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
-                    }
-                    private void updateUI(FirebaseUser user) {
                     }
                 });
-        finish();
-    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-
-        Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
-    }
-
-    @Override
-    public void onClick(View view) {
 
     }
+
+    public void updateUI(FirebaseUser currentuser){
+        String keyId = mDatabase.push().getKey();
+        mDatabase.child(keyId).setValue(usuario);
+        Intent loginIntent = new Intent(this, MainActivity.class);
+        startActivity(loginIntent);
+
+    }
+
 }
