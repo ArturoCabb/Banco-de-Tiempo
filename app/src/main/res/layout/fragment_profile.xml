@@ -11,7 +11,7 @@ tools:context=".BlankFragment">
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imMyProfile"
+            android:id="@+id/imgProfilePhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -22,110 +22,110 @@ tools:context=".BlankFragment">
             tools:srcCompat="@mipmap/ic_launcher" />
 
         <Button
-            android:id="@+id/btVerificar"
+            android:id="@+id/btProfileVerificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Verificar Perfil"
-            app:layout_constraintEnd_toEndOf="@+id/imMyProfile"
+            app:layout_constraintEnd_toEndOf="@+id/imgProfilePhoto"
             app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="@+id/imMyProfile"
-            app:layout_constraintTop_toBottomOf="@+id/imMyProfile" />
+            app:layout_constraintStart_toStartOf="@+id/imgProfilePhoto"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfilePhoto" />
 
         <TextView
-            android:id="@+id/tvNombreProfile"
+            android:id="@+id/tvProfileNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Nombre de Perfil"
-            app:layout_constraintEnd_toEndOf="@+id/btVerificar"
+            app:layout_constraintEnd_toEndOf="@+id/btProfileVerificar"
             app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toStartOf="@+id/btVerificar"
-            app:layout_constraintTop_toBottomOf="@+id/btVerificar" />
+            app:layout_constraintStart_toStartOf="@+id/btProfileVerificar"
+            app:layout_constraintTop_toBottomOf="@+id/btProfileVerificar" />
 
         <TextView
-            android:id="@+id/tvMyLocation"
+            android:id="@+id/tvLocationProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Localizacion"
-            app:layout_constraintEnd_toEndOf="@+id/tvNombreProfile"
-            app:layout_constraintStart_toStartOf="@+id/tvNombreProfile"
-            app:layout_constraintTop_toBottomOf="@+id/tvNombreProfile" />
+            app:layout_constraintEnd_toEndOf="@+id/tvProfileNombre"
+            app:layout_constraintStart_toStartOf="@+id/tvProfileNombre"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileNombre" />
 
         <TextView
-            android:id="@+id/tvMyEmail"
+            android:id="@+id/tvProfileEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Correo electronico"
-            app:layout_constraintEnd_toEndOf="@+id/tvMyLocation"
-            app:layout_constraintStart_toStartOf="@+id/tvMyLocation"
-            app:layout_constraintTop_toBottomOf="@+id/tvMyLocation" />
+            app:layout_constraintEnd_toEndOf="@+id/tvLocationProfile"
+            app:layout_constraintStart_toStartOf="@+id/tvLocationProfile"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocationProfile" />
 
         <TextView
-            android:id="@+id/tvLocation"
+            android:id="@+id/tvProfileLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Ubicacion del local"
-            app:layout_constraintEnd_toEndOf="@+id/tvMyEmail"
+            app:layout_constraintEnd_toEndOf="@+id/tvProfileEmail"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvMyEmail"
-            app:layout_constraintTop_toBottomOf="@+id/tvMyEmail" />
+            app:layout_constraintStart_toStartOf="@+id/tvProfileEmail"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail" />
 
         <TextView
-            android:id="@+id/tvHorasTrabajadas"
+            android:id="@+id/tvProfileHorasTrabajadas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Horas trabajadas"
-            app:layout_constraintEnd_toEndOf="@+id/tvLocation"
-            app:layout_constraintStart_toStartOf="@+id/tvLocation"
-            app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+            app:layout_constraintEnd_toEndOf="@+id/tvProfileLocation"
+            app:layout_constraintStart_toStartOf="@+id/tvProfileLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileLocation" />
 
         <TextView
-            android:id="@+id/tvTelefono"
+            android:id="@+id/tvProfileTelefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="# de Telefono"
-            app:layout_constraintEnd_toEndOf="@+id/tvHorasTrabajadas"
+            app:layout_constraintEnd_toEndOf="@+id/tvProfileHorasTrabajadas"
             app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toStartOf="@+id/tvHorasTrabajadas"
-            app:layout_constraintTop_toBottomOf="@+id/tvHorasTrabajadas" />
+            app:layout_constraintStart_toStartOf="@+id/tvProfileHorasTrabajadas"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileHorasTrabajadas" />
 
         <TextView
-            android:id="@+id/tvDisponibilidad"
+            android:id="@+id/tvProfileHorarioTrabajo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Horario de trabajo"
-            app:layout_constraintEnd_toEndOf="@+id/tvTelefono"
+            app:layout_constraintEnd_toEndOf="@+id/tvProfileTelefono"
             app:layout_constraintHorizontal_bias="0.481"
-            app:layout_constraintStart_toStartOf="@+id/tvTelefono"
-            app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
+            app:layout_constraintStart_toStartOf="@+id/tvProfileTelefono"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileTelefono" />
 
         <Button
-            android:id="@+id/btCartaVida"
+            android:id="@+id/btProfileCV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Carta de vida"
+            android:text="Mis Trabajos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDisponibilidad" />
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileHorarioTrabajo" />
 
         <Button
-            android:id="@+id/btModificarPerfil"
+            android:id="@+id/btProfileEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Modificar Perfil"
-            app:layout_constraintEnd_toEndOf="@+id/btCartaVida"
-            app:layout_constraintStart_toStartOf="@+id/btCartaVida"
-            app:layout_constraintTop_toBottomOf="@+id/btCartaVida" />
+            app:layout_constraintEnd_toEndOf="@+id/btProfileCV"
+            app:layout_constraintStart_toStartOf="@+id/btProfileCV"
+            app:layout_constraintTop_toBottomOf="@+id/btProfileCV" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
