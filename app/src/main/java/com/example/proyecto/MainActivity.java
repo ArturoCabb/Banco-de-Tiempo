@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BottomNavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigationView.setOnItemSelectedListener(mOnNavigationItemSelectedListener);
 
         loadFragment(trabajosFragment);
     }
 
-    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private final BottomNavigationView.OnItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
