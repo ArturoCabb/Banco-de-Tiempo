@@ -9,6 +9,7 @@
         android:id="@+id/imgTrabajador"
         android:layout_width="100dp"
         android:layout_height="103dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="false"
         android:scaleType="fitCenter"
@@ -19,10 +20,11 @@
 
     <TextView
         android:id="@+id/tvDescripcionTrabajo"
-        android:layout_width="302dp"
-        android:layout_height="54dp"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:text="Descripcion de trabajo"
         app:layout_constraintBottom_toBottomOf="@+id/imgTrabajador"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
         android:text="Realiza"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgTrabajador"
         app:layout_constraintTop_toBottomOf="@+id/tvNombreTrabajo" />
 
@@ -45,7 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="5dp"
         android:text="Trabajo"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgTrabajador"
         app:layout_constraintTop_toTopOf="@+id/imgTrabajador" />
 
