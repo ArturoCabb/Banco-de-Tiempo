@@ -68,6 +68,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        btnMyWork.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent in = new Intent(getActivity(), CartaVidaActivity.class);
+                startActivity(in);
+            }
+        });
+
         return view;
     }
 
