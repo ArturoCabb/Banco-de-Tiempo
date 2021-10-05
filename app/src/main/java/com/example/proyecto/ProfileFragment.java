@@ -59,11 +59,20 @@ public class ProfileFragment extends Fragment {
         Button btnVerificar = view.findViewById(R.id.btProfileVerificar);
         Button btnMyWork = view.findViewById(R.id.btProfileCV);
         Button btnEditProfile = view.findViewById(R.id.btProfileEdit);
+        Button btnLogout = view.findViewById(R.id.btProfileCerrarSesion);
 
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getActivity(), Verificar.class);
+                startActivity(in);
+            }
+        });
+
+        btnMyWork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), CartaVidaActivity.class);
                 startActivity(in);
             }
         });
