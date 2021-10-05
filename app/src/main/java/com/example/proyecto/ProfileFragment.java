@@ -20,6 +20,8 @@ public class ProfileFragment extends Fragment {
 
         private Button btnVerificar;
 
+        private Button btCartaVida;
+
     public ProfileFragment(){
 
     }
@@ -33,6 +35,15 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getActivity(), Verificar.class);
+                startActivity(in);
+            }
+        });
+
+        Button btCartaVida = (Button) view.findViewById(R.id.btCartaVida);
+        btCartaVida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), CartaVidaActivity.class);
                 startActivity(in);
             }
         });
