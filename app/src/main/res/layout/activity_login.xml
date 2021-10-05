@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgIcono" />
 
     <EditText
-        android:id="@+id/etUsuario"
+        android:id="@+id/etLoginUsuario"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <EditText
-        android:id="@+id/etContrasena"
+        android:id="@+id/etLoginContrasena"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -56,29 +56,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/etLoginUsuario" />
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/btnLoginSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
         android:onClick="crearC"
         android:text="Crear Cuenta"
-        app:layout_constraintEnd_toEndOf="@+id/etContrasena"
-        app:layout_constraintStart_toStartOf="@+id/etContrasena"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena" />
+        app:layout_constraintEnd_toEndOf="@+id/etLoginContrasena"
+        app:layout_constraintStart_toStartOf="@+id/etLoginContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginContrasena" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnLoginLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:onClick="iniciarS"
         android:text="INICIAR SESION"
-        app:layout_constraintBottom_toTopOf="@+id/btnlogin"
-        app:layout_constraintEnd_toEndOf="@+id/etContrasena"
-        app:layout_constraintStart_toStartOf="@+id/etContrasena"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena" />
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginContrasena"
+        app:layout_constraintStart_toStartOf="@+id/etLoginContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginContrasena" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

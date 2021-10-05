@@ -59,7 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = x_email.getText().toString();
+                String email = x_email.getText().toString().trim();
                 String pass = x_pass.getText().toString();
                 String pass2 = x_pass2.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)){
@@ -87,6 +87,14 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
 
     public void registerUser(String email, String pass){
