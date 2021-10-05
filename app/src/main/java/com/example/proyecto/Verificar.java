@@ -17,13 +17,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.io.File;
+import java.util.concurrent.atomic.AtomicMarkableReference;
+
 
 public class Verificar extends AppCompatActivity {
 
 
+
+
+
     Button buttonine;
     Button buttoncurp;
+    Button buttonGuardar;
     ImageView imageviewIne;
     ImageView imageviewCurp;
     static final int CAM_REQUEST = 1;
@@ -35,6 +44,7 @@ public class Verificar extends AppCompatActivity {
 
         buttonine = findViewById(R.id.buttonIne);
         buttoncurp = findViewById(R.id.buttonCurp);
+        buttonGuardar = findViewById(R.id.buttonGuardar);
         imageviewIne = findViewById(R.id.imageViewIne);
         imageviewCurp = findViewById(R.id.imageViewCurp);
 
@@ -52,6 +62,7 @@ public class Verificar extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, 100);
+
             }
         });
 
@@ -65,6 +76,15 @@ public class Verificar extends AppCompatActivity {
 
 
             }
+        });
+
+        buttonGuardar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+
+            }
+
         });
 
 
