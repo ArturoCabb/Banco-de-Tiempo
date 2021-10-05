@@ -31,6 +31,20 @@
         app:layout_constraintTop_toBottomOf="@+id/imgIcono4" />
 
     <EditText
+        android:id="@+id/etEdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Edad"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/etCreaUsuario"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etCreaUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/etCreaUsuario" />
+
+    <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,10 +53,24 @@
         android:hint="Correo"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/etCreaUsuario"
+        app:layout_constraintEnd_toEndOf="@+id/etLocalidad"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etLocalidad"
+        app:layout_constraintTop_toBottomOf="@+id/etLocalidad" />
+
+    <EditText
+        android:id="@+id/etLocalidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Localidad"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/etEdad"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCreaUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/etCreaUsuario" />
+        app:layout_constraintStart_toStartOf="@+id/etEdad"
+        app:layout_constraintTop_toBottomOf="@+id/etEdad" />
 
     <EditText
         android:id="@+id/etCreaContrasena"
@@ -53,9 +81,9 @@
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/etCreaUsuario"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etCreaUsuario"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <EditText
@@ -76,7 +104,7 @@
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="24dp"
         android:text="Crear Cuenta"
         app:layout_constraintEnd_toEndOf="@+id/etConfirmaContrasena"
         app:layout_constraintHorizontal_bias="0.483"
