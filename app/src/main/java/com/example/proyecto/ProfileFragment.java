@@ -1,21 +1,16 @@
 package com.example.proyecto;
 
-import static android.app.Activity.RESULT_OK;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ProfileFragment extends Fragment {
 
@@ -54,8 +49,18 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        Button btVerificar = (Button) view.findViewById(R.id.btVerificar);
-        btVerificar.setOnClickListener(new View.OnClickListener() {
+        TextView perfil = view.findViewById(R.id.tvProfileNombre);
+        TextView location = view.findViewById(R.id.tvLocationProfile);
+        TextView email = view.findViewById(R.id.tvProfileEmail);
+        TextView localLocation = view.findViewById(R.id.tvProfileLocation);
+        TextView hours = view.findViewById(R.id.tvProfileHorasTrabajadas);
+        TextView phone = view.findViewById(R.id.tvProfileTelefono);
+        TextView workHours = view.findViewById(R.id.tvProfileHorarioTrabajo);
+        Button btnVerificar = view.findViewById(R.id.btProfileVerificar);
+        Button btnMyWork = view.findViewById(R.id.btProfileCV);
+        Button btnEditProfile = view.findViewById(R.id.btProfileEdit);
+
+        btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getActivity(), Verificar.class);
