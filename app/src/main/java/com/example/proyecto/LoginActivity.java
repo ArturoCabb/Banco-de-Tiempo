@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Ingrese usuario y contraseña", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Log.println(Log.ASSERT,"ok","test");
                 loginUser(email, pass);
             }
         });
@@ -62,8 +63,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
     }
 
     public void loginUser(String email, String pass) {
