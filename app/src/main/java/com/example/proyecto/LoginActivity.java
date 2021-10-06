@@ -52,11 +52,13 @@ public class LoginActivity extends AppCompatActivity {
                 String email = correo.getText().toString().trim();
                 String pass = contrasena.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)) {
-                    Toast.makeText(getApplicationContext(), "Ingrese usuario y contraseña", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Ingrese usuario y contraseña",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Log.println(Log.ASSERT,"ok","test");
-                loginUser(email, pass);
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)) {
+                    loginUser(email, pass);
+                }
             }
         });
 
@@ -91,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
                         }
 
                         // ...

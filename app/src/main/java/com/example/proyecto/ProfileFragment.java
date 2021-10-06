@@ -88,7 +88,7 @@ public class ProfileFragment extends Fragment {
         refe.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
-                String nombre = dataSnapshot.getKey().;
+                String nombre = dataSnapshot.getKey();
                 perfil.setText(nombre);
             }
         });
