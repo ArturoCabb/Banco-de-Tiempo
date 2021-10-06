@@ -148,8 +148,6 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     public void updateUI(FirebaseUser currentuser){
-        String keyId = mDatabase.push().getKey();
-        mDatabase.child(keyId).setValue(usuario);
         Intent loginIntent = new Intent(this, MainActivity.class);
         startActivity(loginIntent);
 
