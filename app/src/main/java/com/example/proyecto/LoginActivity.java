@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText correo;
     private EditText contrasena;
     private Button btnIniciarSesion;
+    private Button btnSignUp;
 
     public void crearC(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         correo = findViewById(R.id.etLoginUsuario);
         contrasena = findViewById(R.id.etLoginContrasena);
         btnIniciarSesion = findViewById(R.id.btnLoginLogin);
+        btnSignUp = findViewById(R.id.btnLoginSignUp);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,6 +58,15 @@ public class LoginActivity extends AppCompatActivity {
                 Log.println(Log.ASSERT,"ok","test");
                 loginUser(email, pass);
             }
+        });
+
+        btnSignUp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            }
+
+
         });
     }
 
