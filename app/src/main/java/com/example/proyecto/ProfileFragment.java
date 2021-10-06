@@ -12,8 +12,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
 
@@ -29,6 +35,8 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
 
     public ProfileFragment(){
+
+
 
     }
 
@@ -57,6 +65,9 @@ public class ProfileFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
+
+
+
         TextView perfil = view.findViewById(R.id.tvProfileNombre);
         TextView location = view.findViewById(R.id.tvLocationProfile);
         TextView email = view.findViewById(R.id.tvProfileEmail);
@@ -68,6 +79,20 @@ public class ProfileFragment extends Fragment {
         Button btnMyWork = view.findViewById(R.id.btProfileCV);
         Button btnEditProfile = view.findViewById(R.id.btProfileEdit);
         Button btnLogout = view.findViewById(R.id.btProfileLogout);
+
+        String user_id = mAuth.getCurrentUser().getUid();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference refe = database.getReference("users").child(user_id);
+
+        refe.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                String nombre = dataSnapshot.getKey().;
+                perfil.setText(nombre);
+            }
+        });
+
 
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
