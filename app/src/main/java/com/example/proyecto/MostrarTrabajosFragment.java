@@ -68,10 +68,10 @@ public class MostrarTrabajosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ContratarActivity.class);
-                intent.putExtra("nombreTrabajo", "Constructor");
-                intent.putExtra("nombreTrabajador", "Pedro");
-                intent.putExtra("descripcionTrabajo", "Realizacion de trabajos al exterior de casa como jardines, albercas");
-                intent.putExtra("imgProfile", R.drawable.constructor);
+                intent.putExtra("nombreTrabajo", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getNombreTrabajo());
+                intent.putExtra("nombreTrabajador", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getNombreTrabajador());
+                intent.putExtra("descripcionTrabajo", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getDescripcionTrabajo());
+                intent.putExtra("imgProfile", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getFotoTrabajador());
                 getActivity().startActivity(intent);
             }
         });
@@ -82,16 +82,16 @@ public class MostrarTrabajosFragment extends Fragment {
 
     private void llenarLista() {
         listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("Albañil","Juan", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("dsfds","Carla", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("Constrvdfgvductor","Sofia", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("jiudasnj","Elisa", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("fdsjkfvndsjn","Maria", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("jcdjnvjw","Paco", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("nhfuihfidsjfkd","Ana", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("asfhdsiujfodsjfjkdsbvfbds","Paola", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("hdsuhcdsj","Daniela", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+        listaTrabajos.add(new TrabajosVo("jcdjsndsvlmdsl","Maria José", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
 
     }
 

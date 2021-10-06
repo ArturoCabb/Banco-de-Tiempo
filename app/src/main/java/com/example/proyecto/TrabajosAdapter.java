@@ -34,6 +34,7 @@ public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolderMostrarTrabajos holder, int position) {
         holder.etiTrabajo.setText(listTrabajos.get(position).getNombreTrabajo());
         holder.etiTrabajador.setText(listTrabajos.get(position).getNombreTrabajador());
+        holder.etiDescripcionTrabajo.setText(listTrabajos.get(position).getDescripcionTrabajo());
         holder.fotoTrabajador.setImageResource(listTrabajos.get(position).getFotoTrabajador());
 
     }
@@ -56,13 +57,14 @@ public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHo
 
     public class ViewHolderMostrarTrabajos extends RecyclerView.ViewHolder {
 
-        TextView etiTrabajo, etiTrabajador;
+        TextView etiTrabajo, etiTrabajador, etiDescripcionTrabajo;
         ImageView fotoTrabajador;
 
         public ViewHolderMostrarTrabajos(@NonNull View itemView) {
             super(itemView);
             etiTrabajo = (TextView) itemView.findViewById(R.id.tvNombreTrabajo);
             etiTrabajador = (TextView) itemView.findViewById(R.id.tvNombreTrabajador);
+            etiDescripcionTrabajo = (TextView) itemView.findViewById(R.id.tvDescripcionTrabajo);
             fotoTrabajador = (ImageView) itemView.findViewById(R.id.imgTrabajador);
         }
     }
