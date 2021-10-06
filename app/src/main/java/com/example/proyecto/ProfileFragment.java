@@ -12,7 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class ProfileFragment extends Fragment {
+
+    private FirebaseAuth mAuth;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +54,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
         TextView perfil = view.findViewById(R.id.tvProfileNombre);
         TextView location = view.findViewById(R.id.tvLocationProfile);
         TextView email = view.findViewById(R.id.tvProfileEmail);
@@ -59,6 +67,7 @@ public class ProfileFragment extends Fragment {
         Button btnVerificar = view.findViewById(R.id.btProfileVerificar);
         Button btnMyWork = view.findViewById(R.id.btProfileCV);
         Button btnEditProfile = view.findViewById(R.id.btProfileEdit);
+        Button btnLogout = view.findViewById(R.id.btProfileLogout);
 
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +82,15 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view){
                 Intent in = new Intent(getActivity(), CartaVidaActivity.class);
                 startActivity(in);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                //startActivity(new Intent(getActivity(), LoginActivity.class));
+                //getActivity().finish();
             }
         });
 
