@@ -21,15 +21,11 @@ public class MainActivity extends AppCompatActivity {
     MessageFragment messageFragment = new MessageFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
 
         BottomNavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setOnItemSelectedListener(mOnNavigationItemSelectedListener);
