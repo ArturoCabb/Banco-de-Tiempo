@@ -15,17 +15,22 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseFirestore fStore;
 
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
@@ -35,8 +40,9 @@ public class SignUpActivity extends AppCompatActivity {
     private Usuario usuario;
 
     private ImageView imagenPerfil;
-    private EditText x_usuario, x_email, x_pass, x_pass2;
+    private EditText x_usuario, x_email, x_pass, x_pass2, x_edad, x_localidad;
     private Button btnRegistro;
+    String userID;
 
 
 
@@ -45,9 +51,13 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
 
         imagenPerfil = findViewById(R.id.imgIcono4);
         x_usuario = findViewById(R.id.etCreaUsuario);
+        x_edad = findViewById(R.id.etEdad);
+        x_localidad = findViewById(R.id.etLocalidad);
         x_email = findViewById(R.id.editTextTextEmailAddress);
         x_pass = findViewById(R.id.etCreaContrasena);
         x_pass2 = findViewById(R.id.etConfirmaContrasena);
@@ -55,7 +65,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USER);
-        mAuth = FirebaseAuth.getInstance();
 
 
 
@@ -65,6 +74,10 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = x_email.getText().toString().trim();
                 String pass = x_pass.getText().toString();
                 String pass2 = x_pass2.getText().toString();
+                String Usuario = x_usuario.getText().toString();
+                String Edad = x_edad.getText().toString();
+                String localidad = x_localidad.getText().toString();
+
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)){
                     Toast.makeText(getApplicationContext(), "Escriba su Email y Contraseña", Toast.LENGTH_LONG).show();
                     return;
@@ -82,10 +95,25 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Escriba su Nombre", Toast.LENGTH_LONG).show();
                     return;
                 }
+
                 usuario = new Usuario(email,pass, nombre);
-
-
                 registerUser(email, pass);
+
+                userID = mAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fStore.collection("users").document(userID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("email",email);
+                user.put("Nombre",Usuario);
+                user.put("Edad",Edad);
+                user.put("localidad",localidad);
+                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "onSuccess: user Profile is created for "+userID);
+                    }
+                })
+
+
 
 
             }
