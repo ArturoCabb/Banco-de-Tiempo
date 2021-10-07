@@ -16,11 +16,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="387dp"
+        android:layout_height="288dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarta" />
+
     <EditText
         android:id="@+id/edtActividadDesempenada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Nombre del trabajo"
         android:inputType="textPersonName"
@@ -28,60 +38,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="411dp"
-        android:layout_height="292dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCarta" />
-
     <Button
         android:id="@+id/btSubirComprobante"
         android:layout_width="157dp"
         android:layout_height="54dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:text="Subir Comprobante"
         android:background="@drawable/secondary_button"
+        android:onClick="archivo"
+        android:text="Subir Comprobante"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <EditText
+        android:id="@+id/edtDescripcionCartaVida"
+        android:layout_width="377dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Ingrese la descripcion"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtActividadDesempenada"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btAgregarTrabajo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="20dp"
-        android:text="Agregar"
         android:background="@drawable/secondary_button"
+        android:onClick="guardar"
+        android:text="Agregar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDescripcionTrabajo" />
+        app:layout_constraintTop_toTopOf="@+id/btEliminarTrabajo" />
 
     <Button
         android:id="@+id/btEliminarTrabajo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
-        android:text="Eliminar"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/secondary_button"
+        android:onClick="eliminar"
+        android:text="Eliminar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDescripcionTrabajo" />
-
-    <EditText
-        android:id="@+id/edtDescripcionTrabajo"
-        android:layout_width="368dp"
-        android:layout_height="126dp"
-        android:layout_marginTop="104dp"
-        android:ems="10"
-        android:hint="Descripcion del trabajo"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/edtDescripcionCartaVida" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
