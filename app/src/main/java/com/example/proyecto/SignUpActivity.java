@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Usuario usuario;
 
     private ImageView imagenPerfil;
-    private EditText x_usuario, x_email, x_pass, x_pass2, x_edad, x_localidad;
+    private EditText x_usuario, x_email, x_pass, x_pass2, x_edad, x_localidad, x_telefono;
     private Button btnRegistro;
 
 
@@ -57,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
         x_edad = findViewById(R.id.etEdad);
         x_localidad = findViewById(R.id.etLocalidad);
         btnRegistro = findViewById(R.id.btnSignUp);
+        x_telefono = findViewById(R.id.ettelefono);
 
 
         database = FirebaseDatabase.getInstance();
