@@ -68,7 +68,6 @@ public class ProfileFragment extends Fragment {
 
 
 
-
         TextView perfil = view.findViewById(R.id.tvProfileNombre);
         TextView location = view.findViewById(R.id.tvLocationProfile);
         TextView email = view.findViewById(R.id.tvProfileEmail);
@@ -96,6 +95,7 @@ public class ProfileFragment extends Fragment {
 
                     //String edad = snapshot.child(user_id).child("edad").getValue().toString();
                     //.setText(edad);
+                    email.setText(mAuth.getCurrentUser().getEmail());
 
                     String localidad = snapshot.child(user_id).child("localidad").getValue().toString();
                     location.setText(localidad);
@@ -131,6 +131,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view){
                 Intent in = new Intent(getActivity(), CartaVidaActivity.class);
+                startActivity(in);
+            }
+        });
+
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), ModificarPerfilActivity.class);
                 startActivity(in);
             }
         });
