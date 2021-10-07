@@ -53,6 +53,7 @@ public class CartaVidaActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     DatabaseReference database;
+    FirebaseStorage storage;
     StorageReference reference;
 
     @Override
@@ -74,8 +75,10 @@ public class CartaVidaActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getUid();
 
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
+
         database = FirebaseDatabase.getInstance().getReference();
-        reference = FirebaseStorage.getInstance().getReference();
 
     }
 
@@ -83,7 +86,7 @@ public class CartaVidaActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("application/pdf");
-        startActivityForResult(intent, 100);
+        startActivityForResult(intent, REQUEST_FILE);
     }
 
     public void guardar(View view) {
@@ -93,7 +96,8 @@ public class CartaVidaActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(act) || !TextUtils.isEmpty(des)) {
             CartaVida datos = new CartaVida(des, 0);
             database.child("trabajos").child(userID).child(act).setValue(datos);
-
+            StorageReference miRef = reference.child("files").child(userID);
+            miRef.putFile(FILEBMP);
             Toast.makeText(this, "Datos guardados", Toast.LENGTH_SHORT).show();   
         }
         else {
