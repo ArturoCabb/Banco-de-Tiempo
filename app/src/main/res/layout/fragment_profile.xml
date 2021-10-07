@@ -50,10 +50,10 @@ tools:context=".BlankFragment">
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Localizacion"
-            app:layout_constraintEnd_toEndOf="@+id/tvProfileNombre"
+            app:layout_constraintEnd_toEndOf="@+id/tvProfileEdad"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvProfileNombre"
-            app:layout_constraintTop_toBottomOf="@+id/tvProfileNombre" />
+            app:layout_constraintStart_toStartOf="@+id/tvProfileEdad"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileEdad" />
 
         <TextView
             android:id="@+id/tvProfileEmail"
@@ -141,6 +141,17 @@ tools:context=".BlankFragment">
             app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="@+id/btProfileCV"
             app:layout_constraintTop_toBottomOf="@+id/btProfileCV" />
+
+        <TextView
+            android:id="@+id/tvProfileEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Edad"
+            app:layout_constraintEnd_toEndOf="@+id/tvProfileNombre"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvProfileNombre"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileNombre" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
