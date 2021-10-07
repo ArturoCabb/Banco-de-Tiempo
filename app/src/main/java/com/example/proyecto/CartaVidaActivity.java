@@ -35,8 +35,8 @@ public class CartaVidaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carta_vida);
-        actividad = findViewById(R.id.edtActividadDesempenada);
-        descripcion = findViewById(R.id.edtDescripcionCartaVida);
+        actividad = (EditText) findViewById(R.id.edtActividadDesempenada);
+        descripcion = (EditText) findViewById(R.id.edtDescripcionCartaVida);
 
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getUid();
