@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,14 +83,38 @@ public class ProfileFragment extends Fragment {
 
         String user_id = mAuth.getCurrentUser().getUid();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference refe = database.getReference("users").child(user_id);
+        DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference();
 
-        refe.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+        mdatabase.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onSuccess(DataSnapshot dataSnapshot) {
-                String nombre = dataSnapshot.getKey();
-                perfil.setText(nombre);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()){
+
+                    String nombre = snapshot.child(user_id).child("nombre").getValue().toString();
+                    perfil.setText(nombre);
+
+                    //String edad = snapshot.child(user_id).child("edad").getValue().toString();
+                    //.setText(edad);
+
+                    String localidad = snapshot.child(user_id).child("localidad").getValue().toString();
+                    location.setText(localidad);
+
+                }else{
+
+                    perfil.setText("Error snapshot");
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+                perfil.setText("Error");
+
+
+
             }
         });
 
