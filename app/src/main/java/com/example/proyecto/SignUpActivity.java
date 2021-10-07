@@ -74,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String pass2 = x_pass2.getText().toString();
                 String edad = x_edad.getText().toString();
                 String localidad = x_localidad.getText().toString();
+                String telefono = x_telefono.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)){
                     Toast.makeText(getApplicationContext(), "Escriba su Email y Contraseña", Toast.LENGTH_LONG).show();
                     return;
@@ -94,7 +95,7 @@ public class SignUpActivity extends AppCompatActivity {
                 usuario = new Usuario(email,pass, nombre);
 
 
-                registerUser(email, pass, nombre, edad, localidad);
+                registerUser(email, pass, nombre, edad, localidad, telefono);
 
 
             }
@@ -110,7 +111,7 @@ public class SignUpActivity extends AppCompatActivity {
         //updateUI(currentUser);
     }
 
-    public void registerUser(String email, String pass, String nombre, String edad, String localidad){
+    public void registerUser(String email, String pass, String nombre, String edad, String localidad, String telefono){
         mAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -132,6 +133,7 @@ public class SignUpActivity extends AppCompatActivity {
                             newPost.put("nombre", nombre);
                             newPost.put("edad", edad);
                             newPost.put("localidad", localidad);
+                            newPost.put("telefono", telefono);
 
                             current_user_db.setValue(newPost);
 

@@ -71,6 +71,7 @@ public class ProfileFragment extends Fragment {
         TextView perfil = view.findViewById(R.id.tvProfileNombre);
         TextView location = view.findViewById(R.id.tvLocationProfile);
         TextView email = view.findViewById(R.id.tvProfileEmail);
+        TextView edadtv = view.findViewById(R.id.tvProfileEdad);
         TextView localLocation = view.findViewById(R.id.tvProfileLocation);
         TextView hours = view.findViewById(R.id.tvProfileHorasTrabajadas);
         TextView phone = view.findViewById(R.id.tvProfileTelefono);
@@ -93,9 +94,12 @@ public class ProfileFragment extends Fragment {
                     String nombre = snapshot.child(user_id).child("nombre").getValue().toString();
                     perfil.setText(nombre);
 
-                    //String edad = snapshot.child(user_id).child("edad").getValue().toString();
-                    //.setText(edad);
+                    String edad = snapshot.child(user_id).child("edad").getValue().toString();
+                    edadtv.setText(edad);
                     email.setText(mAuth.getCurrentUser().getEmail());
+
+                    String telefono = snapshot.child(user_id).child("telefono").getValue().toString();
+                    phone.setText(telefono);
 
                     String localidad = snapshot.child(user_id).child("localidad").getValue().toString();
                     location.setText(localidad);
