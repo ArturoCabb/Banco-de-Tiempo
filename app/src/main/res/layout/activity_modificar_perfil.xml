@@ -24,6 +24,7 @@
         android:layout_height="62dp"
         android:layout_marginTop="76dp"
         android:text="Cambiar imagen"
+        android:background="@drawable/secondary_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toEndOf="@+id/imPerfilModificar"
@@ -127,6 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Guardar Cambios"
+        android:background="@drawable/secondary_button"
         app:layout_constraintEnd_toEndOf="@+id/edtModificarHoraFin"
         app:layout_constraintStart_toStartOf="@+id/edtModificarHoraFin"
         app:layout_constraintTop_toBottomOf="@+id/edtModificarHoraFin" />
