@@ -32,8 +32,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Nombre del trabajo"
-        android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
@@ -57,13 +55,10 @@
         android:layout_height="143dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:gravity="start|top"
-        android:hint="Ingrese la descripcion"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtActividadDesempenada"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/edtActividadDesempenada"/>
 
     <Button
         android:id="@+id/btAgregarTrabajo"
