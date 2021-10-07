@@ -26,10 +26,6 @@ import java.util.concurrent.atomic.AtomicMarkableReference;
 
 public class Verificar extends AppCompatActivity {
 
-
-
-
-
     Button buttonine;
     Button buttoncurp;
     Button buttonGuardar;

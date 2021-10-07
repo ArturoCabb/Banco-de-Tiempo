@@ -19,10 +19,6 @@
             android:name=".Verificar"
             android:exported="true" />
         <activity
-            android:name=".CursoFragment"
-            android:exported="true"
-            android:theme="@style/Theme.Proyecto.NoActionBar" />
-        <activity
             android:name=".EstatusActivity"
             android:exported="true"
             android:theme="@style/Theme.Proyecto.NoActionBar" />
@@ -35,10 +31,6 @@
             android:name=".CartaVidaActivity"
             android:exported="true"
             android:label="@string/title_activity_carta_vida"
-            android:theme="@style/Theme.Proyecto.NoActionBar" />
-        <activity
-            android:name=".ProfileFragment"
-            android:exported="true"
             android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
             android:name=".CalificarActivity"
@@ -61,10 +53,6 @@
             android:exported="true"
             android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
-            android:name=".MostrarTrabajosFragment"
-            android:exported="true"
-            android:theme="@style/Theme.Proyecto.NoActionBar" />
-        <activity
             android:name=".ContratarActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
@@ -73,17 +61,11 @@
             android:exported="true"
             android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
-            android:name=".MessageFragment"
-            android:exported="true"
-            android:theme="@style/Theme.Proyecto.NoActionBar" />
-        <activity
             android:name=".SignUpActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Proyecto.NoActionBar" />
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Proyecto.NoActionBar" />
+            android:exported="true" />
         <activity
             android:name=".ModificarPerfilActivity"
             android:exported="true"
