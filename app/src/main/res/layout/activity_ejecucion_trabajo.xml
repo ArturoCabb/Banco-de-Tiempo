@@ -82,25 +82,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tvHoraFinEjecucion" />
 
     <Button
-        android:id="@+id/btMessageEjecucion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:onClick="mensaje"
-        android:text="Mensaje"
-        android:background="@drawable/secondary_button"
-        app:layout_constraintStart_toEndOf="@+id/btnReportarTareaEjecucion"
-        app:layout_constraintTop_toTopOf="@+id/btnReportarTareaEjecucion" />
-
-    <Button
         android:id="@+id/btTerminarEjecucion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/secondary_button"
         android:onClick="terminar"
         android:text="Terminar"
-        android:background="@drawable/secondary_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btMessageEjecucion"
-        app:layout_constraintTop_toTopOf="@+id/btMessageEjecucion" />
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toEndOf="@+id/btnReportarTareaEjecucion"
+        app:layout_constraintTop_toTopOf="@+id/btnReportarTareaEjecucion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
