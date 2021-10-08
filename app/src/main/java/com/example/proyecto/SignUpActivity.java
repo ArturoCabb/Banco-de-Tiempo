@@ -134,6 +134,11 @@ public class SignUpActivity extends AppCompatActivity {
                             newPost.put("edad", edad);
                             newPost.put("localidad", localidad);
                             newPost.put("telefono", telefono);
+                            newPost.put("correo", email);
+                            newPost.put("contraseña", pass);
+                            newPost.put("ubicacion", "Ubicacion");
+                            newPost.put("hrinicio", "Hora Inicio");
+                            newPost.put("hrfin", "Hora Final");
 
                             current_user_db.setValue(newPost);
 
