@@ -4,6 +4,8 @@ import static android.content.Intent.ACTION_OPEN_DOCUMENT;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -52,9 +54,9 @@ public class CartaVidaActivity extends AppCompatActivity {
     static final int REQUEST_FILE = 1;
 
     private FirebaseAuth mAuth;
-    DatabaseReference database;
-    FirebaseStorage storage;
-    StorageReference reference;
+    private DatabaseReference database;
+    private FirebaseStorage storage;
+    private StorageReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +98,20 @@ public class CartaVidaActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(act) || !TextUtils.isEmpty(des)) {
             CartaVida datos = new CartaVida(des, 0);
             database.child("trabajos").child(userID).child(act).setValue(datos);
-            StorageReference miRef = reference.child("files").child(userID);
-            miRef.putFile(FILEBMP);
+            StorageReference miRef = reference.child("files/comprobante/" + userID + "/" + act + ".pdf");
+            miRef.putFile(FILEBMP).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(CartaVidaActivity.this, "Exito al subir",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(CartaVidaActivity.this, "Error al subir",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
             Toast.makeText(this, "Datos guardados", Toast.LENGTH_SHORT).show();   
         }
         else {

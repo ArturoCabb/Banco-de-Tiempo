@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/drawable/ic_launcher_background.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/drawable/icon_movil_small.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/drawable/login_background.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/drawable/secondary_button.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout-land/desing.xml" value="0.4348958333333333" />
@@ -35,11 +32,6 @@
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/login_button.xml" value="0.315625" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/mensajes.xml" value="0.37817028985507245" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/trabajos.xml" value="0.37817028985507245" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/mipmap-anydpi-v26/logo2.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/mipmap-anydpi-v26/logo_round.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.12265625" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout-w936dp/activity_login.xml" value="0.190625" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/actividades_curso.xml" value="0.25025641025641027" />
@@ -61,6 +53,7 @@
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_rechazado.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_reportar.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/activity_verificar.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/blank_fragment2.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/comentarios.xml" value="0.264" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/content_chat.xml" value="0.25025641025641027" />
