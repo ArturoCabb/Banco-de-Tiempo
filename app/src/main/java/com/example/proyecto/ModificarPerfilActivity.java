@@ -10,16 +10,20 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +47,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
     static final int CAM_REQUEST = 100;
 
     Bitmap bitmap = null;
+    String urlUri;
 
     public ModificarPerfilActivity() {
 
@@ -146,8 +151,6 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                 final String loc = ubicacion.getText().toString();
                 final String begin = entrada.getText().toString();
                 final String end = salida.getText().toString();
-                updateDatabase(perfil,ubi,email,phone,loc,begin,end,mdatabase, currentUser);
-                updateUI(currentUser);
 
 
                 StorageReference miRef = reference.child("Profile_picture/" + user_id + "/" +
@@ -162,9 +165,17 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                 uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uriTask.isSuccessful());
+                        Uri downloadUri = uriTask.getResult();
+                        urlUri = downloadUri.toString();
+
                         Toast.makeText(ModificarPerfilActivity.this, "Imagen de " +
                                         "Perfil Cargado Correctamente",
                                 Toast.LENGTH_SHORT).show();
+
+                        updateDatabase(perfil,ubi,email,phone,loc,begin,end, urlUri, mdatabase, currentUser);
+                    updateUI(currentUser);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -174,6 +185,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
         });
     }
@@ -198,7 +210,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
     }
 
     public void updateDatabase(String perfil, String ubi, String email, String phone, String loc,
-                               String begin, String end, DatabaseReference mdatabase,
+                               String begin, String end, String urlUri, DatabaseReference mdatabase,
                                FirebaseUser currentUser) {
         String user_id = currentUser.getUid();
         mdatabase.child("Users").child(user_id).child("nombre").setValue(perfil);
@@ -208,5 +220,6 @@ public class ModificarPerfilActivity extends AppCompatActivity {
         mdatabase.child("Users").child(user_id).child("ubicacion").setValue(loc);
         mdatabase.child("Users").child(user_id).child("hrinicio").setValue(begin);
         mdatabase.child("Users").child(user_id).child("hrfin").setValue(end);
+        mdatabase.child("Users").child(user_id).child("urlImageProfile").setValue(urlUri);
     }
 }
