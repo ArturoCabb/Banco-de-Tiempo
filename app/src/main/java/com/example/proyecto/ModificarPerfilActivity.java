@@ -17,6 +17,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -71,6 +72,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
         final EditText salida = findViewById(R.id.edtModificarHoraFin);
         Button btnSaveChanges = findViewById(R.id.btGuardar);
         Button btnEditImage = findViewById(R.id.btModificarImagenPerfil);
+        ImageButton btnCerrar = findViewById(R.id.btnCerrarModificarPerfil);
 
         if (ContextCompat.checkSelfPermission(ModificarPerfilActivity.this,
                 Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
@@ -114,6 +116,14 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                     String end = snapshot.child(user_id).child("hrfin").getValue().toString();
                     if(end != "-") {   salida.setText(end);   }
 
+                    String url = snapshot.child(user_id).child("urlImageProfile").getValue().toString();
+                    if (url != "") {
+                        Glide.with(ModificarPerfilActivity.this)
+                                .load(url)
+                                .fitCenter()
+                                .circleCrop()
+                                .into(profileImage);
+                    }
                 }else{
 
                     nombre.setText("Error snapshot");
@@ -188,8 +198,14 @@ public class ModificarPerfilActivity extends AppCompatActivity {
 
             }
         });
-    }
 
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
 
 
     @Override

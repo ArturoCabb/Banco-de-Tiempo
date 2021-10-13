@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ModificarPerfilActivity">
 
+    <ImageButton
+        android:id="@+id/btnCerrarModificarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
     <ImageView
         android:id="@+id/imgPerfilModificar"
         android:layout_width="wrap_content"
@@ -132,4 +142,5 @@
         app:layout_constraintEnd_toEndOf="@+id/edtModificarHoraFin"
         app:layout_constraintStart_toStartOf="@+id/edtModificarHoraFin"
         app:layout_constraintTop_toBottomOf="@+id/edtModificarHoraFin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

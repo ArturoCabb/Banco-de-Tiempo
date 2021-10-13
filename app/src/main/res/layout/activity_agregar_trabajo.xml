@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AgregarTrabajoActivity">
+
+    <ImageButton
+        android:id="@+id/btnCerrarCartaVida2"
+        android:layout_width="59dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:onClick="cerrar"
+        android:src="?attr/actionModeCloseDrawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCarta2"
+        android:layout_width="207dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:text="Agregar Trabajo"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtDescripcionCartaVida"
+        android:layout_width="382dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btSubirComprobante" />
+
+    <Button
+        android:id="@+id/btSubirComprobante"
+        android:layout_width="223dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/secondary_button"
+        android:onClick="archivo"
+        android:text="Subir Comprobante"
+        android:textAlignment="center"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtActividadDesempenada" />
+
+    <Button
+        android:id="@+id/btnAgregarTrabajo"
+        android:layout_width="223dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/secondary_button"
+        android:onClick="guardar"
+        android:text="Guardar"
+        android:textAlignment="center"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescripcionCartaVida" />
+
+    <EditText
+        android:id="@+id/edtActividadDesempenada"
+        android:layout_width="370dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="108dp"
+        android:ems="10"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

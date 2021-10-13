@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -67,7 +69,7 @@ public class ProfileFragment extends Fragment {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
 
-
+        ImageView photo = view.findViewById(R.id.imgProfilePhoto);
         TextView perfil = view.findViewById(R.id.tvProfileNombre);
         TextView location = view.findViewById(R.id.tvLocationProfile);
         TextView email = view.findViewById(R.id.tvProfileEmail);
@@ -104,6 +106,14 @@ public class ProfileFragment extends Fragment {
                     String localidad = snapshot.child(user_id).child("localidad").getValue().toString();
                     location.setText(localidad);
 
+                    String url = snapshot.child(user_id).child("urlImageProfile").getValue().toString();
+                    if (url != "") {
+                        Glide.with(ProfileFragment.this)
+                                .load(url)
+                                .fitCenter()
+                                .circleCrop()
+                                .into(photo);
+                    }
                 }else{
 
                     perfil.setText("Error snapshot");

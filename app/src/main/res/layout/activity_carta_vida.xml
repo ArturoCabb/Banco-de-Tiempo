@@ -8,79 +8,61 @@
 
     <TextView
         android:id="@+id/tvCarta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="183dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
         android:text="Carta de Vida"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="387dp"
-        android:layout_height="288dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCarta" />
-
-    <EditText
-        android:id="@+id/edtActividadDesempenada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-    <Button
-        android:id="@+id/btSubirComprobante"
-        android:layout_width="157dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/secondary_button"
-        android:onClick="archivo"
-        android:text="Subir Comprobante"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-    <EditText
-        android:id="@+id/edtDescripcionCartaVida"
-        android:layout_width="377dp"
-        android:layout_height="143dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtActividadDesempenada"/>
-
-    <Button
-        android:id="@+id/btAgregarTrabajo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/secondary_button"
-        android:onClick="guardar"
-        android:text="Agregar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btEliminarTrabajo" />
-
     <Button
         android:id="@+id/btEliminarTrabajo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="267dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/secondary_button"
         android:onClick="eliminar"
         android:text="Eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDescripcionCartaVida" />
+        app:layout_constraintTop_toBottomOf="@+id/btModificar" />
+
+    <Button
+        android:id="@+id/btModificar"
+        android:layout_width="267dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/secondary_button"
+        android:onClick="modificar"
+        android:text="Modificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btAgregarTrabajo" />
+
+    <Button
+        android:id="@+id/btAgregarTrabajo"
+        android:layout_width="267dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/secondary_button"
+        android:onClick="agregar"
+        android:text="Agregar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnCerrarCartaVida"
+        android:layout_width="59dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:onClick="cerrar"
+        android:src="?attr/actionModeCloseDrawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
