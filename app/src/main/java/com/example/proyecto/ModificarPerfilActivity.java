@@ -3,13 +3,23 @@ package com.example.proyecto;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,12 +27,25 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 
 public class ModificarPerfilActivity extends AppCompatActivity {
 
+    private ImageView profileImage;
+
     private FirebaseAuth mAuth;
+    private FirebaseStorage storage;
+    private StorageReference reference;
+    static final int CAM_REQUEST = 100;
+
+    Bitmap bitmap = null;
 
     public ModificarPerfilActivity() {
+
     }
 
     @Override
@@ -33,6 +56,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
+        profileImage = findViewById(R.id.imgPerfilModificar);
         final EditText nombre  = findViewById(R.id.edModificarNombre);
         final EditText localidad = findViewById(R.id.edtModificarUbicacion);
         final EditText correo = findViewById(R.id.edtModificarCorreo);
@@ -43,7 +67,18 @@ public class ModificarPerfilActivity extends AppCompatActivity {
         Button btnSaveChanges = findViewById(R.id.btGuardar);
         Button btnEditImage = findViewById(R.id.btModificarImagenPerfil);
 
+        if (ContextCompat.checkSelfPermission(ModificarPerfilActivity.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(ModificarPerfilActivity.this, new String[]{
+                    Manifest.permission.CAMERA
+            }, CAM_REQUEST);
+
+        }
+
         String user_id = currentUser.getUid();
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
 
         DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -88,6 +123,19 @@ public class ModificarPerfilActivity extends AppCompatActivity {
 
             }
         });
+
+
+        btnEditImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (camera_intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(camera_intent, CAM_REQUEST);
+                }
+            }
+        });
+
+
         btnSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,10 +148,48 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                 final String end = salida.getText().toString();
                 updateDatabase(perfil,ubi,email,phone,loc,begin,end,mdatabase, currentUser);
                 updateUI(currentUser);
+
+
+                StorageReference miRef = reference.child("Profile_picture/" + user_id + "/" +
+                        "profileImage.jpg");
+                profileImage.setDrawingCacheEnabled(true);
+                profileImage.buildDrawingCache();
+                bitmap = profileImage.getDrawingCache();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+                UploadTask uploadTask = miRef.putBytes(data);
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(ModificarPerfilActivity.this, "Imagen de " +
+                                        "Perfil Cargado Correctamente",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ModificarPerfilActivity.this, "Error al cargar" +
+                                        " la Imagen de Perfil",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
-
     }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CAM_REQUEST && resultCode == RESULT_OK){
+            bitmap = (Bitmap) data.getExtras().get("data");
+            profileImage.setImageBitmap(bitmap);
+        }
+    }
+
+
 
     private void updateUI(FirebaseUser currentUser) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -111,7 +197,9 @@ public class ModificarPerfilActivity extends AppCompatActivity {
         finish();
     }
 
-    public void updateDatabase(String perfil, String ubi, String email, String phone, String loc, String begin, String end, DatabaseReference mdatabase, FirebaseUser currentUser) {
+    public void updateDatabase(String perfil, String ubi, String email, String phone, String loc,
+                               String begin, String end, DatabaseReference mdatabase,
+                               FirebaseUser currentUser) {
         String user_id = currentUser.getUid();
         mdatabase.child("Users").child(user_id).child("nombre").setValue(perfil);
         mdatabase.child("Users").child(user_id).child("localidad").setValue(ubi);
