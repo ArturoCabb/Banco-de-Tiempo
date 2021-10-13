@@ -33,6 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StreamDownloadTask;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -55,7 +56,6 @@ public class Verificar extends AppCompatActivity {
     Bitmap bitmap2 = null;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference database;
     private FirebaseStorage storage;
     private StorageReference reference;
 
@@ -86,8 +86,15 @@ public class Verificar extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         reference = storage.getReference();
 
-        database = FirebaseDatabase.getInstance().getReference();
-
+        buttonine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (camera_intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(camera_intent, CAM_REQUEST);
+                }
+            }
+        });
 
         buttoncurp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,104 +105,68 @@ public class Verificar extends AppCompatActivity {
             }
         });
 
-        buttonine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (camera_intent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(camera_intent, CAM_REQUEST);
-
-                }
-            }
-        });
 
         buttonGuardar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Uri imageUriINE = getUri(bitmap1, userID, "INE");
                 StorageReference miRef = reference.child("files/comprobante/" + userID + "/" + "INE.jpg");
-                miRef.putFile(imageUriINE).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                imageviewIne.setDrawingCacheEnabled(true);
+                imageviewIne.buildDrawingCache();
+                bitmap1 = imageviewIne.getDrawingCache();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+                UploadTask uploadTask = miRef.putBytes(data);
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(Verificar.this, "Ine Cargado Correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Verificar.this, "Ine Cargado Correctamente",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Verificar.this, "Error al cargar la Ine", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Verificar.this, "Error al cargar la Ine",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
-                Uri imageUriCURP = getUri(bitmap2, userID, "CURP");
                 StorageReference miRef1 = reference.child("files/comprobante/" + userID + "/" + "CURP.jpg");
-                miRef1.putFile(imageUriCURP).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                imageviewCurp.setDrawingCacheEnabled(true);
+                imageviewCurp.buildDrawingCache();
+                bitmap2 = imageviewCurp.getDrawingCache();
+                ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+                bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos1);
+                byte[] data1 = baos1.toByteArray();
+                UploadTask uploadTask1 = miRef1.putBytes(data1);
+                uploadTask1.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(Verificar.this, "Curp Cargado Correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Verificar.this, "Curp Cargado Correctamente",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Verificar.this, "Error al cargar la Curp", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Verificar.this, "Error al cargar la Curp",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
+                finish();
             }
         });
-
-
     }
 
-    private Uri getUri(Bitmap bitmap,String userID, String tipo) {
-        OutputStream fos = null;
-        ContentResolver resolver = getContentResolver();
-        ContentValues values = new ContentValues();
-        String fileName = userID + tipo;
-        values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
-        values.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/MyApp");
-        values.put(MediaStore.Images.Media.IS_PENDING, 1);
-        Uri collection = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
-        Uri imageUri = resolver.insert(collection, values);
-        try {
-            fos = resolver.openOutputStream(imageUri);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        values.clear();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-        return imageUri;
-    }
 
-    private File getFile() {
-        File folder = new File ("sdcard/TiempoCompartido");
-
-        if (!folder.exists())
-        {
-            folder.mkdir();
-        }
-
-        File image_file = new File (folder,"camimage.jpg");
-
-        return image_file;
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == CAM_REQUEST && resultCode == RESULT_OK){
-            Bundle extras = data.getExtras();
-            bitmap1 = (Bitmap) extras.get("data");
+            bitmap1 = (Bitmap) data.getExtras().get("data");
             imageviewIne.setImageBitmap(bitmap1);
         }
-        if(requestCode == CAM_REQUEST2){
-            Bundle extras = data.getExtras();
-            bitmap2 = (Bitmap) extras.get("data");
+        else if(requestCode == CAM_REQUEST2 && resultCode == RESULT_OK){
+            bitmap2 = (Bitmap) data.getExtras().get("data");
             imageviewCurp.setImageBitmap(bitmap2);
         }
     }
