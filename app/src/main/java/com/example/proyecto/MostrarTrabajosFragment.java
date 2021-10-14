@@ -101,13 +101,16 @@ public class MostrarTrabajosFragment extends Fragment{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data : snapshot.getChildren()) {
+                    TrabajosModel model = data.getValue(TrabajosModel.class);
+
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
-                        Log.println(Log.ASSERT, "Datos: ", trabajos.toString());
-                        TrabajosModel model = data.getValue(TrabajosModel.class);
-                        listaTrabajos.add(new TrabajosModel(trabajos.getKey(), model.getNombre(), model.getDescripcion(), model.getUrlImageProfile()));
-                            Log.println(Log.ASSERT, "Dentro de datosTrabajos", model.toString());
+                        TrabajosModel des = trabajos.getValue(TrabajosModel.class);
+                        listaTrabajos.add(new TrabajosModel(trabajos.getKey(), model.getNombre(),des.getDescripcion(), model.getUrlImageProfile()));
+                            Log.println(Log.ASSERT, "Datos: ", trabajos.toString());
+                            Log.println(Log.ASSERT, "Dentro de datosTrabajos", des.toString());
                     }
                 }
+
                 adapter.notifyDataSetChanged();
             }
 
