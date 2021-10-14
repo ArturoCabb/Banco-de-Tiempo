@@ -54,8 +54,8 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
         TextView horaF = findViewById(R.id.tvHoraFinEjecucion);
 
         nombre1.setText(nombre);
-        horaI.setText(hrinicio);
-        horaF.setText(hrfin);
+        horaI.setText("Hora inicio: " + hrinicio);
+        horaF.setText("Hora fin: " + hrfin);
         Glide.with(this)
                 .load(urlImageProfile)
                 .placeholder(R.drawable.common_google_signin_btn_icon_dark)
@@ -77,6 +77,18 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
 
     public void terminar(View view) {
         Intent intent = new Intent(this, CalificarActivity.class);
+        intent.putExtra("correo", correo);
+        intent.putExtra("edad", edad);
+        intent.putExtra("hrfin", hrfin);
+        intent.putExtra("hrinicio", hrinicio);
+        intent.putExtra("localidad", localidad);
+        intent.putExtra("nombre", nombre);
+        intent.putExtra("telefono", telefono);
+        intent.putExtra("ubicacion", ubicacion);
+        intent.putExtra("urlImageProfile", urlImageProfile);
+        intent.putExtra("trabajo", trabajo);
+        intent.putExtra("descripcion", descripcion);
+        intent.putExtra("estado", estado);
         startActivity(intent);
         finish();
     }
