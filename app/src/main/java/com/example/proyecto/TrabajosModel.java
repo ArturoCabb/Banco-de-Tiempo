@@ -9,7 +9,7 @@ public class TrabajosModel {
     String nombre;
     String telefono;
     String ubicacion;
-    String urlImagen;
+    String urlImageProfile;
     String trabajo;
     String descripcion;
     int estado;
@@ -33,16 +33,16 @@ public class TrabajosModel {
     }
 
 
-    public TrabajosModel(String trabajo, String nombre, String descripcion, String urlImagen) {
+    public TrabajosModel(String trabajo, String nombre, String descripcion, String urlImageProfile) {
         this.trabajo = trabajo;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.urlImagen = urlImagen;
+        this.urlImageProfile = urlImageProfile;
     }
 
 
     public TrabajosModel(String correo, String hrfin, String hrinicio,
-                         String localidad, String telefono, String ubicacion, String urlImagen,
+                         String localidad, String telefono, String ubicacion, String urlImageProfile,
                          String nombre) {
         this.correo = correo;
         this.hrfin = hrfin;
@@ -50,14 +50,14 @@ public class TrabajosModel {
         this.localidad = localidad;
         this.telefono = telefono;
         this.ubicacion = ubicacion;
-        this.urlImagen = urlImagen;
+        this.urlImageProfile = urlImageProfile;
         this.nombre = nombre;
     }
 
 
     public TrabajosModel(String correo, String edad, String hrfin, String hrinicio,
                          String localidad, String nombre, String telefono, String ubicacion,
-                         String urlImagen, String trabajo, String descripcion, int estado) {
+                         String urlImageProfile, String trabajo, String descripcion, int estado) {
         this.correo = correo;
         this.edad = edad;
         this.hrfin = hrfin;
@@ -66,7 +66,7 @@ public class TrabajosModel {
         this.nombre = nombre;
         this.telefono = telefono;
         this.ubicacion = ubicacion;
-        this.urlImagen = urlImagen;
+        this.urlImageProfile = urlImageProfile;
         this.trabajo = trabajo;
         this.descripcion = descripcion;
         this.estado = estado;
@@ -136,12 +136,12 @@ public class TrabajosModel {
         this.ubicacion = ubicacion;
     }
 
-    public String getUrlImagen() {
-        return urlImagen;
+    public String getUrlImageProfile() {
+        return urlImageProfile;
     }
 
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
+    public void setUrlImageProfile(String urlImageProfile) {
+        this.urlImageProfile = urlImageProfile;
     }
 
     public String getTrabajo() {
@@ -187,7 +187,7 @@ public class TrabajosModel {
                 ", nombre='" + nombre + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", ubicacion='" + ubicacion + '\'' +
-                ", urlImagen='" + urlImagen + '\'' +
+                ", urlImageProfile='" + urlImageProfile + '\'' +
                 ", trabajo='" + trabajo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", estado=" + estado +

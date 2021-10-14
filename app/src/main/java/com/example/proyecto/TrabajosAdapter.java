@@ -37,9 +37,8 @@ public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHo
         holder.etiTrabajo.setText(listTrabajos.get(position).getTrabajo());
         holder.etiTrabajador.setText(listTrabajos.get(position).getNombre());
         holder.etiDescripcionTrabajo.setText(listTrabajos.get(position).getDescripcion());
-
         Glide.with(holder.fotoTrabajador.getContext())
-                .load(listTrabajos.get(position).getUrlImagen())
+                .load(listTrabajos.get(position).getUrlImageProfile())
                 .placeholder(R.drawable.common_google_signin_btn_icon_dark)
                 .fitCenter()
                 .circleCrop()

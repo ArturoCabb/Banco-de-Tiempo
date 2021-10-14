@@ -97,14 +97,15 @@ public class MostrarTrabajosFragment extends Fragment{
 
         databaseReference =  FirebaseDatabase.getInstance().getReference();
 
-        databaseReference.orderByKey().addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data : snapshot.getChildren()) {
-                    for (DataSnapshot dataSnapshot : data.getChildren()) {
-                        TrabajosModel model = dataSnapshot.getValue(TrabajosModel.class);
-                        listaTrabajos.add(new TrabajosModel(model.getNombre(), model.getTrabajo(), model.getDescripcion(), model.getUrlImagen()));
-                        Log.println(Log.ASSERT, "Datos: ", model.toString());
+                    for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
+                        Log.println(Log.ASSERT, "Datos: ", trabajos.toString());
+                        TrabajosModel model = data.getValue(TrabajosModel.class);
+                        listaTrabajos.add(new TrabajosModel(trabajos.getKey(), model.getNombre(), model.getDescripcion(), model.getUrlImageProfile()));
+                            Log.println(Log.ASSERT, "Dentro de datosTrabajos", model.toString());
                     }
                 }
                 adapter.notifyDataSetChanged();
