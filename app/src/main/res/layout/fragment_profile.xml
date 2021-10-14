@@ -12,8 +12,8 @@ tools:context=".BlankFragment">
 
         <ImageView
             android:id="@+id/imgProfilePhoto"
-            android:layout_width="215dp"
-            android:layout_height="205dp"
+            android:layout_width="110dp"
+            android:layout_height="108dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,14 +108,32 @@ tools:context=".BlankFragment">
             app:layout_constraintStart_toStartOf="@+id/tvProfileTelefono"
             app:layout_constraintTop_toBottomOf="@+id/tvProfileTelefono" />
 
+        <TextView
+            android:id="@+id/space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/tvProfileHorarioTrabajo"
+            app:layout_constraintTop_toTopOf="@+id/tvProfileHorarioTrabajo" />
+
+        <TextView
+            android:id="@+id/tvProfileHorarioTrabajofin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Horario fin"
+            app:layout_constraintStart_toEndOf="@+id/tvProfileHorarioTrabajo"
+            app:layout_constraintTop_toTopOf="@+id/tvProfileHorarioTrabajo" />
+
         <Button
             android:id="@+id/btProfileCV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:text="Mis Trabajos"
             android:background="@drawable/secondary_button"
+            android:text="Agregar Trabajo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvProfileHorarioTrabajo" />
 
