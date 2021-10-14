@@ -103,7 +103,7 @@ public class MostrarTrabajosFragment extends Fragment{
                 for(DataSnapshot data : snapshot.getChildren()) {
                     for (DataSnapshot dataSnapshot : data.getChildren()) {
                         TrabajosModel model = dataSnapshot.getValue(TrabajosModel.class);
-                        listaTrabajos.add(new TrabajosModel(dataSnapshot.getKey(), model.getTrabajo(), model.getDescripcion(), R.drawable.constructor));
+                        listaTrabajos.add(new TrabajosModel(dataSnapshot.getKey(), model.getTrabajo(), model.getDescripcion(), model.getUrlImagen()));
                         Log.println(Log.ASSERT, "Datos: ", model.toString());
                     }
                 }

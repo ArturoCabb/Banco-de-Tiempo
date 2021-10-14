@@ -84,7 +84,7 @@ public class AgregarTrabajoActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(act) || !TextUtils.isEmpty(des)) {
             TrabajosModel datos = new TrabajosModel(des, 0);
-            database.child("Users").child(userID).child("Trabajos").child(act).setValue(datos);
+            database.child("Users").child(userID).child("trabajos").child(act).setValue(datos);
             StorageReference miRef = reference.child("files/comprobante/" + userID + "/" + act + ".pdf");
             miRef.putFile(FILEBMP).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
