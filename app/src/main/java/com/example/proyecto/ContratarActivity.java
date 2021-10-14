@@ -73,28 +73,17 @@ public class ContratarActivity extends AppCompatActivity {
     public void contratar(View view) {
         Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
         intent.putExtra("correo", correo);
-        intent.putExtra("edad", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getEdad());
-        intent.putExtra("hrfin", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getHrfin());
-        intent.putExtra("hrinicio", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getHrinicio());
-        intent.putExtra("localidad", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getLocalidad());
-        intent.putExtra("nombre", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getNombre());
-        intent.putExtra("telefono", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getTelefono());
-        intent.putExtra("ubicacion", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getUbicacion());
-        intent.putExtra("urlImageProfile", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getUrlImageProfile());
-        intent.putExtra("trabajo", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getTrabajo());
-        intent.putExtra("descripcion", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getDescripcion());
-        intent.putExtra("estado", listaTrabajos.get(recyclerTrabajos
-                .getChildAdapterPosition(view)).getEstado());
+        intent.putExtra("edad", edad);
+        intent.putExtra("hrfin", hrfin);
+        intent.putExtra("hrinicio", hrinicio);
+        intent.putExtra("localidad", localidad);
+        intent.putExtra("nombre", nombre);
+        intent.putExtra("telefono", telefono);
+        intent.putExtra("ubicacion", ubicacion);
+        intent.putExtra("urlImageProfile", urlImageProfile);
+        intent.putExtra("trabajo", trabajo);
+        intent.putExtra("descripcion", descripcion);
+        intent.putExtra("estado", estado);
         startActivity(intent);
         finish();
     }
