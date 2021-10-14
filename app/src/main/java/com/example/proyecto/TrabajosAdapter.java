@@ -39,6 +39,8 @@ public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHo
 
     }
 
+
+
     @Override
     public int getItemCount() {
         return listTrabajos.size();

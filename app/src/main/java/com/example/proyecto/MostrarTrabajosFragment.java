@@ -2,6 +2,7 @@ package com.example.proyecto;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,11 +12,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class MostrarTrabajosFragment extends Fragment {
+public class MostrarTrabajosFragment extends Fragment{
+    public DatabaseReference databaseReference;
+
+    TrabajosVo vo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,7 +65,6 @@ public class MostrarTrabajosFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mostrar_trabajos, container, false);
@@ -59,6 +72,9 @@ public class MostrarTrabajosFragment extends Fragment {
 
         listaTrabajos = new ArrayList<>();
         recyclerTrabajos.setLayoutManager(new LinearLayoutManager(getContext()));
+        vo = new TrabajosVo();
+        loadData();
+
 
         llenarLista();
 
@@ -80,18 +96,32 @@ public class MostrarTrabajosFragment extends Fragment {
         return view;
     }
 
-    private void llenarLista() {
-        listaTrabajos.add(new TrabajosVo("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Albañil","Juan", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("dsfds","Carla", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("Constrvdfgvductor","Sofia", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("jiudasnj","Elisa", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("fdsjkfvndsjn","Maria", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("jcdjnvjw","Paco", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("nhfuihfidsjfkd","Ana", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("asfhdsiujfodsjfjkdsbvfbds","Paola", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("hdsuhcdsj","Daniela", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosVo("jcdjsndsvlmdsl","Maria José", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+    private void loadData() {
+        
+        databaseReference =  FirebaseDatabase.getInstance().getReference();
+
+        databaseReference.orderByKey().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data: snapshot.getChildren()){
+                    TrabajosVo trabajador = data.getValue(TrabajosVo.class);
+                    listaTrabajos.add(new TrabajosVo(trabajador.getNombreTrabajo(), trabajador.getNombreTrabajador(), trabajador.getDescripcionTrabajo(),R.drawable.constructor ));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void llenarLista() {
+
+        loadData();
+        listaTrabajos.add(new TrabajosVo("ha", "ha", "ha",R.drawable.constructor ));
+
 
     }
 
@@ -100,4 +130,6 @@ public class MostrarTrabajosFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
     }
+
+
 }
