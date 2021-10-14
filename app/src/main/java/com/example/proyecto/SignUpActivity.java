@@ -3,9 +3,6 @@ package com.example.proyecto;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import android.util.Log;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -44,7 +40,6 @@ public class SignUpActivity extends AppCompatActivity {
     private ImageView imagenPerfil;
     private EditText x_usuario, x_email, x_pass, x_pass2, x_edad, x_localidad, x_telefono;
     private Button btnRegistro;
-    private CheckBox Terminos;
 
 
 
@@ -63,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
         x_localidad = findViewById(R.id.etLocalidad);
         btnRegistro = findViewById(R.id.btnSignUp);
         x_telefono = findViewById(R.id.ettelefono);
-        Terminos = findViewById(R.id.Terminos);
+
 
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USER);
@@ -80,16 +75,8 @@ public class SignUpActivity extends AppCompatActivity {
                 String edad = x_edad.getText().toString();
                 String localidad = x_localidad.getText().toString();
                 String telefono = x_telefono.getText().toString();
-                String nombre = x_usuario.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)){
                     Toast.makeText(getApplicationContext(), "Escriba su Email y Contraseña", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (email.length()>320) {
-                    Toast.makeText(getApplicationContext(), "Correo invalido", Toast.LENGTH_LONG).show();
-                }
-                if (!isValid(email)){
-                    Toast.makeText(getApplicationContext(), "El Correo es invalido", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (pass.length() < 6){
@@ -100,20 +87,9 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Las Contraseñas no coinciden", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (nombre.length()>150) {
-                    Toast.makeText(getApplicationContext(), "Su Nombre es demasiado largo", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (telefono.length() > 10){
-                    Toast.makeText(getApplicationContext(), "Ingrese su telefono a 10 digitos", Toast.LENGTH_LONG).show();
-                    return;
-                }
+                String nombre = x_usuario.getText().toString();
                 if (TextUtils.isEmpty(nombre)){
                     Toast.makeText(getApplicationContext(), "Escriba su Nombre", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (!Terminos.isChecked()){
-                    Toast.makeText(getApplicationContext(), "Confirmar los terminos y condiciones", Toast.LENGTH_LONG).show();
                     return;
                 }
                 usuario = new Usuario(email,pass, nombre);
@@ -133,19 +109,6 @@ public class SignUpActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         //FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
-    }
-
-    public static boolean isValid(String email)
-    {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
-
-        Pattern pat = Pattern.compile(emailRegex);
-        if (email == null)
-            return false;
-        return pat.matcher(email).matches();
     }
 
     public void registerUser(String email, String pass, String nombre, String edad, String localidad, String telefono){
@@ -176,6 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
                             newPost.put("ubicacion", "Ubicacion");
                             newPost.put("hrinicio", "Hora Inicio");
                             newPost.put("hrfin", "Hora Final");
+                            newPost.put("urlImageProfile", "https://firebasestorage.googleapis.com/v0/b/tiempo-compartido-df.appspot.com/o/Profile_picture%2F5CNA32yEsnga6KWRa45U8ngPOIh1%2FprofileImage.jpg?alt=media&token=a1a5304a-849c-49c2-b16f-925d4277bb0b");
 
                             current_user_db.setValue(newPost);
 
