@@ -33,7 +33,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarCurso holder, int position) {
         holder.etiCurso.setText(listCurso.get(position).getNombre());
-        holder.etiEstado.setText(listCurso.get(position).getEstado());
+        //holder.etiEstado.setText(listCurso.get(position).getEstado());
         //holder.etiTiempo.setText(listCurso.get(position).getTiempo());
         holder.fotoTrabajador.setImageResource(listCurso.get(position).getImagen());
 
