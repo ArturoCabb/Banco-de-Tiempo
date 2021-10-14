@@ -78,6 +78,7 @@ public class ProfileFragment extends Fragment {
         TextView hours = view.findViewById(R.id.tvProfileHorasTrabajadas);
         TextView phone = view.findViewById(R.id.tvProfileTelefono);
         TextView workHours = view.findViewById(R.id.tvProfileHorarioTrabajo);
+        TextView workHoursEnd = view.findViewById(R.id.tvProfileHorarioTrabajofin);
         Button btnVerificar = view.findViewById(R.id.btProfileVerificar);
         Button btnMyWork = view.findViewById(R.id.btProfileCV);
         Button btnEditProfile = view.findViewById(R.id.btProfileEdit);
@@ -105,6 +106,15 @@ public class ProfileFragment extends Fragment {
 
                     String localidad = snapshot.child(user_id).child("localidad").getValue().toString();
                     location.setText(localidad);
+
+                    String localidadlocal = snapshot.child(user_id).child("ubicacion").getValue().toString();
+                    localLocation.setText(localidadlocal);
+
+                    String horatrabajoinicio = snapshot.child(user_id).child("hrinicio").getValue().toString();
+                    workHours.setText(horatrabajoinicio);
+
+                    String horatrabajofin = snapshot.child(user_id).child("hrfin").getValue().toString();
+                    workHoursEnd.setText(horatrabajofin);
 
                     String url = snapshot.child(user_id).child("urlImageProfile").getValue().toString();
                     if (url != "") {
