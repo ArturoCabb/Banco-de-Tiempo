@@ -80,14 +80,30 @@ public class MostrarTrabajosFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ContratarActivity.class);
-                intent.putExtra("nombreTrabajo", listaTrabajos.get(recyclerTrabajos
-                        .getChildAdapterPosition(view)).getTrabajo());
-                intent.putExtra("nombreTrabajador", listaTrabajos.get(recyclerTrabajos
+                intent.putExtra("correo", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getCorreo());
+                intent.putExtra("edad", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getEdad());
+                intent.putExtra("hrfin", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getHrfin());
+                intent.putExtra("hrinicio", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getHrinicio());
+                intent.putExtra("localidad", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getLocalidad());
+                intent.putExtra("nombre", listaTrabajos.get(recyclerTrabajos
                         .getChildAdapterPosition(view)).getNombre());
-                intent.putExtra("descripcionTrabajo", listaTrabajos.get(recyclerTrabajos
+                intent.putExtra("telefono", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getTelefono());
+                intent.putExtra("ubicacion", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getUbicacion());
+                intent.putExtra("urlImageProfile", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getUrlImageProfile());
+                intent.putExtra("trabajo", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getTrabajo());
+                intent.putExtra("descripcion", listaTrabajos.get(recyclerTrabajos
                         .getChildAdapterPosition(view)).getDescripcion());
-                intent.putExtra("imgProfile", listaTrabajos.get(recyclerTrabajos
-                        .getChildAdapterPosition(view)).getImagen());
+                intent.putExtra("estado", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getEstado());
                 getActivity().startActivity(intent);
             }
         });
@@ -114,8 +130,8 @@ public class MostrarTrabajosFragment extends Fragment{
                                 model.getNombre(), model.getTelefono(), model.getUbicacion(),
                                 model.getUrlImageProfile(), trabajos.getKey() ,des.getDescripcion(),
                                 des.getEstado()));
-                            Log.println(Log.ASSERT, "Datos: ", trabajos.toString());
-                            Log.println(Log.ASSERT, "Dentro de datosTrabajos", des.toString());
+                             // Log.println(Log.ASSERT, "Datos: ", trabajos.toString());
+                             // Log.println(Log.ASSERT, "Dentro de datosTrabajos", des.toString());
                     }
                 }
 

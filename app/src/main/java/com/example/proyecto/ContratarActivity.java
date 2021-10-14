@@ -8,35 +8,62 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 public class ContratarActivity extends AppCompatActivity {
+
+    String correo;
+    String edad;
+    String hrfin;
+    String hrinicio;
+    String localidad;
+    String nombre;
+    String telefono;
+    String ubicacion;
+    String urlImageProfile;
+    String trabajo;
+    String descripcion;
+    int estado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contratar);
 
-        String nombreTrabajo = "";
-        String nombreTrabajador = "";
-        String descripcionTrabajo = "";
-        int imagenTrabajador = 0;
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            nombreTrabajo = extras.getString("nombreTrabajo");
-            nombreTrabajador = extras.getString("nombreTrabajador");
-            descripcionTrabajo = extras.getString("descripcionTrabajo");
-            imagenTrabajador = extras.getInt("imgProfile");
+            correo = extras.getString("correo");
+            edad = extras.getString("edad");
+            hrfin = extras.getString("hrfin");
+            hrinicio = extras.getString("hrinicio");
+            localidad = extras.getString("localidad");
+            nombre = extras.getString("nombre");
+            telefono = extras.getString("telefono");
+            ubicacion = extras.getString("ubicacion");
+            urlImageProfile = extras.getString("urlImageProfile");
+            trabajo = extras.getString("trabajo");
+            descripcion = extras.getString("descripcion");
+            estado = extras.getInt("estado");
+            //imagenTrabajador = extras.getInt("imgProfile");
         }
 
-        TextView trabajo = (TextView) findViewById(R.id.tvNombreTrabajo);
-        TextView trabajador = (TextView) findViewById(R.id.tvNombreTrabajador);
-        TextView descripcion = (TextView) findViewById(R.id.tvDescripcionTrabajo);
+        TextView tvTrabajo = (TextView) findViewById(R.id.tvNombreTrabajo);
+        TextView tvTrabajador = (TextView) findViewById(R.id.tvNombreTrabajador);
+        TextView tvLugar = (TextView) findViewById(R.id.tvLugarDeTrabajo);
+        TextView tvDescripcion = (TextView) findViewById(R.id.tvDescripcionTrabajo);
         ImageView foto = (ImageView) findViewById(R.id.imgTrabajador);
 
-        trabajo.setText(nombreTrabajo);
-        trabajador.setText(nombreTrabajador);
-        descripcion.setText(descripcionTrabajo);
-        foto.setImageResource(imagenTrabajador);
+        tvTrabajo.setText(trabajo);
+        tvTrabajador.setText(nombre);
+        tvLugar.setText(localidad);
+        tvDescripcion.setText(descripcion);
+        Glide.with(this)
+                .load(urlImageProfile)
+                .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                .fitCenter()
+                .circleCrop()
+                .into(foto);
     }
 
     public void cerrar(View view) {
@@ -45,6 +72,29 @@ public class ContratarActivity extends AppCompatActivity {
 
     public void contratar(View view) {
         Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
+        intent.putExtra("correo", correo);
+        intent.putExtra("edad", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getEdad());
+        intent.putExtra("hrfin", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getHrfin());
+        intent.putExtra("hrinicio", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getHrinicio());
+        intent.putExtra("localidad", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getLocalidad());
+        intent.putExtra("nombre", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getNombre());
+        intent.putExtra("telefono", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getTelefono());
+        intent.putExtra("ubicacion", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getUbicacion());
+        intent.putExtra("urlImageProfile", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getUrlImageProfile());
+        intent.putExtra("trabajo", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getTrabajo());
+        intent.putExtra("descripcion", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getDescripcion());
+        intent.putExtra("estado", listaTrabajos.get(recyclerTrabajos
+                .getChildAdapterPosition(view)).getEstado());
         startActivity(intent);
         finish();
     }
