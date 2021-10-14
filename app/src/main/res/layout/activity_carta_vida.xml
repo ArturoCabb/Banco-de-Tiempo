@@ -19,6 +19,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btEliminarTrabajo"
+        android:layout_width="267dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/secondary_button"
+        android:onClick="eliminar"
+        android:text="Eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btModificar" />
+
+    <Button
+        android:id="@+id/btModificar"
+        android:layout_width="267dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/secondary_button"
+        android:onClick="modificar"
+        android:text="Modificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btAgregarTrabajo" />
+
+    <Button
         android:id="@+id/btAgregarTrabajo"
         android:layout_width="267dp"
         android:layout_height="62dp"
