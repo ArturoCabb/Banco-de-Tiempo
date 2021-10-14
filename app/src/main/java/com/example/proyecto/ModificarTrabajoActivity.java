@@ -107,10 +107,6 @@ public class ModificarTrabajoActivity extends AppCompatActivity {
         }
     }
 
-    public void eliminar(View view) {
-
-    }
-
     public void cerrar(View view) {
         finish();
     }

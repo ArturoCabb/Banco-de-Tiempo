@@ -83,8 +83,8 @@ public class AgregarTrabajoActivity extends AppCompatActivity {
         String des = descripcion.getText().toString();
 
         if(!TextUtils.isEmpty(act) || !TextUtils.isEmpty(des)) {
-            CartaVida datos = new CartaVida(des, 0);
-            database.child("trabajos").child(userID).child(act).setValue(datos);
+            TrabajosModel datos = new TrabajosModel(des, 0);
+            database.child("Users").child(userID).child("Trabajos").child(act).setValue(datos);
             StorageReference miRef = reference.child("files/comprobante/" + userID + "/" + act + ".pdf");
             miRef.putFile(FILEBMP).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -100,6 +100,8 @@ public class AgregarTrabajoActivity extends AppCompatActivity {
                 }
             });
             Toast.makeText(this, "Datos guardados", Toast.LENGTH_SHORT).show();
+            actividad.getText().clear();
+            descripcion.getText().clear();
         }
         else {
             Toast.makeText(this, "Ingrese los datos", Toast.LENGTH_SHORT).show();
@@ -125,8 +127,7 @@ public class AgregarTrabajoActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent resultData) {
         super.onActivityResult(requestCode, resultCode, resultData);
-        if (requestCode == REQUEST_FILE
-                && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_FILE && resultCode == Activity.RESULT_OK) {
             // The result data contains a URI for the document or directory that
             // the user selected.
             if (resultData != null) {
