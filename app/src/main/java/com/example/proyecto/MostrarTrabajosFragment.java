@@ -100,8 +100,6 @@ public class MostrarTrabajosFragment extends Fragment{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data: snapshot.getChildren()){
                     TrabajosModel trabajador = data.getValue(TrabajosModel.class);
-                    listaTrabajos.add(new TrabajosModel( trabajador.getDescripcion(), trabajador.getEstado() ));
-                    Log.println(Log.ASSERT,"datos: ", trabajador.descripcion);
                 }
 
             }
