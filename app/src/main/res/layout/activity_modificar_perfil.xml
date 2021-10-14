@@ -44,7 +44,7 @@
         android:id="@+id/edModificarNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Ingrese su nombre"
         android:inputType="textPersonName"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPerfilModificar" />
+        app:layout_constraintTop_toBottomOf="@+id/btModificarImagenPerfil" />
 
     <EditText
         android:id="@+id/edtModificarUbicacion"

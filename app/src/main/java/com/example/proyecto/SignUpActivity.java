@@ -139,6 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
                             newPost.put("ubicacion", "Ubicacion");
                             newPost.put("hrinicio", "Hora Inicio");
                             newPost.put("hrfin", "Hora Final");
+                            newPost.put("urlImageProfile", "https://firebasestorage.googleapis.com/v0/b/tiempo-compartido-df.appspot.com/o/Profile_picture%2F5CNA32yEsnga6KWRa45U8ngPOIh1%2FprofileImage.jpg?alt=media&token=a1a5304a-849c-49c2-b16f-925d4277bb0b");
 
                             current_user_db.setValue(newPost);
 
