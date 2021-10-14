@@ -13,8 +13,15 @@ public class TrabajosModel {
     String trabajo;
     String descripcion;
     int estado;
+    int imagen;
 
     public TrabajosModel(String descripcion, int estado) {
+        this.descripcion = descripcion;
+        this.estado = estado;
+    }
+
+
+    public TrabajosModel(String trabajo, String nombre, String descripcion, int estado) {
         this.descripcion = descripcion;
         this.estado = estado;
     }
@@ -145,5 +152,13 @@ public class TrabajosModel {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 }
