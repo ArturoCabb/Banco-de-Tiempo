@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MostrarTrabajosFragment extends Fragment{
     public DatabaseReference databaseReference;
@@ -38,6 +39,7 @@ public class MostrarTrabajosFragment extends Fragment{
 
     RecyclerView recyclerTrabajos;
     ArrayList<TrabajosModel> listaTrabajos;
+    TrabajosAdapter adapter;
 
     public MostrarTrabajosFragment() {
         // Required empty public constructor
@@ -72,7 +74,7 @@ public class MostrarTrabajosFragment extends Fragment{
 
         llenarLista();
 
-        TrabajosAdapter adapter = new TrabajosAdapter(listaTrabajos);
+        adapter = new TrabajosAdapter(listaTrabajos);
 
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,10 +100,15 @@ public class MostrarTrabajosFragment extends Fragment{
         databaseReference.child("trabajos").orderByKey().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot data: snapshot.getChildren()){
-                    TrabajosModel trabajador = data.getValue(TrabajosModel.class);
+                for(DataSnapshot data : snapshot.getChildren()) {
+                    for (DataSnapshot dataSnapshot : data.getChildren()) {
+                        TrabajosModel model = dataSnapshot.getValue(TrabajosModel.class);
+                        listaTrabajos.add(new TrabajosModel("dataSnapshot.getKey()", ".toString()", "model.toString()", R.drawable.constructor));
+                        Log.println(Log.ASSERT, "Datos: ", model.toString());
+                    }
                 }
 
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -109,6 +116,7 @@ public class MostrarTrabajosFragment extends Fragment{
 
             }
         });
+        listaTrabajos.add(new TrabajosModel("dataSnapshot.getKey()", ".toString()", "model.toString()", R.drawable.constructor));
 
 
     }

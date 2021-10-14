@@ -26,6 +26,8 @@ public class TrabajosModel {
 
 
     public TrabajosModel(String trabajo, String nombre, String descripcion, int imagen) {
+        this.trabajo = trabajo;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
     }
@@ -164,5 +166,24 @@ public class TrabajosModel {
 
     public void setImagen(int imagen) {
         this.imagen = imagen;
+    }
+
+    @Override
+    public String toString() {
+        return "TrabajosModel{" +
+                "correo='" + correo + '\'' +
+                ", edad='" + edad + '\'' +
+                ", hrfin='" + hrfin + '\'' +
+                ", hrinicio='" + hrinicio + '\'' +
+                ", localidad='" + localidad + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", ubicacion='" + ubicacion + '\'' +
+                ", urlImagen='" + urlImagen + '\'' +
+                ", trabajo='" + trabajo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado=" + estado +
+                ", imagen=" + imagen +
+                '}';
     }
 }
