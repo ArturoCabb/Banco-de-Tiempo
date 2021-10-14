@@ -8,14 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
-public class MostrarTrabajosFragment extends Fragment {
+public class MostrarTrabajosFragment extends Fragment{
+    public DatabaseReference databaseReference;
+
+    TrabajosModel vo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,7 +61,6 @@ public class MostrarTrabajosFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mostrar_trabajos, container, false);
@@ -59,6 +68,7 @@ public class MostrarTrabajosFragment extends Fragment {
 
         listaTrabajos = new ArrayList<>();
         recyclerTrabajos.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         llenarLista();
 
@@ -80,18 +90,28 @@ public class MostrarTrabajosFragment extends Fragment {
         return view;
     }
 
-    private void llenarLista() {
-        listaTrabajos.add(new TrabajosModel("Albañil","Juan", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("Constructor","Pedro", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("dsfds","Carla", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("Constrvdfgvductor","Sofia", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("jiudasnj","Elisa", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("fdsjkfvndsjn","Maria", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("jcdjnvjw","Paco", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("nhfuihfidsjfkd","Ana", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("asfhdsiujfodsjfjkdsbvfbds","Paola", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("hdsuhcdsj","Daniela", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
-        listaTrabajos.add(new TrabajosModel("jcdjsndsvlmdsl","Maria José", "Realizacion de trabajos al exterior de casa como jardines, albercas", R.drawable.constructor));
+
+    public void llenarLista() {
+
+        databaseReference =  FirebaseDatabase.getInstance().getReference();
+
+        databaseReference.child("trabajos").orderByKey().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data: snapshot.getChildren()){
+                    TrabajosModel trabajador = data.getValue(TrabajosModel.class);
+                    listaTrabajos.add(new TrabajosModel( trabajador.getDescripcion(), trabajador.getEstado() ));
+                    Log.println(Log.ASSERT,"datos: ", trabajador.descripcion);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -100,4 +120,6 @@ public class MostrarTrabajosFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
     }
+
+
 }
