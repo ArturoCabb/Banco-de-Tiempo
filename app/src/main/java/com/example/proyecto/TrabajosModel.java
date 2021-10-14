@@ -21,9 +21,9 @@ public class TrabajosModel {
     }
 
 
-    public TrabajosModel(String trabajo, String nombre, String descripcion, int estado) {
+    public TrabajosModel(String trabajo, String nombre, String descripcion, int imagen) {
         this.descripcion = descripcion;
-        this.estado = estado;
+        this.imagen = imagen;
     }
 
 
