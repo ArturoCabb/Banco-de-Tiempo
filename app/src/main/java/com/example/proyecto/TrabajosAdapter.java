@@ -15,10 +15,10 @@ import java.util.ArrayList;
 
 public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHolderMostrarTrabajos> implements View.OnClickListener{
 
-    ArrayList<TrabajosVo> listTrabajos;
+    ArrayList<TrabajosModel> listTrabajos;
     private View.OnClickListener listener;
 
-    public TrabajosAdapter(ArrayList<TrabajosVo> listTrabajos) {
+    public TrabajosAdapter(ArrayList<TrabajosModel> listTrabajos) {
         this.listTrabajos = listTrabajos;
     }
 
@@ -32,10 +32,10 @@ public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarTrabajos holder, int position) {
-        holder.etiTrabajo.setText(listTrabajos.get(position).getNombreTrabajo());
-        holder.etiTrabajador.setText(listTrabajos.get(position).getNombreTrabajador());
-        holder.etiDescripcionTrabajo.setText(listTrabajos.get(position).getDescripcionTrabajo());
-        holder.fotoTrabajador.setImageResource(listTrabajos.get(position).getFotoTrabajador());
+        holder.etiTrabajo.setText(listTrabajos.get(position).getTrabajo());
+        holder.etiTrabajador.setText(listTrabajos.get(position).getNombre());
+        holder.etiDescripcionTrabajo.setText(listTrabajos.get(position).getDescripcion());
+        holder.fotoTrabajador.setImageResource(listTrabajos.get(position).getImagen());
 
     }
 
