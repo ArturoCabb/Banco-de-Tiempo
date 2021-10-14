@@ -33,6 +33,14 @@ public class TrabajosModel {
     }
 
 
+    public TrabajosModel(String trabajo, String nombre, String descripcion, String urlImagen) {
+        this.trabajo = trabajo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.urlImagen = urlImagen;
+    }
+
+
     public TrabajosModel(String correo, String hrfin, String hrinicio,
                          String localidad, String telefono, String ubicacion, String urlImagen,
                          String nombre) {

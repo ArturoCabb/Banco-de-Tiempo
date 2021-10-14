@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHolderMostrarTrabajos> implements View.OnClickListener{
@@ -35,7 +37,13 @@ public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHo
         holder.etiTrabajo.setText(listTrabajos.get(position).getTrabajo());
         holder.etiTrabajador.setText(listTrabajos.get(position).getNombre());
         holder.etiDescripcionTrabajo.setText(listTrabajos.get(position).getDescripcion());
-        holder.fotoTrabajador.setImageResource(listTrabajos.get(position).getImagen());
+        Glide.with(holder.fotoTrabajador.getContext())
+                .load(listTrabajos.get(position).getUrlImagen())
+                .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                .fitCenter()
+                .circleCrop()
+                .into(holder.fotoTrabajador);
+        //holder.fotoTrabajador.setImageResource(listTrabajos.get(position).getImagen());
 
     }
 
@@ -57,6 +65,7 @@ public class TrabajosAdapter extends RecyclerView.Adapter<TrabajosAdapter.ViewHo
 
     public class ViewHolderMostrarTrabajos extends RecyclerView.ViewHolder {
 
+        String urlImage;
         TextView etiTrabajo, etiTrabajador, etiDescripcionTrabajo;
         ImageView fotoTrabajador;
 
