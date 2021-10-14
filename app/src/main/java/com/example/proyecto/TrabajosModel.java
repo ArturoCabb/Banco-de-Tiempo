@@ -15,6 +15,10 @@ public class TrabajosModel {
     int estado;
     int imagen;
 
+    public TrabajosModel(){
+
+    }
+
     public TrabajosModel(String descripcion, int estado) {
         this.descripcion = descripcion;
         this.estado = estado;
