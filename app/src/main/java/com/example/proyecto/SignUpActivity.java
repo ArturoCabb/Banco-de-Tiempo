@@ -75,8 +75,16 @@ public class SignUpActivity extends AppCompatActivity {
                 String edad = x_edad.getText().toString();
                 String localidad = x_localidad.getText().toString();
                 String telefono = x_telefono.getText().toString();
+                String nombre = x_usuario.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)){
                     Toast.makeText(getApplicationContext(), "Escriba su Email y Contraseña", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (email.length()>320) {
+                    Toast.makeText(getApplicationContext(), "Correo invalido", Toast.LENGTH_LONG).show();
+                }
+                if (!isValid(email)){
+                    Toast.makeText(getApplicationContext(), "El Correo es invalido", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (pass.length() < 6){
@@ -87,9 +95,20 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Las Contraseñas no coinciden", Toast.LENGTH_LONG).show();
                     return;
                 }
-                String nombre = x_usuario.getText().toString();
+                if (nombre.length()>150) {
+                    Toast.makeText(getApplicationContext(), "Su Nombre es demasiado largo", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (telefono.length() > 10){
+                    Toast.makeText(getApplicationContext(), "Ingrese su telefono a 10 digitos", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (TextUtils.isEmpty(nombre)){
                     Toast.makeText(getApplicationContext(), "Escriba su Nombre", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (!Terminos.isChecked()){
+                    Toast.makeText(getApplicationContext(), "Confirmar los terminos y condiciones", Toast.LENGTH_LONG).show();
                     return;
                 }
                 usuario = new Usuario(email,pass, nombre);
@@ -109,6 +128,19 @@ public class SignUpActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         //FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
+    }
+
+    public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 
     public void registerUser(String email, String pass, String nombre, String edad, String localidad, String telefono){
