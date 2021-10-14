@@ -35,7 +35,7 @@
         android:layout_height="130dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Ingrese la descripcion del trabajo"
+        android:hint="Ingrese descripcion del trabajo e iinformación necesaria"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
