@@ -97,7 +97,7 @@ public class MostrarTrabajosFragment extends Fragment{
 
         databaseReference =  FirebaseDatabase.getInstance().getReference();
 
-        databaseReference.child("Users").orderByKey().addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByKey().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data : snapshot.getChildren()) {
