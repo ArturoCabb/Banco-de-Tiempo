@@ -80,10 +80,14 @@ public class MostrarTrabajosFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ContratarActivity.class);
-                intent.putExtra("nombreTrabajo", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getTrabajo());
-                intent.putExtra("nombreTrabajador", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getNombre());
-                intent.putExtra("descripcionTrabajo", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getDescripcion());
-                intent.putExtra("imgProfile", listaTrabajos.get(recyclerTrabajos.getChildAdapterPosition(view)).getImagen());
+                intent.putExtra("nombreTrabajo", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getTrabajo());
+                intent.putExtra("nombreTrabajador", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getNombre());
+                intent.putExtra("descripcionTrabajo", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getDescripcion());
+                intent.putExtra("imgProfile", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getImagen());
                 getActivity().startActivity(intent);
             }
         });
@@ -105,7 +109,11 @@ public class MostrarTrabajosFragment extends Fragment{
 
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
-                        listaTrabajos.add(new TrabajosModel(trabajos.getKey(), model.getNombre(),des.getDescripcion(), model.getUrlImageProfile()));
+                        listaTrabajos.add(new TrabajosModel(model.getCorreo(), model.getEdad(),
+                                model.getHrfin(), model.getHrinicio(), model.getLocalidad(),
+                                model.getNombre(), model.getTelefono(), model.getUbicacion(),
+                                model.getUrlImageProfile(), trabajos.getKey() ,des.getDescripcion(),
+                                des.getEstado()));
                             Log.println(Log.ASSERT, "Datos: ", trabajos.toString());
                             Log.println(Log.ASSERT, "Dentro de datosTrabajos", des.toString());
                     }
@@ -129,5 +137,8 @@ public class MostrarTrabajosFragment extends Fragment{
 
     }
 
-
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }
