@@ -3,6 +3,9 @@ package com.example.proyecto;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -40,6 +44,8 @@ public class SignUpActivity extends AppCompatActivity {
     private ImageView imagenPerfil;
     private EditText x_usuario, x_email, x_pass, x_pass2, x_edad, x_localidad, x_telefono;
     private Button btnRegistro;
+    private CheckBox terminos;
+
 
 
 
@@ -58,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
         x_localidad = findViewById(R.id.etLocalidad);
         btnRegistro = findViewById(R.id.btnSignUp);
         x_telefono = findViewById(R.id.ettelefono);
-
+        terminos = findViewById(R.id.terminos);
 
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USER);
@@ -107,7 +113,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Escriba su Nombre", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (!Terminos.isChecked()){
+                if (!terminos.isChecked()){
                     Toast.makeText(getApplicationContext(), "Confirmar los terminos y condiciones", Toast.LENGTH_LONG).show();
                     return;
                 }
