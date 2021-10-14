@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     MostrarTrabajosFragment trabajosFragment = new MostrarTrabajosFragment();
     CursoFragment cursoFragment = new CursoFragment();
-    MessageFragment messageFragment = new MessageFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
 
@@ -42,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navegacion_actividades:
                     loadFragment(cursoFragment);
-                    return true;
-                case R.id.navegacion_chat:
-                    loadFragment(messageFragment);
                     return true;
                 case R.id.navegacion_perfil:
                     loadFragment(profileFragment);

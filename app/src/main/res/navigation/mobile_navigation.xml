@@ -19,9 +19,4 @@
         android:name="com.example.proyecto.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-    <activity
-        android:id="@+id/messageFragment"
-        android:name="com.example.proyecto.MessageFragment"
-        android:label="fragment_message"
-        tools:layout="@layout/fragment_message" />
 </navigation>

@@ -2,13 +2,18 @@ package com.example.proyecto;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.net.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,6 +21,7 @@ import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,7 +60,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         mAuth = FirebaseAuth.getInstance();
-
         imagenPerfil = findViewById(R.id.imgIcono4);
         x_usuario = findViewById(R.id.etCreaUsuario);
         x_email = findViewById(R.id.editTextTextEmailAddress);
@@ -65,7 +70,6 @@ public class SignUpActivity extends AppCompatActivity {
         btnRegistro = findViewById(R.id.btnSignUp);
         x_telefono = findViewById(R.id.ettelefono);
         terminos = findViewById(R.id.terminos);
-
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USER);
         mAuth = FirebaseAuth.getInstance();
@@ -125,8 +129,30 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
+        TextView textView = findViewById(R.id.terminos);
+
+        String text = "Acepto los terminos y condiciones";
+
+        SpannableString ss = new SpannableString(text);
+
+        ClickableSpan clickableSpan1= new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View view) {
+                String url = "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiYzqfGjcnzAhXsk2oFHbPcCD8QFnoECAYQAQ&url=https%3A%2F%2Fwww.xerox.es%2Foficina%2Flatest%2FOPBTC-01.PDF&usg=AOvVaw1KPjeF35UWVjuhkjCRe-iY";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        };
+
+        ss.setSpan(clickableSpan1,10,33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textView.setText(ss);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
 
     }
+
+
 
     @Override
     public void onStart() {

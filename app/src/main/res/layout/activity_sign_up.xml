@@ -48,7 +48,7 @@
         android:id="@+id/terminos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Acepto los terminos y codiciones"
+        android:text="Acepto los terminos y condiciones"
         app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
         app:layout_constraintEnd_toEndOf="@+id/etConfirmaContrasena"
         app:layout_constraintStart_toStartOf="@+id/etConfirmaContrasena"
