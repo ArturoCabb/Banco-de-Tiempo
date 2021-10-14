@@ -84,7 +84,7 @@ public class ModificarTrabajoActivity extends AppCompatActivity {
         String des = descripcion.getText().toString();
 
         if(!TextUtils.isEmpty(act) || !TextUtils.isEmpty(des)) {
-            CartaVida datos = new CartaVida(des, 0);
+            TrabajosModel datos = new TrabajosModel(des, 0);
             database.child("trabajos").child(userID).child(act).setValue(datos);
             StorageReference miRef = reference.child("files/comprobante/" + userID + "/" + act + ".pdf");
             miRef.putFile(FILEBMP).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

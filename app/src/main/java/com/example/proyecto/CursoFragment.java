@@ -28,7 +28,7 @@ public class CursoFragment extends Fragment {
     private String mParam2;
 
     RecyclerView recyclerCurso;
-    ArrayList<CursoVo> listaCurso;
+    ArrayList<TrabajosModel> listaCurso;
 
     public CursoFragment() {
         // Required empty public constructor
@@ -82,9 +82,9 @@ public class CursoFragment extends Fragment {
     }
 
     private void llenarLista() {
-        listaCurso.add(new CursoVo("Constructor","Pedro", "20 min", R.drawable.constructor));
-        listaCurso.add(new CursoVo("Constructor","Pedro", "20 min", R.drawable.constructor));
-        listaCurso.add(new CursoVo("Constructor","Pedro", "20 min", R.drawable.constructor));
+        listaCurso.add(new TrabajosModel("Constructor","Pedro", "20 min", R.drawable.constructor));
+        listaCurso.add(new TrabajosModel("Constructor","Pedro", "20 min", R.drawable.constructor));
+        listaCurso.add(new TrabajosModel("Constructor","Pedro", "20 min", R.drawable.constructor));
 
     }
 

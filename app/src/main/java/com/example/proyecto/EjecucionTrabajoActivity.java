@@ -26,8 +26,6 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
     }
 
     public void mensaje(View view) {
-        Intent intent = new Intent(this, ChatActivity.class);
-        startActivity(intent);
     }
 
     public void terminar(View view) {

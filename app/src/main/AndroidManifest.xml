@@ -34,11 +34,6 @@
             android:exported="true"
             android:theme="@style/Theme.Proyecto.NoActionBar" />
         <activity
-            android:name=".ChatActivity"
-            android:exported="true"
-            android:label="@string/title_activity_chat"
-            android:theme="@style/Theme.Proyecto.NoActionBar" />
-        <activity
             android:name=".CartaVidaActivity"
             android:exported="true"
             android:label="@string/title_activity_carta_vida"
