@@ -11,6 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 
 public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMostrarCurso> implements View.OnClickListener{
@@ -32,10 +36,16 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarCurso holder, int position) {
-        holder.etiCurso.setText(listCurso.get(position).getNombre());
-        //holder.etiEstado.setText(listCurso.get(position).getEstado());
-        //holder.etiTiempo.setText(listCurso.get(position).getTiempo());
-        holder.fotoTrabajador.setImageResource(listCurso.get(position).getImagen());
+        String estado = Integer.toString(listCurso.get(position).getEstado());
+        holder.etiCurso.setText(listCurso.get(position).getTrabajo());
+        holder.etiEstado.setText(estado);
+        holder.etiTiempo.setText(listCurso.get(position).getHrinicio());
+        Glide.with(holder.fotoTrabajador.getContext())
+                .load(listCurso.get(position).getUrlImageProfile())
+                .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                .fitCenter()
+                .circleCrop()
+                .into(holder.fotoTrabajador);
 
     }
 

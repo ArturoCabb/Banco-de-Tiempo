@@ -9,14 +9,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class CursoFragment extends Fragment {
+
+    private FirebaseAuth mAuth;
+    public DatabaseReference databaseReference;
+
+    FirebaseUser currentUser;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +42,8 @@ public class CursoFragment extends Fragment {
     private String mParam2;
 
     RecyclerView recyclerCurso;
-    ArrayList<TrabajosModel> listaCurso;
+    ArrayList<TrabajosModel> listaTrabajos;
+    CursoAdapter adapter;
 
     public CursoFragment() {
         // Required empty public constructor
@@ -58,21 +73,44 @@ public class CursoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_curso, container, false);
         recyclerCurso = view.findViewById(R.id.rvCurso);
 
-        listaCurso = new ArrayList<>();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        listaTrabajos = new ArrayList<>();
         recyclerCurso.setLayoutManager(new LinearLayoutManager(getContext()));
 
         llenarLista();
 
-        CursoAdapter adapter = new CursoAdapter(listaCurso);
+        adapter = new CursoAdapter(listaTrabajos);
 
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), EjecucionTrabajoActivity.class);
-                intent.putExtra("nombreTrabajo", "Constructor");
-                intent.putExtra("nombreTrabajador", "Pedro");
-                intent.putExtra("descripcionTrabajo", "Realizacion de trabajos al exterior de casa como jardines, albercas");
-                intent.putExtra("imgProfile", R.drawable.constructor);
+                Intent intent = new Intent(getActivity(), ContratarActivity.class);
+                intent.putExtra("correo", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getCorreo());
+                intent.putExtra("edad", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getEdad());
+                intent.putExtra("hrfin", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getHrfin());
+                intent.putExtra("hrinicio", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getHrinicio());
+                intent.putExtra("localidad", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getLocalidad());
+                intent.putExtra("nombre", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getNombre());
+                intent.putExtra("telefono", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getTelefono());
+                intent.putExtra("ubicacion", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getUbicacion());
+                intent.putExtra("urlImageProfile", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getUrlImageProfile());
+                intent.putExtra("trabajo", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getTrabajo());
+                intent.putExtra("descripcion", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getDescripcion());
+                intent.putExtra("estado", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getEstado());
                 getActivity().startActivity(intent);
             }
         });
@@ -82,9 +120,32 @@ public class CursoFragment extends Fragment {
     }
 
     private void llenarLista() {
-        listaCurso.add(new TrabajosModel("Constructor","Pedro", "20 min", R.drawable.constructor));
-        listaCurso.add(new TrabajosModel("Constructor","Pedro", "20 min", R.drawable.constructor));
-        listaCurso.add(new TrabajosModel("Constructor","Pedro", "20 min", R.drawable.constructor));
+        databaseReference =  FirebaseDatabase.getInstance().getReference();
+        String usuario = currentUser.getUid();
+
+        databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data : snapshot.getChildren()) {
+                    TrabajosModel model = data.getValue(TrabajosModel.class);
+                    for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
+                        TrabajosModel des = trabajos.getValue(TrabajosModel.class);
+                        listaTrabajos.add(new TrabajosModel(model.getCorreo(), model.getEdad(),
+                                model.getHrfin(), model.getHrinicio(), model.getLocalidad(),
+                                model.getNombre(), model.getTelefono(), model.getUbicacion(),
+                                model.getUrlImageProfile(), trabajos.getKey(), des.getDescripcion(),
+                                des.getEstado()));
+                        }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
