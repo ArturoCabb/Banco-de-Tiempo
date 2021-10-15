@@ -12,7 +12,7 @@
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_chat.xml" value="0.315625" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_comment.xml" value="0.315625" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_contratacion.xml" value="0.315625" />
-        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_contratar.xml" value="0.2" />
+        <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_contratar.xml" value="0.4" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_ejecucion_trabajo.xml" value="0.315625" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_estatus.xml" value="0.315625" />
         <entry key="..\:/Users/Isra/Documents/TEC_Escuela/Semestre_5/apss_movil/tiem_comp/proyecto/app/src/main/res/layout/activity_login.xml" value="0.37817028985507245" />
@@ -92,10 +92,6 @@
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/trabajos.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/trabajosRecycle.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/oscar/Documents/GitHub/proyecto/app/src/main/res/layout/activity_contratar.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/oscar/Documents/GitHub/proyecto/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/oscar/Documents/GitHub/proyecto/app/src/main/res/layout/fragment_mostrar_trabajos.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/oscar/Documents/GitHub/proyecto/app/src/main/res/layout/trabajos.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_login.xml" value="0.16802536231884058" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/fragment_profile.xml" value="0.13020833333333334" />

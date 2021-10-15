@@ -52,10 +52,14 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
         TextView nombre1 = findViewById(R.id.tvNombrePersonaEjecucion);
         TextView horaI = findViewById(R.id.tvHoraInicioEjecucion);
         TextView horaF = findViewById(R.id.tvHoraFinEjecucion);
+        TextView mail = findViewById(R.id.TEcorreo);
+        TextView phone = findViewById(R.id.TEtelefono);
 
         nombre1.setText(nombre);
         horaI.setText("Hora inicio: " + hrinicio);
         horaF.setText("Hora fin: " + hrfin);
+        mail.setText(correo);
+        phone.setText(telefono);
         Glide.with(this)
                 .load(urlImageProfile)
                 .placeholder(R.drawable.common_google_signin_btn_icon_dark)

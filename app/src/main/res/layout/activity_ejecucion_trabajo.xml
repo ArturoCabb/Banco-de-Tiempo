@@ -55,8 +55,10 @@
         android:id="@+id/tvHoraInicioEjecucion"
         android:layout_width="168dp"
         android:layout_height="22dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="HORA INICIO"
+        app:layout_constraintEnd_toEndOf="@+id/tvNombrePersonaEjecucion"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvNombrePersonaEjecucion"
         app:layout_constraintTop_toBottomOf="@+id/tvNombrePersonaEjecucion" />
 
@@ -69,28 +71,38 @@
         app:layout_constraintStart_toStartOf="@+id/tvHoraInicioEjecucion"
         app:layout_constraintTop_toBottomOf="@+id/tvHoraInicioEjecucion" />
 
-    <Button
-        android:id="@+id/btnReportarTareaEjecucion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:onClick="reportar"
-        android:text="Reportar"
-        android:background="@drawable/secondary_button"
-        app:layout_constraintStart_toStartOf="parent"
+    <TextView
+        android:id="@+id/TEcorreo"
+        android:layout_width="168dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        android:text="CORREO: "
+        app:layout_constraintEnd_toEndOf="@+id/tvHoraFinEjecucion"
+        app:layout_constraintStart_toStartOf="@+id/tvHoraFinEjecucion"
         app:layout_constraintTop_toBottomOf="@+id/tvHoraFinEjecucion" />
+
+    <TextView
+        android:id="@+id/TEtelefono"
+        android:layout_width="168dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        android:text="TELEFONO: "
+        app:layout_constraintEnd_toEndOf="@+id/TEcorreo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/TEcorreo"
+        app:layout_constraintTop_toBottomOf="@+id/TEcorreo" />
 
     <Button
         android:id="@+id/btTerminarEjecucion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:background="@drawable/secondary_button"
         android:onClick="terminar"
         android:text="Terminar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
-        app:layout_constraintStart_toEndOf="@+id/btnReportarTareaEjecucion"
-        app:layout_constraintTop_toTopOf="@+id/btnReportarTareaEjecucion" />
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/TEtelefono"
+        app:layout_constraintTop_toBottomOf="@+id/TEtelefono" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

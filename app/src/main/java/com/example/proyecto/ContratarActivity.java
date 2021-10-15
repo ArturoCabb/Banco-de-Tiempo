@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import org.w3c.dom.Text;
+
 public class ContratarActivity extends AppCompatActivity {
 
     String correo;
@@ -53,11 +55,15 @@ public class ContratarActivity extends AppCompatActivity {
         TextView tvLugar = (TextView) findViewById(R.id.tvLugarDeTrabajo);
         TextView tvDescripcion = (TextView) findViewById(R.id.tvDescripcionTrabajo);
         ImageView foto = (ImageView) findViewById(R.id.imgTrabajador);
+        TextView tvmail = (TextView) findViewById(R.id.contratarmail);
+        TextView tvtelefono = (TextView) findViewById(R.id.contratartelefono);
 
         tvTrabajo.setText(trabajo);
         tvTrabajador.setText(nombre);
         tvLugar.setText(localidad);
         tvDescripcion.setText(descripcion);
+        tvmail.setText(correo);
+        tvtelefono.setText(telefono);
         Glide.with(this)
                 .load(urlImageProfile)
                 .placeholder(R.drawable.common_google_signin_btn_icon_dark)
