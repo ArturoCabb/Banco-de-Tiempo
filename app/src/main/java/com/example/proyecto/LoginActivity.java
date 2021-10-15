@@ -1,8 +1,10 @@
 package com.example.proyecto;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,9 +12,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,11 +27,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private static final String TAG = "LoginActivity";
-
     private EditText correo;
     private EditText contrasena;
     private Button btnIniciarSesion;
     private Button btnSignUp;
+    private TextView forgotTextLink;
 
     public void crearC(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
@@ -43,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         contrasena = findViewById(R.id.etLoginContrasena);
         btnIniciarSesion = findViewById(R.id.btnLoginLogin);
         btnSignUp = findViewById(R.id.btnLoginSignUp);
+        forgotTextLink = findViewById(R.id.forgotPassword);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -68,7 +74,40 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
 
+        });
+        forgotTextLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText resetMail = new EditText(view.getContext());
+                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
+                passwordResetDialog.setTitle("Reiniciar Clave");
+                passwordResetDialog.setMessage("Ingresa tu Email para reiniciar la clave");
+                passwordResetDialog.setView(resetMail);
 
+                passwordResetDialog.setPositiveButton("si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String mail = resetMail.getText().toString();
+                        mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(LoginActivity.this,"Link enviado a tu correo",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LoginActivity.this,"Error email invalido"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                passwordResetDialog.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //close the dialog
+                    }
+                });
+            }
         });
     }
 
