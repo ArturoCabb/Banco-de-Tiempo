@@ -7,32 +7,41 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
 public class ContratarActivity extends AppCompatActivity {
 
-    String key;
-    String correo;
-    String edad;
-    String hrfin;
-    String hrinicio;
-    String localidad;
-    String nombre;
-    String telefono;
-    String ubicacion;
-    String urlImageProfile;
-    String trabajo;
-    String descripcion;
-    int estado;
+    private String key;
+    private String correo;
+    private String edad;
+    private String hrfin;
+    private String hrinicio;
+    private String localidad;
+    private String nombre;
+    private String telefono;
+    private String ubicacion;
+    private String urlImageProfile;
+    private String trabajo;
+    private String descripcion;
+    private int estado;
+
+
+    private FirebaseAuth mAuth;
+    public DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contratar);
-
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
@@ -79,6 +88,22 @@ public class ContratarActivity extends AppCompatActivity {
     }
 
     public void contratar(View view) {
+        mAuth = FirebaseAuth.getInstance();
+        String currentUser = mAuth.getCurrentUser().getUid();
+        databaseReference =  FirebaseDatabase.getInstance().getReference();
+        if (estado != 0) {
+            Toast.makeText(this, "La actividad ya está en curso", Toast.LENGTH_SHORT).show();
+        } else {
+            irAEjecucion();
+        }
+        //DatabaseReference valor = databaseReference.child("Users").child(key).child("trabajos").child(trabajo);
+
+
+
+
+    }
+
+    private void irAEjecucion() {
         Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
         intent.putExtra("key", key);
         intent.putExtra("correo", correo);
