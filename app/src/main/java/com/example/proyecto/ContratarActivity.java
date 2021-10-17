@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 
 public class ContratarActivity extends AppCompatActivity {
 
+    String key;
     String correo;
     String edad;
     String hrfin;
@@ -35,6 +36,7 @@ public class ContratarActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
+            key = extras.getString("key");
             correo = extras.getString("correo");
             edad = extras.getString("edad");
             hrfin = extras.getString("hrfin");
@@ -78,6 +80,7 @@ public class ContratarActivity extends AppCompatActivity {
 
     public void contratar(View view) {
         Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
+        intent.putExtra("key", key);
         intent.putExtra("correo", correo);
         intent.putExtra("edad", edad);
         intent.putExtra("hrfin", hrfin);

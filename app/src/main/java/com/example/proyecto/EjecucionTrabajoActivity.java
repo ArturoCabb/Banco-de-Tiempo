@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 public class EjecucionTrabajoActivity extends AppCompatActivity {
 
+    String key;
     String correo;
     String edad;
     String hrfin;
@@ -32,6 +33,7 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
+            key = extras.getString("key");
             correo = extras.getString("correo");
             edad = extras.getString("edad");
             hrfin = extras.getString("hrfin");
@@ -76,11 +78,25 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
 
     public void reportar(View view) {
         Intent intent = new Intent(this, ReportarActivity.class);
+        intent.putExtra("key", key);
+        intent.putExtra("correo", correo);
+        intent.putExtra("edad", edad);
+        intent.putExtra("hrfin", hrfin);
+        intent.putExtra("hrinicio", hrinicio);
+        intent.putExtra("localidad", localidad);
+        intent.putExtra("nombre", nombre);
+        intent.putExtra("telefono", telefono);
+        intent.putExtra("ubicacion", ubicacion);
+        intent.putExtra("urlImageProfile", urlImageProfile);
+        intent.putExtra("trabajo", trabajo);
+        intent.putExtra("descripcion", descripcion);
+        intent.putExtra("estado", estado);
         startActivity(intent);
     }
 
     public void terminar(View view) {
         Intent intent = new Intent(this, CalificarActivity.class);
+        intent.putExtra("key", key);
         intent.putExtra("correo", correo);
         intent.putExtra("edad", edad);
         intent.putExtra("hrfin", hrfin);

@@ -87,6 +87,8 @@ public class CursoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ContratarActivity.class);
+                intent.putExtra("key", listaTrabajos.get(recyclerCurso
+                        .getChildAdapterPosition(view)).getKey());
                 intent.putExtra("correo", listaTrabajos.get(recyclerCurso
                         .getChildAdapterPosition(view)).getCorreo());
                 intent.putExtra("edad", listaTrabajos.get(recyclerCurso
@@ -123,14 +125,14 @@ public class CursoFragment extends Fragment {
         databaseReference =  FirebaseDatabase.getInstance().getReference();
         String usuario = currentUser.getUid();
 
-        databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").orderByKey().equalTo(usuario).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data : snapshot.getChildren()) {
                     TrabajosModel model = data.getValue(TrabajosModel.class);
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
-                        listaTrabajos.add(new TrabajosModel(model.getCorreo(), model.getEdad(),
+                        listaTrabajos.add(new TrabajosModel(data.getKey() ,model.getCorreo(), model.getEdad(),
                                 model.getHrfin(), model.getHrinicio(), model.getLocalidad(),
                                 model.getNombre(), model.getTelefono(), model.getUbicacion(),
                                 model.getUrlImageProfile(), trabajos.getKey(), des.getDescripcion(),

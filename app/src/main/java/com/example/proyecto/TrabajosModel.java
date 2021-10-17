@@ -1,22 +1,40 @@
 package com.example.proyecto;
 
 public class TrabajosModel {
-    String correo;
-    String edad;
-    String hrfin;
-    String hrinicio;
-    String localidad;
-    String nombre;
-    String telefono;
-    String ubicacion;
-    String urlImageProfile;
-    String trabajo;
-    String descripcion;
-    int estado;
-    int imagen;
 
-    public TrabajosModel(){
+    private String key;
+    private String correo;
+    private String edad;
+    private String hrfin;
+    private String hrinicio;
+    private String localidad;
+    private String nombre;
+    private String telefono;
+    private String ubicacion;
+    private String urlImageProfile;
+    private String trabajo;
+    private String descripcion;
+    private int estado;
+    private int imagen;
 
+    public TrabajosModel() {}
+
+    public TrabajosModel(String key, String correo, String edad, String hrfin, String hrinicio,
+                         String localidad, String nombre, String telefono, String ubicacion,
+                         String urlImageProfile, String trabajo, String descripcion, int estado) {
+        this.key = key;
+        this.correo = correo;
+        this.edad = edad;
+        this.hrfin = hrfin;
+        this.hrinicio = hrinicio;
+        this.localidad = localidad;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.ubicacion = ubicacion;
+        this.urlImageProfile = urlImageProfile;
+        this.trabajo = trabajo;
+        this.descripcion = descripcion;
+        this.estado = estado;
     }
 
     public TrabajosModel(String descripcion, int estado) {
@@ -54,7 +72,6 @@ public class TrabajosModel {
         this.nombre = nombre;
     }
 
-
     public TrabajosModel(String correo, String edad, String hrfin, String hrinicio,
                          String localidad, String nombre, String telefono, String ubicacion,
                          String urlImageProfile, String trabajo, String descripcion, int estado) {
@@ -70,6 +87,14 @@ public class TrabajosModel {
         this.trabajo = trabajo;
         this.descripcion = descripcion;
         this.estado = estado;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getCorreo() {

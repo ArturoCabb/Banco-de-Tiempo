@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class CalificarActivity extends AppCompatActivity {
 
+    String key;
     String correo;
     String edad;
     String hrfin;
@@ -25,10 +26,11 @@ public class CalificarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calificar);
+        setContentView(R.layout.activity_ejecucion_trabajo);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
+            key = extras.getString("key");
             correo = extras.getString("correo");
             edad = extras.getString("edad");
             hrfin = extras.getString("hrfin");

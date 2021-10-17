@@ -14,10 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -25,6 +28,8 @@ import java.util.HashMap;
 
 public class MostrarTrabajosFragment extends Fragment{
     public DatabaseReference databaseReference;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    String user_id = mAuth.getCurrentUser().getUid();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +83,8 @@ public class MostrarTrabajosFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ContratarActivity.class);
+                intent.putExtra("key", listaTrabajos.get(recyclerTrabajos
+                        .getChildAdapterPosition(view)).getKey());
                 intent.putExtra("correo", listaTrabajos.get(recyclerTrabajos
                         .getChildAdapterPosition(view)).getCorreo());
                 intent.putExtra("edad", listaTrabajos.get(recyclerTrabajos
@@ -115,7 +122,7 @@ public class MostrarTrabajosFragment extends Fragment{
 
         databaseReference =  FirebaseDatabase.getInstance().getReference();
 
-        databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").orderByKey().endBefore(user_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data : snapshot.getChildren()) {
@@ -123,14 +130,14 @@ public class MostrarTrabajosFragment extends Fragment{
 
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
-                        listaTrabajos.add(new TrabajosModel(model.getCorreo(), model.getEdad(),
-                                model.getHrfin(), model.getHrinicio(), model.getLocalidad(),
-                                model.getNombre(), model.getTelefono(), model.getUbicacion(),
-                                model.getUrlImageProfile(), trabajos.getKey() ,des.getDescripcion(),
-                                des.getEstado()));
-                             // Log.println(Log.ASSERT, "Datos: ", trabajos.toString());
+                        listaTrabajos.add(new TrabajosModel(data.getKey(), model.getCorreo(),
+                                model.getEdad(), model.getHrfin(), model.getHrinicio(),
+                                model.getLocalidad(), model.getNombre(), model.getTelefono(),
+                                model.getUbicacion(), model.getUrlImageProfile(), trabajos.getKey()
+                                ,des.getDescripcion(), des.getEstado()));
                              // Log.println(Log.ASSERT, "Dentro de datosTrabajos", des.toString());
                     }
+                Log.println(Log.ASSERT, "User ID: ", listaTrabajos.toString());
                 }
 
                 adapter.notifyDataSetChanged();
@@ -143,6 +150,31 @@ public class MostrarTrabajosFragment extends Fragment{
         });
 
 
+
+        databaseReference.child("Users").orderByKey().startAfter(user_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data : snapshot.getChildren()) {
+                    TrabajosModel model = data.getValue(TrabajosModel.class);
+
+                    for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
+                        TrabajosModel des = trabajos.getValue(TrabajosModel.class);
+                        listaTrabajos.add(new TrabajosModel(data.getKey(), model.getCorreo(),
+                                model.getEdad(), model.getHrfin(), model.getHrinicio(),
+                                model.getLocalidad(), model.getNombre(), model.getTelefono(),
+                                model.getUbicacion(), model.getUrlImageProfile(), trabajos.getKey(),
+                                des.getDescripcion(), des.getEstado()));
+                    }
+                     Log.println(Log.ASSERT, "Dentro de datosTrabajos", listaTrabajos.toString());
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
