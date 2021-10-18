@@ -132,11 +132,12 @@ public class CursoFragment extends Fragment {
                     TrabajosModel model = data.getValue(TrabajosModel.class);
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
+                        if(des.getEstado() == 3){
                         listaTrabajos.add(new TrabajosModel(data.getKey() ,model.getCorreo(), model.getEdad(),
                                 model.getHrfin(), model.getHrinicio(), model.getLocalidad(),
                                 model.getNombre(), model.getTelefono(), model.getUbicacion(),
                                 model.getUrlImageProfile(), trabajos.getKey(), des.getDescripcion(),
-                                des.getEstado()));
+                                des.getEstado()));}
                         }
                 }
 

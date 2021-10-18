@@ -99,26 +99,14 @@ public class ContratarActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         String currentUser = mAuth.getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference();
-        mdatabase.addChildEventListener(new ChildEventListener() {
+
+        DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference()
+        .child("Users").child(key).child("trabajos").child(trabajo);
+        mdatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int es = Integer.parseInt(snapshot.child("estado").getValue().toString());
+                estado = es;
             }
 
             @Override
@@ -126,19 +114,17 @@ public class ContratarActivity extends AppCompatActivity {
 
             }
         });
-        int est = Integer.parseInt(mdatabase.child("Usuarios").child(key).child("trabajos").child(trabajo)
-                .child("estado").toString());
-        if (est != 0) {
-            //Toast.makeText("La actividad ya está en curso", Toast.LENGTH_SHORT).show();
-        } else if (est == 0) {
-            est = 1;
-            mdatabase.child(key).child("trabajos").child(trabajo).child("estado")
-                    .setValue(est);
-        } else if (est == 3) {
+
+        if (estado == 3) {
+            Toast.makeText(this, "La actividad ya está en curso", Toast.LENGTH_SHORT).show();
             irAEjecucion();
+        } else if (estado == 0) {
+            mdatabase.child("estado").setValue(1);
+            mdatabase.child("quienContrata").setValue(currentUser);
+
+
         }
     }
-    //DatabaseReference valor = databaseReference.child("Users").child(key).child("trabajos").child(trabajo);
 
     private void irAEjecucion() {
         Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
