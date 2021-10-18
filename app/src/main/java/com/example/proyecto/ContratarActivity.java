@@ -126,7 +126,7 @@ public class ContratarActivity extends AppCompatActivity {
     }
 
     private void irAEjecucion() {
-        Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
+        Intent intent = new Intent(this, ContratacionActivity.class);
         intent.putExtra("key", key);
         intent.putExtra("correo", correo);
         intent.putExtra("edad", edad);

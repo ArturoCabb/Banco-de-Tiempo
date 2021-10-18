@@ -86,7 +86,7 @@ public class CursoFragment extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ContratarActivity.class);
+                Intent intent = new Intent(getActivity(), EjecucionTrabajoActivity.class);
                 intent.putExtra("key", listaTrabajos.get(recyclerCurso
                         .getChildAdapterPosition(view)).getKey());
                 intent.putExtra("correo", listaTrabajos.get(recyclerCurso
