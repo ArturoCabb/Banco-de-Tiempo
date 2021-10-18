@@ -8,43 +8,46 @@
 
     <ImageView
         android:id="@+id/imageViewIne"
-        android:layout_width="356dp"
-        android:layout_height="189dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="191dp"
+        android:layout_height="182dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <ImageView
         android:id="@+id/imageViewCurp"
-        android:layout_width="356dp"
-        android:layout_height="189dp"
-        android:layout_marginTop="55dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="181dp"
+        android:layout_height="184dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewIne"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIne"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/buttonIne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Subir Ine"
+        android:layout_width="154dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/secondary_button"
+        android:text="Subir Ine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewIne" />
 
     <Button
         android:id="@+id/buttonCurp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Comprobante de domicilio"
+        android:layout_width="182dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/secondary_button"
+        android:text="Comprobante de domicilio"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCurp" />
 
@@ -57,6 +60,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCurp" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCurp"
+        app:layout_constraintVertical_bias="0.852" />
+
+    <ImageView
+        android:id="@+id/imageViewPena"
+        android:layout_width="155dp"
+        android:layout_height="187dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCurp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/buttonPena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPena" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

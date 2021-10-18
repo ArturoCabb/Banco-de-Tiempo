@@ -45,15 +45,19 @@ public class Verificar extends AppCompatActivity {
 
     Button buttonine;
     Button buttoncurp;
+    Button buttonpena;
     Button buttonGuardar;
     ImageView imageviewIne;
     ImageView imageviewCurp;
+    ImageView imageviewpena;
 
     static final int CAM_REQUEST = 100;
     static final int CAM_REQUEST2 = 200;
+    static final int CAM_REQUEST3 = 300;
 
     Bitmap bitmap1 = null;
     Bitmap bitmap2 = null;
+    Bitmap bitmap3 = null;
 
     private FirebaseAuth mAuth;
     private FirebaseStorage storage;
@@ -66,9 +70,11 @@ public class Verificar extends AppCompatActivity {
 
         buttonine = findViewById(R.id.buttonIne);
         buttoncurp = findViewById(R.id.buttonCurp);
+        buttonpena = findViewById(R.id.buttonPena);
         buttonGuardar = findViewById(R.id.buttonGuardar);
         imageviewIne = findViewById(R.id.imageViewIne);
         imageviewCurp = findViewById(R.id.imageViewCurp);
+        imageviewpena = findViewById(R.id.imageViewPena);
 
         if (ContextCompat.checkSelfPermission(Verificar.this, Manifest.permission.CAMERA)
         != PackageManager.PERMISSION_GRANTED)
@@ -101,6 +107,15 @@ public class Verificar extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, CAM_REQUEST2);
+
+            }
+        });
+
+        buttonpena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, CAM_REQUEST3);
 
             }
         });
@@ -151,6 +166,27 @@ public class Verificar extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+                StorageReference miRef2 = reference.child("files/comprobante/" + userID + "/" + "Penales.jpg");
+                imageviewpena.setDrawingCacheEnabled(true);
+                imageviewpena.buildDrawingCache();
+                bitmap3 = imageviewpena.getDrawingCache();
+                ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+                bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
+                byte[] data2 = baos2.toByteArray();
+                UploadTask uploadTask2 = miRef2.putBytes(data2);
+                uploadTask2.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(Verificar.this, "Antecedentes Penales Cargado Correctamente",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Verificar.this, "Error al cargar los antecedentes Penales",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
                 finish();
             }
         });
@@ -168,6 +204,10 @@ public class Verificar extends AppCompatActivity {
         else if(requestCode == CAM_REQUEST2 && resultCode == RESULT_OK){
             bitmap2 = (Bitmap) data.getExtras().get("data");
             imageviewCurp.setImageBitmap(bitmap2);
+        }
+        else if(requestCode == CAM_REQUEST3 && resultCode == RESULT_OK){
+            bitmap3 = (Bitmap) data.getExtras().get("data");
+            imageviewpena.setImageBitmap(bitmap3);
         }
     }
 }
