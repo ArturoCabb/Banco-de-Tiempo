@@ -121,8 +121,7 @@ public class ContratarActivity extends AppCompatActivity {
         } else if (estado == 0) {
             mdatabase.child("estado").setValue(1);
             mdatabase.child("quienContrata").setValue(currentUser);
-
-
+            Toast.makeText(this, "Solicitud enviada, espere a que acepte la otra persona", Toast.LENGTH_SHORT).show();
         }
     }
 
