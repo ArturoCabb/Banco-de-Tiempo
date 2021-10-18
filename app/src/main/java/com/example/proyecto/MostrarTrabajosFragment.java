@@ -161,12 +161,13 @@ public class MostrarTrabajosFragment extends Fragment{
 
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
+                        if (des.getEstado() == 1){
                         listaTrabajos.add(new TrabajosModel(data.getKey(), model.getCorreo(),
                                 model.getEdad(), model.getHrfin(), model.getHrinicio(),
                                 model.getLocalidad(), model.getNombre(), model.getTelefono(),
                                 model.getUbicacion(), model.getUrlImageProfile(), trabajos.getKey(),
                                 des.getDescripcion(), des.getEstado()));
-                    }
+                    }}
                      //Log.println(Log.ASSERT, "Dentro de datosTrabajos", listaTrabajos.toString());
                 }
                 adapter.notifyDataSetChanged();
