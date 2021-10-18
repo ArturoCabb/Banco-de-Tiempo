@@ -29,6 +29,7 @@ public class CursoFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     public DatabaseReference databaseReference;
+    public DatabaseReference dbReference;
 
     FirebaseUser currentUser;
 
@@ -132,12 +133,14 @@ public class CursoFragment extends Fragment {
                     TrabajosModel model = data.getValue(TrabajosModel.class);
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
+                        String quienContrata = des.getQuienContrata();
+                        dbReference = FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener();
+                        String var = dbReference.child("Users").child(quienContrata).child("edad");
+
                         if(des.getEstado() == 1){
-                        listaTrabajos.add(new TrabajosModel(data.getKey() ,model.getCorreo(), model.getEdad(),
-                                model.getHrfin(), model.getHrinicio(), model.getLocalidad(),
-                                model.getNombre(), model.getTelefono(), model.getUbicacion(),
-                                model.getUrlImageProfile(), trabajos.getKey(), des.getDescripcion(),
-                                des.getEstado()));}
+                        listaTrabajos.add(new TrabajosModel(data.get
+
+                        );}
                         }
                 }
 

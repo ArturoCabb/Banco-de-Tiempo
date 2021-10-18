@@ -14,8 +14,36 @@ public class TrabajosModel {
     private String urlImageProfile;
     private String trabajo;
     private String descripcion;
+
+
+
+    private String quienContrata;
     private int estado;
     private int imagen;
+
+    public TrabajosModel(String key, String correo, String edad,
+                         String hrfin, String hrinicio, String localidad,
+                         String nombre, String telefono, String ubicacion,
+                         String urlImageProfile, String trabajo, String descripcion,
+                         String quienContrata, int estado, int imagen) {
+        this.key = key;
+        this.correo = correo;
+        this.edad = edad;
+        this.hrfin = hrfin;
+        this.hrinicio = hrinicio;
+        this.localidad = localidad;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.ubicacion = ubicacion;
+        this.urlImageProfile = urlImageProfile;
+        this.trabajo = trabajo;
+        this.descripcion = descripcion;
+        this.quienContrata = quienContrata;
+        this.estado = estado;
+        this.imagen = imagen;
+    }
+
+
 
     public TrabajosModel() {}
 
@@ -199,6 +227,14 @@ public class TrabajosModel {
 
     public void setImagen(int imagen) {
         this.imagen = imagen;
+    }
+
+    public String getQuienContrata() {
+        return quienContrata;
+    }
+
+    public void setQuienContrata(String quienContrata) {
+        this.quienContrata = quienContrata;
     }
 
     @Override
