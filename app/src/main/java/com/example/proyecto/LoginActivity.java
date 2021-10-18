@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
         forgotTextLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

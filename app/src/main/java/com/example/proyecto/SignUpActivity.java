@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.net.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -107,6 +106,10 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 if (nombre.length()>150) {
                     Toast.makeText(getApplicationContext(), "Su Nombre es demasiado largo", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if(nombre.matches(".\\d.*")){
+                    Toast.makeText(getApplicationContext(), "Su Nombre contiene numeros", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (telefono.length() > 10){
