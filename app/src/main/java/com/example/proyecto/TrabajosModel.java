@@ -14,11 +14,11 @@ public class TrabajosModel {
     private String urlImageProfile;
     private String trabajo;
     private String descripcion;
-
-
-
     private String quienContrata;
+    private String recibe;
     private int estado;
+    private String yo;
+    private boolean estadoSecundario;
     private int imagen;
 
     public TrabajosModel() {}
@@ -45,13 +45,31 @@ public class TrabajosModel {
         this.imagen = imagen;
     }
 
-    public TrabajosModel(String key, String correo, String edad, String nombre, String telefono, String urlImageProfile, int estado) {
+    public TrabajosModel(String key, String correo, String edad, String nombre, String telefono, String urlImageProfile, int estado, String yo, boolean estadoSecundario) {
         this.correo = correo;
         this.edad = edad;
         this.nombre = nombre;
         this.telefono = telefono;
         this.urlImageProfile = urlImageProfile;
         this.estado = estado;
+        this.yo = yo;
+        this.estadoSecundario = estadoSecundario;
+    }
+
+    public TrabajosModel(String key, String recibe, String trabajo, int estado, String correo, String edad,
+                         String nombre, String telefono, String urlImageProfile, String yo,
+                         boolean estadoSecundario) {
+        this.key = key;
+        this.recibe = recibe;
+        this.trabajo = trabajo;
+        this.estado = estado;
+        this.correo = correo;
+        this.edad = edad;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.urlImageProfile = urlImageProfile;
+        this.yo = yo;
+        this.estadoSecundario = estadoSecundario;
     }
 
     public TrabajosModel(String key, String correo, String edad, String hrfin, String hrinicio,
@@ -242,6 +260,30 @@ public class TrabajosModel {
 
     public void setQuienContrata(String quienContrata) {
         this.quienContrata = quienContrata;
+    }
+
+    public String getRecibe() {
+        return recibe;
+    }
+
+    public void setRecibe(String recibe) {
+        this.recibe = recibe;
+    }
+
+    public boolean isEstadoSecundario() {
+        return estadoSecundario;
+    }
+
+    public void setEstadoSecundario(boolean estadoSecundario) {
+        this.estadoSecundario = estadoSecundario;
+    }
+
+    public String getYo() {
+        return yo;
+    }
+
+    public void setYo(String yo) {
+        this.yo = yo;
     }
 
     @Override

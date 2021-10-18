@@ -157,7 +157,8 @@ public class CursoFragment extends Fragment {
                             }
                         });
                         if(des.getEstado() == 1){
-                        listaTrabajos.add(new TrabajosModel(quienContrata, cor, ed, nom, tel, url, des.getEstado()));
+                        listaTrabajos.add(new TrabajosModel(quienContrata, usuario, des.getTrabajo(),
+                                des.getEstado(), cor, ed, nom, tel, url, "yo", true));
                         }
                     }
                 }

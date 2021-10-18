@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -21,6 +28,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
 
     ArrayList<TrabajosModel> listCurso;
     private View.OnClickListener listener;
+    public DatabaseReference dbReference;
 
     public CursoAdapter(ArrayList<TrabajosModel> listCurso) {
         this.listCurso = listCurso;
@@ -36,17 +44,42 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarCurso holder, int position) {
+        int pos = holder.getAdapterPosition();
         String estado = Integer.toString(listCurso.get(position).getEstado());
-        holder.etiCurso.setText(listCurso.get(position).getTrabajo());
+        String yo = listCurso.get(pos).getYo();
+        String trabajo = listCurso.get(pos).getTrabajo();
+        String url = listCurso.get(pos).getUrlImageProfile();
+        String nombre = listCurso.get(pos).getNombre();
+        String correo = listCurso.get(pos).getCorreo();
+        String telefono = listCurso.get(pos).getTelefono();
+
+        holder.etiCurso.setText(trabajo);
         holder.etiEstado.setText(estado);
         holder.etiTiempo.setText(listCurso.get(position).getHrinicio());
         Glide.with(holder.fotoTrabajador.getContext())
-                .load(listCurso.get(position).getUrlImageProfile())
+                .load(url)
                 .placeholder(R.drawable.constructor)
                 .fitCenter()
                 .circleCrop()
                 .into(holder.fotoTrabajador);
 
+        holder.btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbReference =  FirebaseDatabase.getInstance().getReference();
+                dbReference.child("Users").child(listCurso.get(pos).getRecibe())
+                        .child("trabajos").child(listCurso.get(pos).getTrabajo())
+                        .child("estado").setValue(3);
+                Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
+                intent.putExtra("correo", correo);
+                intent.putExtra("telefono", telefono);
+                intent.putExtra("nombre", nombre);
+                intent.putExtra("urlImageProfiel", url);
+                intent.putExtra("trabajo", trabajo);
+                intent.putExtra("muestroBoton", yo);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -69,6 +102,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
 
         TextView etiCurso, etiEstado, etiTiempo;
         ImageView fotoTrabajador;
+        Button btnAceptar;
 
         public ViewHolderMostrarCurso(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +110,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
             etiEstado = (TextView) itemView.findViewById(R.id.tvEsatdoCurso);
             etiTiempo = (TextView) itemView.findViewById(R.id.tvTiempoCurso);
             fotoTrabajador = (ImageView) itemView.findViewById(R.id.imActividad);
+            btnAceptar = (Button) itemView.findViewById(R.id.btAceptarActividad);
         }
     }
 }

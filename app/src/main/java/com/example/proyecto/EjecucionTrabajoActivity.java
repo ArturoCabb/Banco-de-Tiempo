@@ -24,6 +24,7 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
     String urlImageProfile;
     String trabajo;
     String descripcion;
+    boolean muestroBoton;
     int estado;
 
     @Override
@@ -46,6 +47,7 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
             trabajo = extras.getString("trabajo");
             descripcion = extras.getString("descripcion");
             estado = extras.getInt("estado");
+            muestroBoton = extras.getBoolean("muestroBoton");
             //imagenTrabajador = extras.getInt("imgProfile");
         }
 
