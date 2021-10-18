@@ -45,6 +45,7 @@ public class CursoFragment extends Fragment {
     RecyclerView recyclerCurso;
     ArrayList<TrabajosModel> listaTrabajos;
     CursoAdapter adapter;
+    private String cor, ed, nom, tel, url;
 
     public CursoFragment() {
         // Required empty public constructor
@@ -134,14 +135,31 @@ public class CursoFragment extends Fragment {
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
                         String quienContrata = des.getQuienContrata();
-                        dbReference = FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener();
-                        String var = dbReference.child("Users").child(quienContrata).child("edad");
+                        dbReference = FirebaseDatabase.getInstance().getReference();
+                        dbReference.child("Users").child(quienContrata).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String correo = snapshot.child("correo").getValue().toString();
+                                cor = correo;
+                                String edad = snapshot.child("edad").getValue().toString();
+                                ed = edad;
+                                String nombre = snapshot.child("nombre").getValue().toString();
+                                nom = nombre;
+                                String telefono = snapshot.child("telefono").getValue().toString();
+                                tel = telefono;
+                                String urlImage = snapshot.child("urlImageProfile").getValue().toString();
+                                url = urlImage;
+                            }
 
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                         if(des.getEstado() == 1){
-                        listaTrabajos.add(new TrabajosModel(data.get
-
-                        );}
+                        listaTrabajos.add(new TrabajosModel(quienContrata, cor, ed, nom, tel, url, des.getEstado()));
                         }
+                    }
                 }
 
                 adapter.notifyDataSetChanged();

@@ -21,6 +21,8 @@ public class TrabajosModel {
     private int estado;
     private int imagen;
 
+    public TrabajosModel() {}
+
     public TrabajosModel(String key, String correo, String edad,
                          String hrfin, String hrinicio, String localidad,
                          String nombre, String telefono, String ubicacion,
@@ -43,9 +45,14 @@ public class TrabajosModel {
         this.imagen = imagen;
     }
 
-
-
-    public TrabajosModel() {}
+    public TrabajosModel(String key, String correo, String edad, String nombre, String telefono, String urlImageProfile, int estado) {
+        this.correo = correo;
+        this.edad = edad;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.urlImageProfile = urlImageProfile;
+        this.estado = estado;
+    }
 
     public TrabajosModel(String key, String correo, String edad, String hrfin, String hrinicio,
                          String localidad, String nombre, String telefono, String ubicacion,
