@@ -1,19 +1,27 @@
 package com.example.proyecto;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -35,7 +43,7 @@ public class ContratarActivity extends AppCompatActivity {
 
 
     private FirebaseAuth mAuth;
-    public DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
 
 
     @Override
@@ -44,7 +52,7 @@ public class ContratarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contratar);
 
         Bundle extras = getIntent().getExtras();
-        if(extras != null) {
+        if (extras != null) {
             key = extras.getString("key");
             correo = extras.getString("correo");
             edad = extras.getString("edad");
@@ -79,7 +87,7 @@ public class ContratarActivity extends AppCompatActivity {
                 .load(urlImageProfile)
                 .placeholder(R.drawable.common_google_signin_btn_icon_dark)
                 .fitCenter()
-                .circleCrop()
+                //.circleCrop()
                 .into(foto);
     }
 
@@ -90,18 +98,47 @@ public class ContratarActivity extends AppCompatActivity {
     public void contratar(View view) {
         mAuth = FirebaseAuth.getInstance();
         String currentUser = mAuth.getCurrentUser().getUid();
-        databaseReference =  FirebaseDatabase.getInstance().getReference();
-        if (estado != 0) {
-            Toast.makeText(this, "La actividad ya está en curso", Toast.LENGTH_SHORT).show();
-        } else {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference();
+        mdatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        int est = Integer.parseInt(mdatabase.child("Usuarios").child(key).child("trabajos").child(trabajo)
+                .child("estado").toString());
+        if (est != 0) {
+            //Toast.makeText("La actividad ya está en curso", Toast.LENGTH_SHORT).show();
+        } else if (est == 0) {
+            est = 1;
+            mdatabase.child(key).child("trabajos").child(trabajo).child("estado")
+                    .setValue(est);
+        } else if (est == 3) {
             irAEjecucion();
         }
-        //DatabaseReference valor = databaseReference.child("Users").child(key).child("trabajos").child(trabajo);
-
-
-
-
     }
+    //DatabaseReference valor = databaseReference.child("Users").child(key).child("trabajos").child(trabajo);
 
     private void irAEjecucion() {
         Intent intent = new Intent(this, EjecucionTrabajoActivity.class);

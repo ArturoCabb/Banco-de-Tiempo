@@ -42,7 +42,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
         holder.etiTiempo.setText(listCurso.get(position).getHrinicio());
         Glide.with(holder.fotoTrabajador.getContext())
                 .load(listCurso.get(position).getUrlImageProfile())
-                .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                .placeholder(R.drawable.constructor)
                 .fitCenter()
                 .circleCrop()
                 .into(holder.fotoTrabajador);

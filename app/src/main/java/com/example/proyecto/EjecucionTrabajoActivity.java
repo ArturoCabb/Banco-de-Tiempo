@@ -66,7 +66,6 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
                 .load(urlImageProfile)
                 .placeholder(R.drawable.common_google_signin_btn_icon_dark)
                 .fitCenter()
-                .circleCrop()
                 .into(img);
     }
 

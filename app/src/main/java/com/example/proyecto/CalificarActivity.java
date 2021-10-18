@@ -26,7 +26,7 @@ public class CalificarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ejecucion_trabajo);
+        setContentView(R.layout.activity_calificar);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {

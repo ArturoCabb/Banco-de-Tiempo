@@ -185,7 +185,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
 
                         updateDatabase(perfil,ubi,email,phone,loc,begin,end, urlUri, mdatabase, currentUser);
-                    updateUI(currentUser);
+                        updateUI(currentUser);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

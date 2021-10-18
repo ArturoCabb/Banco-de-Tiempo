@@ -25,7 +25,7 @@ public class ReportarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ejecucion_trabajo);
+        setContentView(R.layout.activity_reportar);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
