@@ -44,20 +44,24 @@ import java.util.concurrent.atomic.AtomicMarkableReference;
 public class Verificar extends AppCompatActivity {
 
     Button buttonine;
+    Button buttonine2;
     Button buttoncurp;
     Button buttonpena;
     Button buttonGuardar;
     ImageView imageviewIne;
+    ImageView imageviewIne2;
     ImageView imageviewCurp;
     ImageView imageviewpena;
 
     static final int CAM_REQUEST = 100;
     static final int CAM_REQUEST2 = 200;
     static final int CAM_REQUEST3 = 300;
+    static final int CAM_REQUEST4 = 400;
 
     Bitmap bitmap1 = null;
     Bitmap bitmap2 = null;
     Bitmap bitmap3 = null;
+    Bitmap bitmap4 = null;
 
     private FirebaseAuth mAuth;
     private FirebaseStorage storage;
@@ -69,10 +73,12 @@ public class Verificar extends AppCompatActivity {
         setContentView(R.layout.activity_verificar);
 
         buttonine = findViewById(R.id.buttonIne);
+        buttonine2 = findViewById(R.id.buttonIne2);
         buttoncurp = findViewById(R.id.buttonCurp);
         buttonpena = findViewById(R.id.buttonPena);
         buttonGuardar = findViewById(R.id.buttonGuardar);
         imageviewIne = findViewById(R.id.imageViewIne);
+        imageviewIne2 = findViewById(R.id.imageView4);
         imageviewCurp = findViewById(R.id.imageViewCurp);
         imageviewpena = findViewById(R.id.imageViewPena);
 
@@ -98,6 +104,16 @@ public class Verificar extends AppCompatActivity {
                 Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (camera_intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(camera_intent, CAM_REQUEST);
+                }
+            }
+        });
+
+        buttonine2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (camera_intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(camera_intent, CAM_REQUEST4);
                 }
             }
         });
@@ -187,6 +203,27 @@ public class Verificar extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+                StorageReference miRef3 = reference.child("files/comprobante/" + userID + "/" + "Ine2.jpg");
+                imageviewIne2.setDrawingCacheEnabled(true);
+                imageviewIne2.buildDrawingCache();
+                bitmap4 = imageviewIne2.getDrawingCache();
+                ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
+                bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
+                byte[] data3 = baos3.toByteArray();
+                UploadTask uploadTask3 = miRef3.putBytes(data3);
+                uploadTask3.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(Verificar.this, "Ine Trasera Cargado Correctamente",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Verificar.this, "Error al cargar la Ine Trasera",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
                 finish();
             }
         });
@@ -208,6 +245,10 @@ public class Verificar extends AppCompatActivity {
         else if(requestCode == CAM_REQUEST3 && resultCode == RESULT_OK){
             bitmap3 = (Bitmap) data.getExtras().get("data");
             imageviewpena.setImageBitmap(bitmap3);
+        }
+        else if(requestCode == CAM_REQUEST4 && resultCode == RESULT_OK){
+            bitmap4 = (Bitmap) data.getExtras().get("data");
+            imageviewIne2.setImageBitmap(bitmap4);
         }
     }
 }

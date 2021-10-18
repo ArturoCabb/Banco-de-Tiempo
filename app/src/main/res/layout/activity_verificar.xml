@@ -21,8 +21,9 @@
         android:layout_width="181dp"
         android:layout_height="184dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="352dp"
         app:layout_constraintEnd_toStartOf="@+id/imageViewIne"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -32,22 +33,21 @@
         android:layout_width="154dp"
         android:layout_height="57dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/secondary_button"
         android:text="Subir Ine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewIne" />
 
     <Button
         android:id="@+id/buttonCurp"
         android:layout_width="182dp"
         android:layout_height="65dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="11dp"
         android:background="@drawable/secondary_button"
         android:text="Comprobante de domicilio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCurp" />
 
@@ -55,6 +55,7 @@
         android:id="@+id/buttonGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/secondary_button"
         android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,22 +66,48 @@
 
     <ImageView
         android:id="@+id/imageViewPena"
-        android:layout_width="155dp"
-        android:layout_height="187dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="175dp"
+        android:layout_height="191dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCurp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIne"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/buttonPena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Button"
+        android:layout_width="166dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="8dp"
+        android:text="Antecedentes Penales"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPena" />
+
+    <Button
+        android:id="@+id/buttonIne2"
+        android:layout_width="176dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="31dp"
+        android:text="Subir INE parte atras"
+        app:layout_constraintEnd_toStartOf="@+id/buttonIne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="178dp"
+        android:layout_height="185dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewIne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
