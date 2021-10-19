@@ -77,8 +77,8 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                         .child("trabajos").child(listCurso.get(pos).getTrabajo())
                         .child("estado").setValue(3);
                 int currenttotalhrs = Integer.parseInt(dbReference.child("Users").child(user).child("totalhrs").toString());
-
                 int totalhrssumadas = 1 + currenttotalhrs;
+                dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
                 Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
                 intent.putExtra("correo", correo);
                 intent.putExtra("telefono", telefono);
@@ -87,7 +87,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                 intent.putExtra("trabajo", trabajo);
                 intent.putExtra("muestroBoton", yo);
                 view.getContext().startActivity(intent);
-                dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
+
             }
         });
     }

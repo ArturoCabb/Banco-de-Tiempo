@@ -114,8 +114,11 @@ public class ContratarActivity extends AppCompatActivity {
 
             }
         });
-
-        if (estado == 3) {
+        String solicitante = databaseReference.child("Users").child(key).child("trabajos").child(trabajo).child("quienContrata").toString();
+        if ((estado == 3) && (currentUser == solicitante)) {
+            int currenttotalhrs = Integer.parseInt(databaseReference.child("Users").child(currentUser).child("totalhrs").toString());
+            int totalhrssumadas = 1 - currenttotalhrs;
+            databaseReference.child("Users").child(currentUser).child("totalhrs").setValue(totalhrssumadas);
             Toast.makeText(this, "La actividad ya está en curso", Toast.LENGTH_SHORT).show();
             irAEjecucion();
         } else if (estado == 0) {
