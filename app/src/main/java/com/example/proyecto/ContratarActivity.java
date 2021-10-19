@@ -125,8 +125,12 @@ public class ContratarActivity extends AppCompatActivity {
             mdatabase.child("estado").setValue(1);
             mdatabase.child("quienContrata").setValue(currentUser);
             Toast.makeText(this, "Solicitud enviada, espere a que acepte la otra persona", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Contratado", Toast.LENGTH_SHORT).show();
+
         }
     }
+
 
     private void irAEjecucion() {
         Intent intent = new Intent(this, ContratacionActivity.class);
