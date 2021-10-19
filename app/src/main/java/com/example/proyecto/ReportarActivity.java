@@ -1,5 +1,6 @@
 package com.example.proyecto;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.security.Key;
 
@@ -29,6 +37,8 @@ public class ReportarActivity extends AppCompatActivity {
     int estado;
     EditText edtReporte;
     Button Enviar;
+    private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +46,12 @@ public class ReportarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reportar);
         edtReporte = findViewById(R.id.edtReporte);
         Enviar = findViewById(R.id.btEnviar);
+
+        mAuth = FirebaseAuth.getInstance();
+        String currentUser = mAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        String userID = mAuth.getUid();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -61,7 +77,7 @@ public class ReportarActivity extends AppCompatActivity {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setData(Uri.parse("mailto:bancodetiempoedomex@gmail.com"));
                 emailIntent.putExtra(Intent.EXTRA_TEXT,edtReporte.getText().toString());
-                startActivity(Intent.createChooser(emailIntent, "Send feedback"));
+                startActivity(Intent.createChooser(emailIntent, userID));
                 startActivity(emailIntent);
             }
         });
