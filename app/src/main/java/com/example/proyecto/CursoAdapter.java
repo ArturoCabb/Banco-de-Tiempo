@@ -29,6 +29,9 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
     ArrayList<TrabajosModel> listCurso;
     private View.OnClickListener listener;
     public DatabaseReference dbReference;
+    private FirebaseAuth mAuth;
+
+
 
     public CursoAdapter(ArrayList<TrabajosModel> listCurso) {
         this.listCurso = listCurso;
@@ -66,10 +69,16 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
         holder.btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                String user = currentUser.getUid().toString();
                 dbReference =  FirebaseDatabase.getInstance().getReference();
                 dbReference.child("Users").child(listCurso.get(pos).getRecibe())
                         .child("trabajos").child(listCurso.get(pos).getTrabajo())
                         .child("estado").setValue(3);
+                int currenttotalhrs = Integer.parseInt(dbReference.child("Users").child(user).child("totalhrs").toString());
+
+                int totalhrssumadas = 1 + currenttotalhrs;
                 Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
                 intent.putExtra("correo", correo);
                 intent.putExtra("telefono", telefono);
@@ -78,6 +87,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                 intent.putExtra("trabajo", trabajo);
                 intent.putExtra("muestroBoton", yo);
                 view.getContext().startActivity(intent);
+                dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
             }
         });
     }
