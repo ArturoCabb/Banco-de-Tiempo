@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".CartaVidaActivity">
 
+    <Button
+        android:id="@+id/btEliminarTrabajo"
+        android:layout_width="267dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/secondary_button"
+        android:onClick="eliminar"
+        android:text="Eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btAgregarTrabajo" />
+
     <TextView
         android:id="@+id/tvCarta"
         android:layout_width="183dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
-        android:text="Carta de Vida"
+        android:text="Trabajos"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

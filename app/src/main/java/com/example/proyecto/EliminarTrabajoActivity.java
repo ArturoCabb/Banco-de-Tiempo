@@ -1,5 +1,7 @@
 package com.example.proyecto;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -13,7 +15,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,8 +25,12 @@ import com.example.proyecto.databinding.ActivityCartaVidaBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -35,8 +43,8 @@ public class EliminarTrabajoActivity extends AppCompatActivity {
 
     Uri FILEBMP =null;
     String userID;
-    EditText actividad;
-    EditText descripcion;
+    EditText nombre;
+    Button eliminar;
 
     static final int REQUEST_FILE = 1;
 
@@ -49,8 +57,8 @@ public class EliminarTrabajoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eliminar_trabajo);
-        actividad = (EditText) findViewById(R.id.edtActividadDesempenada);
-        descripcion = (EditText) findViewById(R.id.edtDescripcionCartaVida);
+        nombre = (EditText) findViewById(R.id.editTextNombre);
+
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED)
@@ -69,6 +77,26 @@ public class EliminarTrabajoActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance().getReference();
 
+        eliminar = (Button) findViewById(R.id.button);
+
+        eliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nom = nombre.getText().toString();
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(userID).child("trabajos").child(nom);
+                ref.removeValue();
+                //ref.child("Users").child(userID).child("trabajos").equalTo(nom);
+
+                Toast.makeText(EliminarTrabajoActivity.this, "Trabajo Eliminado",
+                        Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+
     }
 
     public void archivo(View view) {
@@ -78,33 +106,6 @@ public class EliminarTrabajoActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_FILE);
     }
 
-    public void guardar(View view) {
-        String act = actividad.getText().toString();
-        String des = descripcion.getText().toString();
-
-        if(!TextUtils.isEmpty(act) || !TextUtils.isEmpty(des)) {
-            TrabajosModel datos = new TrabajosModel(des, 0);
-            database.child("trabajos").child(userID).child(act).setValue(datos);
-            StorageReference miRef = reference.child("files/comprobante/" + userID + "/" + act + ".pdf");
-            miRef.putFile(FILEBMP).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(EliminarTrabajoActivity.this, "Exito al subir",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(EliminarTrabajoActivity.this, "Error al subir",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-            Toast.makeText(this, "Datos guardados", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "Ingrese los datos", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     public void eliminar(View view) {
 

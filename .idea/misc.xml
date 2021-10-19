@@ -104,16 +104,25 @@
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/layout/trabajosRecycle.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/artur/AndroidStudioProjects/proyecto/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_agregar_trabajo.xml" value="0.14492753623188406" />
-        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_carta_vida.xml" value="0.11423505572441743" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_carta_vida.xml" value="0.16799999999999998" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_comment.xml" value="0.11474164133738601" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_contratacion.xml" value="0.11423505572441743" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_contratar.xml" value="0.264" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_ejecucion_trabajo.xml" value="0.12318840579710146" />
-        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_eliminar_trabajo.xml" value="0.14492753623188406" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_eliminar_trabajo.xml" value="0.176" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_estatus.xml" value="0.11474164133738601" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_login.xml" value="0.16802536231884058" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_modificar_perfil.xml" value="0.2" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_modificar_trabajo.xml" value="0.264" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_rechazado.xml" value="0.11474164133738601" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_reportar.xml" value="0.11474164133738601" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/activity_verificar.xml" value="0.264" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/conversacion.xml" value="0.11474164133738601" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/curso.xml" value="0.11474164133738601" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/fragment_curso.xml" value="0.11474164133738601" />
+        <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/fragment_message.xml" value="0.11474164133738601" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/fragment_mostrar_trabajos.xml" value="0.264" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/fragment_profile.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/shriq/Documents/GitHub/proyecto/app/src/main/res/layout/lista_trabajos.xml" value="0.264" />
