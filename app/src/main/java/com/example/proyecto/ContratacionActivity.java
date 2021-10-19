@@ -53,6 +53,20 @@ public class ContratacionActivity extends AppCompatActivity {
 
     public void continuar(View view) {
         Intent intent = new Intent(this, EjecucionTrabajoActivity.class);
+        intent.putExtra("key", key);
+        intent.putExtra("correo", correo);
+        intent.putExtra("edad", edad);
+        intent.putExtra("hrfin", hrfin);
+        intent.putExtra("hrinicio", hrinicio);
+        intent.putExtra("localidad", localidad);
+        intent.putExtra("nombre", nombre);
+        intent.putExtra("telefono", telefono);
+        intent.putExtra("ubicacion", ubicacion);
+        intent.putExtra("urlImageProfile", urlImageProfile);
+        intent.putExtra("trabajo", trabajo);
+        intent.putExtra("descripcion", descripcion);
+        intent.putExtra("estado", estado);
+        intent.putExtra("muestraBoton", "estado");
         startActivity(intent);
         finish();
     }

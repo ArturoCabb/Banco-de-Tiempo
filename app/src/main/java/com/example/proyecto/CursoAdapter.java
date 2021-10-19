@@ -44,17 +44,18 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
         view.setOnClickListener(this);
         return new ViewHolderMostrarCurso(view);
     }
-
+    int currenttotalhrs;
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarCurso holder, int position) {
-        int pos = holder.getAdapterPosition();
         String estado = Integer.toString(listCurso.get(position).getEstado());
-        String yo = listCurso.get(pos).getYo();
-        String trabajo = listCurso.get(pos).getTrabajo();
-        String url = listCurso.get(pos).getUrlImageProfile();
-        String nombre = listCurso.get(pos).getNombre();
-        String correo = listCurso.get(pos).getCorreo();
-        String telefono = listCurso.get(pos).getTelefono();
+        String yo = listCurso.get(position).getYo();
+        String trabajo = listCurso.get(position).getTrabajo();
+        String url = listCurso.get(position).getUrlImageProfile();
+        String nombre = listCurso.get(position).getNombre();
+        String correo = listCurso.get(position).getCorreo();
+        String telefono = listCurso.get(position).getTelefono();
+        String recibe = listCurso.get(position).getRecibe();
+        String trabaja = listCurso.get(position).getTrabajo();
 
         holder.etiCurso.setText(trabajo);
         holder.etiEstado.setText(estado);
@@ -71,23 +72,33 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
             public void onClick(View view) {
                 mAuth = FirebaseAuth.getInstance();
                 FirebaseUser currentUser = mAuth.getCurrentUser();
-                String user = currentUser.getUid().toString();
+                String user = currentUser.getUid();
                 dbReference =  FirebaseDatabase.getInstance().getReference();
-                dbReference.child("Users").child(listCurso.get(pos).getRecibe())
-                        .child("trabajos").child(listCurso.get(pos).getTrabajo())
+                dbReference.child("Users").child(user)
+                        .child("trabajos").child(trabaja)
                         .child("estado").setValue(3);
-                int currenttotalhrs = Integer.parseInt(dbReference.child("Users").child(user).child("totalhrs").toString());
+                dbReference.child("Users").child(user).child("totalhrs").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        currenttotalhrs = Integer.parseInt(snapshot.getValue().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 int totalhrssumadas = 1 + currenttotalhrs;
                 dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
                 Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
                 intent.putExtra("correo", correo);
+                intent.putExtra("recibe", recibe);
                 intent.putExtra("telefono", telefono);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("urlImageProfiel", url);
                 intent.putExtra("trabajo", trabajo);
                 intent.putExtra("muestroBoton", yo);
                 view.getContext().startActivity(intent);
-
             }
         });
     }

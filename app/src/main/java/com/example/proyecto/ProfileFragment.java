@@ -110,6 +110,9 @@ public class ProfileFragment extends Fragment {
                     String localidadlocal = snapshot.child(user_id).child("ubicacion").getValue().toString();
                     localLocation.setText(localidadlocal);
 
+                    String h = snapshot.child(user_id).child("totalhrs").getValue().toString();
+                    hours.setText(h);
+
                     String horatrabajoinicio = snapshot.child(user_id).child("hrinicio").getValue().toString();
                     workHours.setText(horatrabajoinicio);
 

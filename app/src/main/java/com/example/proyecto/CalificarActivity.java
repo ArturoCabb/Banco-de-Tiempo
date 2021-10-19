@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class CalificarActivity extends AppCompatActivity {
@@ -22,6 +25,9 @@ public class CalificarActivity extends AppCompatActivity {
     String trabajo;
     String descripcion;
     int estado;
+
+    private EditText comentario;
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,16 @@ public class CalificarActivity extends AppCompatActivity {
 
         TextView calificar = findViewById(R.id.tvActividadaCalificar);
         calificar.setText(trabajo);
+        comentario = findViewById(R.id.edtComentario);
+        ratingBar = findViewById(R.id.ratingBar);
+
+        String miComent = comentario.getText().toString();
+        enviarComentario(miComent);
+
+    }
+
+    private void enviarComentario(String comentario) {
+
     }
 
     public void reportar(View view) {

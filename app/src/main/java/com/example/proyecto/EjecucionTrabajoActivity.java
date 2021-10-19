@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +25,8 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
     String urlImageProfile;
     String trabajo;
     String descripcion;
-    boolean muestroBoton;
+    String muestroBoton;
+    String recibe;
     int estado;
 
     @Override
@@ -47,7 +49,8 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
             trabajo = extras.getString("trabajo");
             descripcion = extras.getString("descripcion");
             estado = extras.getInt("estado");
-            muestroBoton = extras.getBoolean("muestroBoton");
+            muestroBoton = extras.getString("muestroBoton");
+            recibe = extras.getString("recibe");
             //imagenTrabajador = extras.getInt("imgProfile");
         }
 
@@ -58,6 +61,9 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
         TextView horaF = findViewById(R.id.tvHoraFinEjecucion);
         TextView mail = findViewById(R.id.TEcorreo);
         TextView phone = findViewById(R.id.TEtelefono);
+        Button btn = findViewById(R.id.btTerminarEjecucion);
+        if (muestroBoton == "yo")
+            btn.setVisibility(View.INVISIBLE);
 
         nombre1.setText(nombre);
         horaI.setText("Hora inicio: " + hrinicio);

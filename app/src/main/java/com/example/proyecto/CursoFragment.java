@@ -86,7 +86,7 @@ public class CursoFragment extends Fragment {
 
         adapter = new CursoAdapter(listaTrabajos);
 
-        adapter.setOnClickListener(new View.OnClickListener() {
+        /*adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), EjecucionTrabajoActivity.class);
@@ -118,7 +118,7 @@ public class CursoFragment extends Fragment {
                         .getChildAdapterPosition(view)).getEstado());
                 getActivity().startActivity(intent);
             }
-        });
+        });*/
 
         recyclerCurso.setAdapter(adapter);
         return view;
