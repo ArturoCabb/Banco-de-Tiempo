@@ -20,12 +20,41 @@ public class TrabajosModel {
     private String yo;
     private boolean estadoSecundario;
     private int imagen;
-
-
-
     private int totalhrs;
 
     public TrabajosModel() {}
+
+    public TrabajosModel(String quienContrata, String trabajo, int estado, String yo,
+                         boolean estadoSecundario, int totalhrs) {
+        this.quienContrata = quienContrata;
+        this.trabajo = trabajo;
+        this.estado = estado;
+        this.yo = yo;
+        this.estadoSecundario = estadoSecundario;
+        this.totalhrs = totalhrs;
+    }
+/*
+    public TrabajosModel(String key, String correo, String edad, String hrfin, String hrinicio, String localidad, String nombre, String telefono, String ubicacion, String urlImageProfile, String trabajo, String descripcion, String quienContrata, String recibe, int estado, String yo, boolean estadoSecundario, int imagen, int totalhrs) {
+        this.key = key;
+        this.correo = correo;
+        this.edad = edad;
+        this.hrfin = hrfin;
+        this.hrinicio = hrinicio;
+        this.localidad = localidad;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.ubicacion = ubicacion;
+        this.urlImageProfile = urlImageProfile;
+        this.trabajo = trabajo;
+        this.descripcion = descripcion;
+        this.quienContrata = quienContrata;
+        this.recibe = recibe;
+        this.estado = estado;
+        this.yo = yo;
+        this.estadoSecundario = estadoSecundario;
+        this.imagen = imagen;
+        this.totalhrs = totalhrs;
+    }
 
     public TrabajosModel(String key, String correo, String edad,
                          String hrfin, String hrinicio, String localidad,
@@ -76,7 +105,7 @@ public class TrabajosModel {
         this.estadoSecundario = estadoSecundario;
         this. totalhrs = totalhrs;
     }
-
+*/
     public TrabajosModel(String key, String correo, String edad, String hrfin, String hrinicio,
                          String localidad, String nombre, String telefono, String ubicacion,
                          String urlImageProfile, String trabajo, String descripcion, int estado) {
@@ -100,7 +129,7 @@ public class TrabajosModel {
         this.estado = estado;
     }
 
-
+/*
     public TrabajosModel(String trabajo, String nombre, String descripcion, int imagen) {
         this.trabajo = trabajo;
         this.nombre = nombre;
@@ -146,6 +175,7 @@ public class TrabajosModel {
         this.descripcion = descripcion;
         this.estado = estado;
     }
+*/
 
     public String getKey() {
         return key;
@@ -298,6 +328,8 @@ public class TrabajosModel {
     public void setTotalhrs(int totalhrs) {
         this.totalhrs = totalhrs;
     }
+
+
 
     @Override
     public String toString() {

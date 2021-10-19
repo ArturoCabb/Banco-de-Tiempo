@@ -128,6 +128,7 @@ public class CursoFragment extends Fragment {
         databaseReference =  FirebaseDatabase.getInstance().getReference();
         String usuario = currentUser.getUid();
 
+
         databaseReference.child("Users").orderByKey().equalTo(usuario).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -135,34 +136,10 @@ public class CursoFragment extends Fragment {
                     TrabajosModel model = data.getValue(TrabajosModel.class);
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
-                        String quienContrata = des.getQuienContrata();
-                        dbReference = FirebaseDatabase.getInstance().getReference();
-                        dbReference.child("Users").child(quienContrata).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String correo = snapshot.child("correo").getValue().toString();
-                                cor = correo;
-                                String edad = snapshot.child("edad").getValue().toString();
-                                ed = edad;
-                                String nombre = snapshot.child("nombre").getValue().toString();
-                                nom = nombre;
-                                String telefono = snapshot.child("telefono").getValue().toString();
-                                tel = telefono;
-                                String urlImage = snapshot.child("urlImageProfile").getValue().toString();
-                                url = urlImage;
-                                int totalhrs1 = Integer.parseInt(snapshot.child("totalhrs").getValue().toString());
-                                totalhrs = totalhrs1;
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
                         if(des.getEstado() == 1){
-                        listaTrabajos.add(new TrabajosModel(quienContrata, usuario, des.getTrabajo(),
-                                des.getEstado(), cor, ed, nom, tel, url, "yo", true, totalhrs));
-                        Log.println(Log.ASSERT, "cosas: ", cor + ed + nom + tel + url + totalhrs);
+                        listaTrabajos.add(new TrabajosModel(des.getQuienContrata(), trabajos.getKey(),
+                                des.getEstado(), "hoooo", true, des.getTotalhrs()));
+                        //Log.println(Log.ASSERT, "cosas: ", listaTrabajos.toString());
                         }
                     }
                 }
@@ -175,7 +152,6 @@ public class CursoFragment extends Fragment {
 
             }
         });
-
     }
 
     @Override

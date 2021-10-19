@@ -48,19 +48,18 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarCurso holder, int position) {
         int pos = holder.getAdapterPosition();
-        String estado = Integer.toString(listCurso.get(position).getEstado());
+        String estado = Integer.toString(listCurso.get(pos).getEstado());
         String yo = listCurso.get(pos).getYo();
+        boolean estadoSecundario = listCurso.get(pos).isEstadoSecundario();
+        int totalHrs = listCurso.get(pos).getTotalhrs();
+        String quienContrata = listCurso.get(pos).getQuienContrata();
         String trabajo = listCurso.get(pos).getTrabajo();
-        String url = listCurso.get(pos).getUrlImageProfile();
-        String nombre = listCurso.get(pos).getNombre();
-        String correo = listCurso.get(pos).getCorreo();
-        String telefono = listCurso.get(pos).getTelefono();
 
         holder.etiCurso.setText(trabajo);
         holder.etiEstado.setText(estado);
-        holder.etiTiempo.setText(listCurso.get(position).getHrinicio());
+        holder.etiTiempo.setText(quienContrata);
         Glide.with(holder.fotoTrabajador.getContext())
-                .load(url)
+                .load(R.drawable.constructor)
                 .placeholder(R.drawable.constructor)
                 .fitCenter()
                 .circleCrop()
@@ -71,19 +70,15 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
             public void onClick(View view) {
                 mAuth = FirebaseAuth.getInstance();
                 FirebaseUser currentUser = mAuth.getCurrentUser();
-                String user = currentUser.getUid().toString();
+                String user = currentUser.getUid();
                 dbReference =  FirebaseDatabase.getInstance().getReference();
                 dbReference.child("Users").child(user)
                         .child("trabajos").child(trabajo)
                         .child("estado").setValue(3);
-                int currenttotalhrs = Integer.parseInt(dbReference.child("Users").child(user).child("totalhrs").toString());
+                int currenttotalhrs = totalHrs;
                 int totalhrssumadas = 1 + currenttotalhrs;
                 dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
                 Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
-                intent.putExtra("correo", correo);
-                intent.putExtra("telefono", telefono);
-                intent.putExtra("nombre", nombre);
-                intent.putExtra("urlImageProfiel", url);
                 intent.putExtra("trabajo", trabajo);
                 intent.putExtra("muestroBoton", yo);
                 view.getContext().startActivity(intent);
