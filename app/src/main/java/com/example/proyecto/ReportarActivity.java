@@ -58,11 +58,11 @@ public class ReportarActivity extends AppCompatActivity {
         Enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto","bancodetiempoedomex@gmail.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, extras.getString("key"));
-                emailIntent.putExtra(Intent.EXTRA_TEXT, edtReporte.getText().toString());
-                startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:bancodetiempoedomex@gmail.com"));
+                emailIntent.putExtra(Intent.EXTRA_TEXT,edtReporte.getText().toString());
+                startActivity(Intent.createChooser(emailIntent, "Send feedback"));
+                startActivity(emailIntent);
             }
         });
     }
