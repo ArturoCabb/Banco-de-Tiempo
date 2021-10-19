@@ -3,8 +3,13 @@ package com.example.proyecto;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.security.Key;
 
 public class ReportarActivity extends AppCompatActivity {
 
@@ -22,11 +27,15 @@ public class ReportarActivity extends AppCompatActivity {
     String trabajo;
     String descripcion;
     int estado;
+    EditText edtReporte;
+    Button Enviar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reportar);
+        edtReporte = findViewById(R.id.edtReporte);
+        Enviar = findViewById(R.id.btEnviar);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -46,6 +55,16 @@ public class ReportarActivity extends AppCompatActivity {
             estado = extras.getInt("estado");
             //imagenTrabajador = extras.getInt("imgProfile");
         }
+        Enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto","bancodetiempoedomex@gmail.com", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, extras.getString("key"));
+                emailIntent.putExtra(Intent.EXTRA_TEXT, edtReporte.getText().toString());
+                startActivity(Intent.createChooser(emailIntent, "Send email..."));
+            }
+        });
     }
 
     public void cerrar(View view) {
