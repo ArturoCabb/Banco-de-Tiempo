@@ -86,7 +86,7 @@ public class CursoFragment extends Fragment {
 
         adapter = new CursoAdapter(listaTrabajos);
 
-        adapter.setOnClickListener(new View.OnClickListener() {
+        /*adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), EjecucionTrabajoActivity.class);
@@ -118,7 +118,7 @@ public class CursoFragment extends Fragment {
                         .getChildAdapterPosition(view)).getEstado());
                 getActivity().startActivity(intent);
             }
-        });
+        });*/
 
         recyclerCurso.setAdapter(adapter);
         return view;
@@ -137,9 +137,9 @@ public class CursoFragment extends Fragment {
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
                         TrabajosModel des = trabajos.getValue(TrabajosModel.class);
                         if(des.getEstado() == 1){
-                        listaTrabajos.add(new TrabajosModel(des.getQuienContrata(), trabajos.getKey(),
+                        listaTrabajos.add(new TrabajosModel(usuario ,des.getQuienContrata(), trabajos.getKey(),
                                 des.getEstado(), "hoooo", true, des.getTotalhrs()));
-                        //Log.println(Log.ASSERT, "cosas: ", listaTrabajos.toString());
+                        Log.println(Log.ASSERT, "cosas: ", usuario);
                         }
                     }
                 }

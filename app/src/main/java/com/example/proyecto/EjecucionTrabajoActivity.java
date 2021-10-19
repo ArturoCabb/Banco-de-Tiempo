@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.OnReceiveContentListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -59,7 +60,9 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
         TextView horaF = findViewById(R.id.tvHoraFinEjecucion);
         TextView mail = findViewById(R.id.TEcorreo);
         TextView phone = findViewById(R.id.TEtelefono);
-        Button mi
+        Button miboton = findViewById(R.id.btTerminarEjecucion);
+        if (muestroBoton)
+            miboton.setVisibility(View.INVISIBLE);
 
         nombre1.setText(nombre);
         horaI.setText("Hora inicio: " + hrinicio);

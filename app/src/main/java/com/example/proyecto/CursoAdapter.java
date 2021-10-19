@@ -48,6 +48,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarCurso holder, int position) {
         int pos = holder.getAdapterPosition();
+        String key = listCurso.get(pos).getKey();
         String estado = Integer.toString(listCurso.get(pos).getEstado());
         String yo = listCurso.get(pos).getYo();
         boolean estadoSecundario = listCurso.get(pos).isEstadoSecundario();
@@ -93,8 +94,9 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                 int totalhrssumadas = 1 + currenttotalhrs;
                 dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
                 Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
+                intent.putExtra("key", key);
                 intent.putExtra("trabajo", trabajo);
-                intent.putExtra("muestroBoton", yo);
+                intent.putExtra("muestroBoton", true);
                 view.getContext().startActivity(intent);
 
             }

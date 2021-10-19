@@ -33,6 +33,17 @@ public class TrabajosModel {
         this.estadoSecundario = estadoSecundario;
         this.totalhrs = totalhrs;
     }
+
+    public TrabajosModel(String key,String quienContrata, String trabajo, int estado, String yo,
+                         boolean estadoSecundario, int totalhrs) {
+        this.key = key;
+        this.quienContrata = quienContrata;
+        this.trabajo = trabajo;
+        this.estado = estado;
+        this.yo = yo;
+        this.estadoSecundario = estadoSecundario;
+        this.totalhrs = totalhrs;
+    }
 /*
     public TrabajosModel(String key, String correo, String edad, String hrfin, String hrinicio, String localidad, String nombre, String telefono, String ubicacion, String urlImageProfile, String trabajo, String descripcion, String quienContrata, String recibe, int estado, String yo, boolean estadoSecundario, int imagen, int totalhrs) {
         this.key = key;
