@@ -8,8 +8,13 @@ Aplicación para Android del Banco del tiempo.
 
 Integrantes:
 Bruno Cruz Mendoza
+
 Arturo Caballero Ortega
+
 Divad Alejandro Shriqui Garrón
+
 José Israel Quintero Alfaro
+
 Oscar Emilio Reyes Taboada
+
 Leonardo Delgado Ríos
