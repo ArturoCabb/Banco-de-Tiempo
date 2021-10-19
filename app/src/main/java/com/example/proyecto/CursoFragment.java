@@ -46,6 +46,7 @@ public class CursoFragment extends Fragment {
     ArrayList<TrabajosModel> listaTrabajos;
     CursoAdapter adapter;
     private String cor, ed, nom, tel, url;
+    private int totalhrs;
 
     public CursoFragment() {
         // Required empty public constructor
@@ -149,6 +150,8 @@ public class CursoFragment extends Fragment {
                                 tel = telefono;
                                 String urlImage = snapshot.child("urlImageProfile").getValue().toString();
                                 url = urlImage;
+                                int totalhrs1 = Integer.parseInt(snapshot.child("totalhrs").getValue().toString());
+                                totalhrs = totalhrs1;
                             }
 
                             @Override
@@ -158,7 +161,7 @@ public class CursoFragment extends Fragment {
                         });
                         if(des.getEstado() == 1){
                         listaTrabajos.add(new TrabajosModel(quienContrata, usuario, des.getTrabajo(),
-                                des.getEstado(), cor, ed, nom, tel, url, "yo", true));
+                                des.getEstado(), cor, ed, nom, tel, url, "yo", true, totalhrs));
                         }
                     }
                 }

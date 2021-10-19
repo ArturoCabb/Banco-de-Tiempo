@@ -21,6 +21,10 @@ public class TrabajosModel {
     private boolean estadoSecundario;
     private int imagen;
 
+
+
+    private int totalhrs;
+
     public TrabajosModel() {}
 
     public TrabajosModel(String key, String correo, String edad,
@@ -58,7 +62,7 @@ public class TrabajosModel {
 
     public TrabajosModel(String key, String recibe, String trabajo, int estado, String correo, String edad,
                          String nombre, String telefono, String urlImageProfile, String yo,
-                         boolean estadoSecundario) {
+                         boolean estadoSecundario, int totalhrs) {
         this.key = key;
         this.recibe = recibe;
         this.trabajo = trabajo;
@@ -70,6 +74,7 @@ public class TrabajosModel {
         this.urlImageProfile = urlImageProfile;
         this.yo = yo;
         this.estadoSecundario = estadoSecundario;
+        this. totalhrs = totalhrs;
     }
 
     public TrabajosModel(String key, String correo, String edad, String hrfin, String hrinicio,
@@ -284,6 +289,14 @@ public class TrabajosModel {
 
     public void setYo(String yo) {
         this.yo = yo;
+    }
+
+    public int getTotalhrs() {
+        return totalhrs;
+    }
+
+    public void setTotalhrs(int totalhrs) {
+        this.totalhrs = totalhrs;
     }
 
     @Override
