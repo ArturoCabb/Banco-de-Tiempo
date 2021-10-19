@@ -90,7 +90,10 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="380dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIngresarCalificacion"
+        app:layout_constraintVertical_bias="0.016"
+        tools:layout_editor_absoluteX="84dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
