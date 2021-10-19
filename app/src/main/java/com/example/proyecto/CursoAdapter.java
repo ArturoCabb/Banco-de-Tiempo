@@ -32,7 +32,6 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
     private FirebaseAuth mAuth;
 
 
-
     public CursoAdapter(ArrayList<TrabajosModel> listCurso) {
         this.listCurso = listCurso;
     }
@@ -65,6 +64,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String url = snapshot.child("urlImageProfile").getValue().toString();
+                //urlImage = url;
                 Glide.with(holder.fotoTrabajador.getContext())
                         .load(url)
                         .placeholder(R.drawable.constructor)
@@ -94,7 +94,9 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                 int totalhrssumadas = 1 + currenttotalhrs;
                 dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
                 Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
-                intent.putExtra("key", key);
+                intent.putExtra("key", user);
+                intent.putExtra("quienContrata", quienContrata);
+                //intent.putExtra("urlImageProfile", urlImage);
                 intent.putExtra("trabajo", trabajo);
                 intent.putExtra("muestroBoton", true);
                 view.getContext().startActivity(intent);

@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class CalificarActivity extends AppCompatActivity {
 
     String key;
+    String quienContrata;
     String correo;
     String edad;
     String hrfin;
@@ -31,6 +32,7 @@ public class CalificarActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             key = extras.getString("key");
+            quienContrata = extras.getString("quienContrata");
             correo = extras.getString("correo");
             edad = extras.getString("edad");
             hrfin = extras.getString("hrfin");

@@ -9,6 +9,7 @@ import android.view.View;
 public class ReportarActivity extends AppCompatActivity {
 
     String key;
+    String quienContrata;
     String correo;
     String edad;
     String hrfin;
@@ -29,7 +30,8 @@ public class ReportarActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            correo = extras.getString("key");
+            key = extras.getString("key");
+            quienContrata = extras.getString("quienContrata");
             correo = extras.getString("correo");
             edad = extras.getString("edad");
             hrfin = extras.getString("hrfin");

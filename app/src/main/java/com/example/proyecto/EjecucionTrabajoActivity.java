@@ -1,9 +1,11 @@
 package com.example.proyecto;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.OnReceiveContentListener;
 import android.view.View;
 import android.widget.Button;
@@ -11,10 +13,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EjecucionTrabajoActivity extends AppCompatActivity {
 
+    public DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
+
     String key;
+    String quienContrata;
     String correo;
     String edad;
     String hrfin;
@@ -37,6 +47,7 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             key = extras.getString("key");
+            quienContrata = extras.getString("quienContrata");
             correo = extras.getString("correo");
             edad = extras.getString("edad");
             hrfin = extras.getString("hrfin");
@@ -61,19 +72,39 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
         TextView mail = findViewById(R.id.TEcorreo);
         TextView phone = findViewById(R.id.TEtelefono);
         Button miboton = findViewById(R.id.btTerminarEjecucion);
-        if (muestroBoton)
-            miboton.setVisibility(View.INVISIBLE);
 
-        nombre1.setText(nombre);
         horaI.setText("Hora inicio: " + hrinicio);
         horaF.setText("Hora fin: " + hrfin);
         mail.setText(correo);
         phone.setText(telefono);
-        Glide.with(this)
-                .load(urlImageProfile)
-                .placeholder(R.drawable.common_google_signin_btn_icon_dark)
-                .fitCenter()
-                .into(img);
+
+        if (muestroBoton){
+        dbReference.child("Users").child(quienContrata).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String nombre = snapshot.child("nombre").getValue().toString();
+                EjecucionTrabajoActivity.this.nombre = nombre;
+                nombre1.setText(nombre);
+                Glide.with(EjecucionTrabajoActivity.this)
+                        .load(snapshot.child("urlImageProfile").getValue().toString())
+                        .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                        .fitCenter()
+                        .into(img);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        } else {
+            nombre1.setText(nombre);
+            Glide.with(this)
+                    .load(urlImageProfile)
+                    .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                    .fitCenter()
+                    .into(img);
+        }
     }
 
     public void cerrar(View view) {
@@ -85,6 +116,7 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
     public void reportar(View view) {
         Intent intent = new Intent(this, ReportarActivity.class);
         intent.putExtra("key", key);
+        intent.putExtra("quienContrata", quienContrata);
         intent.putExtra("correo", correo);
         intent.putExtra("edad", edad);
         intent.putExtra("hrfin", hrfin);
@@ -101,8 +133,11 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
     }
 
     public void terminar(View view) {
+        dbReference.child("Users").child(key).child("trabajos").child(trabajo).child("estado").setValue(0);
+        dbReference.child("Users").child(key).child("trabajos").child(trabajo).child("quienContrata").setValue("");
         Intent intent = new Intent(this, CalificarActivity.class);
         intent.putExtra("key", key);
+        intent.putExtra("quienContrata", quienContrata);
         intent.putExtra("correo", correo);
         intent.putExtra("edad", edad);
         intent.putExtra("hrfin", hrfin);
