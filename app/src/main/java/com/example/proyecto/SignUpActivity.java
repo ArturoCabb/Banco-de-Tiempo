@@ -208,6 +208,7 @@ public class SignUpActivity extends AppCompatActivity {
                             newPost.put("hrfin", "Hora Final");
                             newPost.put("urlImageProfile", "https://firebasestorage.googleapis.com/v0/b/tiempo-compartido-df.appspot.com/o/constructor.png?alt=media&token=8ff3ee66-ad40-4853-959e-3170f772ffe7");
                             newPost.put("estado", 0);
+                            newPost.put("totalhrs", 0);
                             current_user_db.setValue(newPost);
 
                             FirebaseUser user = mAuth.getCurrentUser();
