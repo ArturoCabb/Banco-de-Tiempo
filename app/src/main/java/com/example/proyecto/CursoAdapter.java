@@ -58,12 +58,26 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
         holder.etiCurso.setText(trabajo);
         holder.etiEstado.setText(estado);
         holder.etiTiempo.setText(quienContrata);
-        Glide.with(holder.fotoTrabajador.getContext())
-                .load(R.drawable.constructor)
-                .placeholder(R.drawable.constructor)
-                .fitCenter()
-                .circleCrop()
-                .into(holder.fotoTrabajador);
+
+        dbReference = FirebaseDatabase.getInstance().getReference();
+        dbReference.child("Users").child(quienContrata).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String url = snapshot.child("urlImageProfile").getValue().toString();
+                Glide.with(holder.fotoTrabajador.getContext())
+                        .load(url)
+                        .placeholder(R.drawable.constructor)
+                        .fitCenter()
+                        .circleCrop()
+                        .into(holder.fotoTrabajador);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         holder.btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override

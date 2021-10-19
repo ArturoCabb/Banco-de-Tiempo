@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,6 +59,7 @@ public class EjecucionTrabajoActivity extends AppCompatActivity {
         TextView horaF = findViewById(R.id.tvHoraFinEjecucion);
         TextView mail = findViewById(R.id.TEcorreo);
         TextView phone = findViewById(R.id.TEtelefono);
+        Button mi
 
         nombre1.setText(nombre);
         horaI.setText("Hora inicio: " + hrinicio);
