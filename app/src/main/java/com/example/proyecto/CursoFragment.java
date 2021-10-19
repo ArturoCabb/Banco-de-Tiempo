@@ -162,6 +162,7 @@ public class CursoFragment extends Fragment {
                         if(des.getEstado() == 1){
                         listaTrabajos.add(new TrabajosModel(quienContrata, usuario, des.getTrabajo(),
                                 des.getEstado(), cor, ed, nom, tel, url, "yo", true, totalhrs));
+                        Log.println(Log.ASSERT, "cosas: ", cor + ed + nom + tel + url + totalhrs);
                         }
                     }
                 }

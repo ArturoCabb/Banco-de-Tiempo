@@ -73,8 +73,8 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                 FirebaseUser currentUser = mAuth.getCurrentUser();
                 String user = currentUser.getUid().toString();
                 dbReference =  FirebaseDatabase.getInstance().getReference();
-                dbReference.child("Users").child(listCurso.get(pos).getRecibe())
-                        .child("trabajos").child(listCurso.get(pos).getTrabajo())
+                dbReference.child("Users").child(user)
+                        .child("trabajos").child(trabajo)
                         .child("estado").setValue(3);
                 int currenttotalhrs = Integer.parseInt(dbReference.child("Users").child(user).child("totalhrs").toString());
                 int totalhrssumadas = 1 + currenttotalhrs;
