@@ -26,14 +26,14 @@ import java.util.ArrayList;
 
 public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMostrarCurso> implements View.OnClickListener{
 
-    ArrayList<TrabajosModel> listCurso;
+    ArrayList<TrabajosModel1> listCurso;
     private View.OnClickListener listener;
     public DatabaseReference dbReference;
     private FirebaseAuth mAuth;
 
 
 
-    public CursoAdapter(ArrayList<TrabajosModel> listCurso) {
+    public CursoAdapter(ArrayList<TrabajosModel1> listCurso) {
         this.listCurso = listCurso;
     }
 
@@ -47,25 +47,26 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
     int currenttotalhrs;
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMostrarCurso holder, int position) {
-        String estado = Integer.toString(listCurso.get(position).getEstado());
-        String yo = listCurso.get(position).getYo();
         String trabajo = listCurso.get(position).getTrabajo();
-        String url = listCurso.get(position).getUrlImageProfile();
+        String quien = listCurso.get(position).getQuienContrata();
+        int estado = listCurso.get(position).getEstado();
+        String yo = listCurso.get(position).getYo();
+        /*String url = listCurso.get(position).getUrlImageProfile();
         String nombre = listCurso.get(position).getNombre();
         String correo = listCurso.get(position).getCorreo();
         String telefono = listCurso.get(position).getTelefono();
         String recibe = listCurso.get(position).getRecibe();
-        String trabaja = listCurso.get(position).getTrabajo();
+        String trabaja = listCurso.get(position).getTrabajo();*/
 
         holder.etiCurso.setText(trabajo);
         holder.etiEstado.setText(estado);
-        holder.etiTiempo.setText(listCurso.get(position).getHrinicio());
-        Glide.with(holder.fotoTrabajador.getContext())
-                .load(url)
+        //holder.etiTiempo.setText(listCurso.get(position).getHrinicio());
+        /*Glide.with(holder.fotoTrabajador.getContext())
+                //.load(url)
                 .placeholder(R.drawable.constructor)
                 .fitCenter()
                 .circleCrop()
-                .into(holder.fotoTrabajador);
+                .into(holder.fotoTrabajador);*/
 
         holder.btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,9 +75,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                 FirebaseUser currentUser = mAuth.getCurrentUser();
                 String user = currentUser.getUid();
                 dbReference =  FirebaseDatabase.getInstance().getReference();
-                dbReference.child("Users").child(user)
-                        .child("trabajos").child(trabaja)
-                        .child("estado").setValue(3);
+                dbReference.child("Users").child(user).child("trabajos").child(trabajo).child("estado").setValue(3);
                 dbReference.child("Users").child(user).child("totalhrs").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -91,13 +90,13 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolderMo
                 int totalhrssumadas = 1 + currenttotalhrs;
                 dbReference.child("Users").child(user).child("totalhrs").setValue(totalhrssumadas);
                 Intent intent = new Intent(view.getContext(), EjecucionTrabajoActivity.class);
-                intent.putExtra("correo", correo);
+                /*intent.putExtra("correo", correo);
                 intent.putExtra("recibe", recibe);
                 intent.putExtra("telefono", telefono);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("urlImageProfiel", url);
                 intent.putExtra("trabajo", trabajo);
-                intent.putExtra("muestroBoton", yo);
+                intent.putExtra("muestroBoton", yo);*/
                 view.getContext().startActivity(intent);
             }
         });

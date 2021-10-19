@@ -138,7 +138,7 @@ public class MostrarTrabajosFragment extends Fragment{
                                 ,des.getDescripcion(), des.getEstado()));
                              // Log.println(Log.ASSERT, "Dentro de datosTrabajos", des.toString());
                     }
-                Log.println(Log.ASSERT, "User ID: ", listaTrabajos.toString());
+                //Log.println(Log.ASSERT, "User ID: ", listaTrabajos.toString());
                 }
 
                 adapter.notifyDataSetChanged();

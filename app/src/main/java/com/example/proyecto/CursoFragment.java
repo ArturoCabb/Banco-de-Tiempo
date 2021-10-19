@@ -43,7 +43,7 @@ public class CursoFragment extends Fragment {
     private String mParam2;
 
     RecyclerView recyclerCurso;
-    ArrayList<TrabajosModel> listaTrabajos;
+    ArrayList<TrabajosModel1> listaTrabajos;
     CursoAdapter adapter;
     private String cor, ed, nom, tel, url;
     private int totalhrs;
@@ -132,40 +132,46 @@ public class CursoFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data : snapshot.getChildren()) {
-                    TrabajosModel model = data.getValue(TrabajosModel.class);
+                    TrabajosModel1 model = data.getValue(TrabajosModel1.class);
                     for (DataSnapshot trabajos : data.child("trabajos").getChildren()) {
-                        TrabajosModel des = trabajos.getValue(TrabajosModel.class);
-                        String quienContrata = des.getQuienContrata();
+                        TrabajosModel1 des = trabajos.getValue(TrabajosModel1.class);
+                        //String quienContrata = des.getQuienContrata();
                         dbReference = FirebaseDatabase.getInstance().getReference();
-                        dbReference.child("Users").child(quienContrata).addValueEventListener(new ValueEventListener() {
+                        /*dbReference.child("Users").child(quienContrata).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 String correo = snapshot.child("correo").getValue().toString();
                                 cor = correo;
+                                Log.println(Log.ASSERT,"correo", cor);
                                 String edad = snapshot.child("edad").getValue().toString();
                                 ed = edad;
+                                Log.println(Log.ASSERT,"edad", ed);
                                 String nombre = snapshot.child("nombre").getValue().toString();
                                 nom = nombre;
+                                Log.println(Log.ASSERT,"nombre", nom);
                                 String telefono = snapshot.child("telefono").getValue().toString();
                                 tel = telefono;
+                                Log.println(Log.ASSERT,"telefono", tel);
                                 String urlImage = snapshot.child("urlImageProfile").getValue().toString();
                                 url = urlImage;
+                                Log.println(Log.ASSERT,"urlIm", url);
                                 int totalhrs1 = Integer.parseInt(snapshot.child("totalhrs").getValue().toString());
                                 totalhrs = totalhrs1;
+                                //Log.println(Log.ASSERT,"totalhrs", String.valueOf(totalhrs));
                             }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
-                        });
+                        });*/
                         if(des.getEstado() == 1){
-                        listaTrabajos.add(new TrabajosModel(quienContrata, usuario, des.getTrabajo(),
-                                des.getEstado(), cor, ed, nom, tel, url, "yo", true, totalhrs));
+                        listaTrabajos.add(new TrabajosModel1(usuario, des.getTrabajo(), des.getQuienContrata(),
+                                des.getEstado(), "yo", model.getTotalhrs()));
                         }
                     }
                 }
-
+                Log.println(Log.ASSERT,"que pasa", listaTrabajos.toString());
                 adapter.notifyDataSetChanged();
             }
 
@@ -174,7 +180,6 @@ public class CursoFragment extends Fragment {
 
             }
         });
-
     }
 
     @Override
